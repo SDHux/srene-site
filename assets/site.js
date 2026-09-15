@@ -175,6 +175,10 @@ const nav = document.getElementById('nav');
         { x: 0.1, y: 0.7, seed: 3.4, stretchX: 1.3, stretchY: 0.9 }
       ]
     });
+    drawContours(document.getElementById('topoNextLevelIntro'), {
+      rgb: ropeDeepRgb, baseAlpha: 0.45, lineWidth: 1.2, rings: 12, spacing: 24,
+      peaks: [ { x: 0.85, y: -0.1, seed: 6.3, stretchX: 1.5, stretchY: 1.0 } ]
+    });
     drawContours(document.getElementById('topoPhilosophy'), {
       rgb: creamRgb, baseAlpha: 0.16, lineWidth: 1, rings: 13, spacing: 26,
       peaks: [ { x: 0.85, y: 0.1, seed: 2.6, stretchX: 1.5, stretchY: 1.0 } ]
