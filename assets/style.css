@@ -426,6 +426,31 @@ footer{
 .footer-col a:hover{ color:var(--rope-shine); }
 .footer-bottom{ position:relative; z-index:1; display:flex; justify-content:space-between; align-items:center; padding-top:28px; font-size:15px; color:#8A7C6C; flex-wrap:wrap; gap:12px;}
 
+/* ---------- Next Level ---------- */
+.nl-lede{ font-size:20px; font-weight:600; color:var(--ink); max-width:760px; margin:-24px 0 44px; }
+@media (max-width:640px){ .nl-lede{ font-size:17px; } }
+
+.nl-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+@media (max-width:820px){ .nl-grid{ grid-template-columns:1fr; } }
+
+.nl-card{ border:1px solid var(--line); border-radius:16px; overflow:hidden; background:var(--white); box-shadow:var(--shadow-card); display:flex; flex-direction:column; }
+.nl-card-top{ padding:22px 28px; }
+.nl-card-top.rope{ background:linear-gradient(135deg, var(--rope) 0%, var(--rope-deep) 100%); }
+.nl-card-top.alpine{ background:linear-gradient(135deg, var(--alpine) 0%, color-mix(in srgb, var(--alpine) 70%, black 30%) 100%); }
+.nl-card-kicker{ font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:rgba(255,255,255,0.85); font-weight:600; }
+.nl-card-body{ padding:28px; display:flex; flex-direction:column; gap:14px; flex:1; }
+.nl-card-body h3{ font-size:23px; }
+.nl-card-body > p{ font-size:17px; color:var(--text-muted); flex:1; }
+.nl-card-audience{ font-size:14.5px; color:var(--text-muted); font-weight:600; }
+.nl-list{ display:flex; flex-direction:column; gap:9px; margin:0; padding:0; }
+.nl-list li{ list-style:none; padding-left:24px; position:relative; font-size:15px; color:var(--text); }
+.nl-list li::before{ content:""; position:absolute; left:0; top:7px; width:9px; height:9px; border-radius:50%; background:var(--alpine); }
+.nl-card-foot{ display:flex; align-items:center; justify-content:space-between; padding-top:18px; margin-top:auto; border-top:1px solid var(--line); gap:12px; flex-wrap:wrap; }
+.nl-card-tag{ font-size:13px; color:var(--text-muted); }
+.nl-card-link{ font-size:14.5px; font-weight:600; }
+.nl-card-link.rope-text{ color:var(--rope-deep); }
+.nl-card-link.alpine-text{ color:var(--alpine); }
+
 /* ---------- Resources page ---------- */
 .res-hero{
   padding:80px 0 56px;

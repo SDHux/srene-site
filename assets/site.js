@@ -194,4 +194,8 @@ const nav = document.getElementById('nav');
       rgb: creamRgb, baseAlpha: 0.18, lineWidth: 1, rings: 11, spacing: 30,
       peaks: [ { x: 0.5, y: 0.5, seed: 4.4, stretchX: 1.8, stretchY: 1.0 } ]
     });
+    drawContours(document.getElementById('topoNextLevel'), {
+      rgb: creamRgb, baseAlpha: 0.18, lineWidth: 1, rings: 11, spacing: 30,
+      peaks: [ { x: 0.5, y: 0.5, seed: 7.1, stretchX: 1.8, stretchY: 1.0 } ]
+    });
   })();
