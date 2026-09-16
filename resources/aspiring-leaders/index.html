@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aspiring Leaders | SRENE</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<meta property="og:title" content="Aspiring Leaders — SRENE" />
+<meta property="og:description" content="The skills that change between every rep role and the manager seat, what you have to give up to move up, and two tools to prove you can do it before anyone gives you the title." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://srene.io/resources/aspiring-leaders/" />
+<meta property="og:image" content="https://srene.io/assets/images/og-image.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;--surface:#F6F5F2;--surface-2:#F0EEE6;
+    --ink:#1B1F23;--ink-soft:#6B7178;--ink-faint:#6B7178;--rule:#E2E0DA;
+    --b-act:#a8c2d2;--b-deal:#4fa3c4;--b-pipe:#2e8f6e;--b-acct:#14486b;
+    --b-orch:#6d5a86;--b-people:#e3ac56;--b-sys:#9e5b31;--accent:#B94B2C;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:960px;margin:0 auto;padding:52px 24px 80px}
+
+  .back{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--ink-faint);margin:0 0 22px}
+  .back:hover{color:var(--accent)}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 12px}
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(32px,5.4vw,48px);line-height:1.08;margin:0 0 18px;letter-spacing:-.005em}
+  .standfirst{font-size:19px;color:var(--ink-soft);max-width:64ch;margin:0 0 12px}
+
+  h2.kicker{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);
+     font-weight:700;margin:0 0 6px;padding-top:24px;border-top:1px solid var(--rule)}
+  .sec{margin-top:64px}
+  .sec-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(22px,3.2vw,28px);line-height:1.2;margin:0 0 10px;letter-spacing:-.005em}
+  .sec-note{font-size:16.5px;color:var(--ink-soft);max-width:66ch;margin:0 0 28px}
+
+  .hero{display:block;border:1px solid var(--rule);border-radius:16px;overflow:hidden;
+        margin:44px 0 0;background:var(--surface);transition:border-color .15s,box-shadow .15s}
+  .hero:hover{border-color:var(--accent);box-shadow:var(--shadow-card,0 12px 28px -14px rgba(27,31,35,.18))}
+  .hero-bars{display:flex;height:8px}
+  .hero-bars span{flex:1}
+  .hero-body{padding:28px 30px}
+  .hero .tag{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 9px}
+  .hero h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(22px,3vw,28px);margin:0 0 10px;letter-spacing:-.005em;line-height:1.2}
+  .hero p{font-size:16.5px;color:var(--ink-soft);margin:0 0 16px;max-width:62ch}
+  .hero .go{font-size:14.5px;font-weight:650;color:var(--accent)}
+
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:16px}
+  .card{border:1px solid var(--rule);border-radius:14px;padding:22px 24px;display:flex;
+        flex-direction:column;transition:border-color .15s}
+  .card:hover{border-color:var(--accent)}
+  .card .num{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin:0 0 8px}
+  .card h3{font-size:18.5px;margin:0 0 8px;letter-spacing:-.005em;line-height:1.25}
+  .card p{font-size:15px;color:var(--ink-soft);margin:0 0 16px;flex:1}
+  .card .foot{font-size:13px;color:var(--ink-faint);display:flex;justify-content:space-between;gap:10px}
+  .card .foot b{color:var(--accent);font-weight:650}
+  .rail{height:3px;border-radius:2px;margin:0 0 16px;width:44px}
+
+  .tool{display:flex;gap:20px;align-items:flex-start;border:1px solid var(--rule);
+        border-radius:14px;padding:22px 24px;margin:0 0 14px;transition:border-color .15s}
+  .tool:hover{border-color:var(--accent)}
+  .tool .ic{flex:0 0 40px;height:40px;border-radius:10px;display:flex;align-items:center;
+            justify-content:center;font-size:19px}
+  .tool .bd{flex:1}
+  .tool h3{font-size:18.5px;margin:0 0 6px;letter-spacing:-.005em}
+  .tool p{font-size:15.5px;color:var(--ink-soft);margin:0 0 10px}
+  .tool .meta{font-size:13px;color:var(--ink-faint)}
+
+  .pb{border-top:1px solid var(--rule);padding:20px 0;display:flex;gap:18px;align-items:baseline;flex-wrap:wrap}
+  .pb h3{font-size:17.5px;margin:0;letter-spacing:-.005em;flex:1 1 220px}
+  .pb p{font-size:15px;color:var(--ink-soft);margin:0;flex:2 1 300px}
+  .pb .go{font-size:13.5px;font-weight:650;color:var(--accent)}
+
+  .copyright{margin-top:64px;padding-top:22px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-faint)}
+  .copyright a{border-bottom:1px solid var(--rule)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="/resources.html">&larr; Resources</a>
+  <p class="eyebrow">SRENE &middot; Resources</p>
+  <h1>For reps who want to lead</h1>
+  <p class="standfirst">Most sales content teaches you to hit this quarter's number. Almost none of it tells you what the next job actually requires, what you have to give up to take it, or how to prove you can do it before anyone offers it to you. That is what this is.</p>
+
+  <a class="hero" href="/resources/aspiring-leaders/skill-architecture.html">
+    <div class="hero-bars">
+      <span style="background:var(--b-act)"></span>
+      <span style="background:var(--b-deal)"></span>
+      <span style="background:var(--b-pipe)"></span>
+      <span style="background:var(--b-acct)"></span>
+      <span style="background:var(--b-orch)"></span>
+      <span style="background:var(--b-people)"></span>
+      <span style="background:var(--b-sys)"></span>
+    </div>
+    <div class="hero-body">
+      <p class="tag">Start here</p>
+      <h3>From Rep to Sales Leader: the skill architecture</h3>
+      <p>Seven skill bands across five roles, from Inside Sales to Sales Manager. Three steps up the ladder are the same skills rebalancing. Then the job changes twice, and nearly half the manager role did not exist in any seat beneath it.</p>
+      <span class="go">Read the chart &rarr;</span>
+    </div>
+  </a>
+
+  <div class="sec">
+    <h2 class="kicker">The toolbox</h2>
+    <p class="sec-title">Four transitions, one at a time</p>
+    <p class="sec-note">Each one covers what moves in the mix, what you have to stop doing, what to practice from the seat you are in now, the artifact that proves it, and the questions you will actually be asked.</p>
+
+    <div class="cards">
+      <a class="card" href="/resources/aspiring-leaders/inside-sales-to-smb.html">
+        <div class="rail" style="background:var(--b-act)"></div>
+        <p class="num">Transition 1</p>
+        <h3>Inside Sales to SMB AE</h3>
+        <p>The measurement changes underneath you. Nobody counts your dials any more, and effort stops protecting you.</p>
+        <span class="foot"><b>Read &rarr;</b><span>5 min</span></span>
+      </a>
+
+      <a class="card" href="/resources/aspiring-leaders/smb-to-mid-market.html">
+        <div class="rail" style="background:var(--b-pipe)"></div>
+        <p class="num">Transition 2</p>
+        <h3>SMB AE to Mid-Market AE</h3>
+        <p>One buyer becomes three. Thirty live deals is more than anyone holds in their head, and memory silently stops working.</p>
+        <span class="foot"><b>Read &rarr;</b><span>6 min</span></span>
+      </a>
+
+      <a class="card" href="/resources/aspiring-leaders/mid-market-to-enterprise.html">
+        <div class="rail" style="background:var(--b-orch)"></div>
+        <p class="num">Transition 3</p>
+        <h3>Mid-Market to Enterprise AE</h3>
+        <p>The largest change on the IC ladder. Thirty deals become six accounts, and you start directing people who do not work for you.</p>
+        <span class="foot"><b>Read &rarr;</b><span>7 min</span></span>
+      </a>
+
+      <a class="card" href="/resources/aspiring-leaders/enterprise-to-sales-manager.html">
+        <div class="rail" style="background:var(--b-people)"></div>
+        <p class="num">Transition 4 &middot; The cliff</p>
+        <h3>Enterprise AE to Sales Manager</h3>
+        <p>A career change wearing the same job family's clothes. Deal craft is cut by more than half, and the work replacing it has no analog anywhere below.</p>
+        <span class="foot"><b>Read &rarr;</b><span>9 min</span></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2 class="kicker">Tools</h2>
+    <p class="sec-title">Two things you actually use</p>
+    <p class="sec-note">Both run in your browser. One email unlocks both, once, on this device &mdash; nothing else is required and your entries stay on your own device.</p>
+
+    <a class="tool" href="/resources/aspiring-leaders/deal-inspection-rubric.html">
+      <div class="ic" style="background:var(--surface-2)">&#128269;</div>
+      <div class="bd">
+        <h3>The Deal Inspection Rubric</h3>
+        <p>Ten questions you can ask about any deal without knowing the account. Every answer is verified, assumed, or unknown, because reps do not lose deals on the gaps they know about. They lose them on the things they were sure of that nobody ever confirmed.</p>
+        <p class="meta">Score a deal, save it, re-score weekly. Three answers carry a veto.</p>
+      </div>
+    </a>
+
+    <a class="tool" href="/resources/aspiring-leaders/orchestration-log.html">
+      <div class="ic" style="background:var(--surface-2)">&#128451;</div>
+      <div class="bd">
+        <h3>The Orchestration Log</h3>
+        <p>A record of every internal person you directed, what you asked for, and what you did to get it. You have been leading without authority for years and have never once been able to describe it.</p>
+        <p class="meta">Start it at Enterprise and you have four quarters of it when you interview for the manager job.</p>
+      </div>
+    </a>
+  </div>
+
+  <div class="sec">
+    <h2 class="kicker">Playbooks</h2>
+    <p class="sec-title">Long form, for the job you have now</p>
+
+    <a class="pb" href="/playbooks/SRENE_Prospecting_Playbook.pdf" download>
+      <h3>The Prospecting Playbook</h3>
+      <p>Building pipeline into named enterprise accounts when nobody is answering.</p>
+      <span class="go">PDF &rarr;</span>
+    </a>
+
+    <a class="pb" href="/playbooks/SRENE_Enterprise_Motions_Playbook.pdf" download>
+      <h3>The Enterprise Motions Playbook</h3>
+      <p>Running a multi-threaded enterprise cycle from first meeting to signature.</p>
+      <span class="go">PDF &rarr;</span>
+    </a>
+  </div>
+
+  <p class="copyright">&copy; 2026 SRENE. All rights reserved. This material may be shared in full with attribution. <a href="https://srene.io">srene.io</a></p>
+
+</div>
+</body>
+</html>

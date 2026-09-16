@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Deal Inspection Rubric | SRENE</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#ffffff; --surface:#F6F5F2; --surface-2:#F0EEE6;
+    --ink:#1B1F23; --ink-soft:#6B7178; --ink-faint:#6B7178; --rule:#E2E0DA;
+    --verified:#2C6E63; --assumed:#e3ac56; --unknown:#D65F3C;
+    --accent:#B94B2C; --orch:#B94B2C;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:820px;margin:0 auto;padding:44px 22px 80px}
+  .back{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--ink-faint);text-decoration:none;margin:0 0 22px}
+  .back:hover{color:var(--accent)}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 11px}
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(28px,4.6vw,40px);line-height:1.12;margin:0 0 14px;letter-spacing:-.005em}
+  .standfirst{font-size:17.5px;color:var(--ink-soft);margin:0 0 26px}
+  .howto{background:var(--surface);border-left:3px solid var(--orch);padding:16px 20px;border-radius:0 10px 10px 0;margin:0 0 34px}
+  .howto p{margin:0;font-size:15px;color:var(--ink-soft)}
+  .howto strong{color:var(--ink)}
+
+  /* Email gate */
+  .gate{border:1px solid var(--rule);border-radius:14px;padding:28px 26px;margin:0 0 40px;background:var(--surface)}
+  .gate-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 8px}
+  .gate h2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:24px;margin:0 0 8px;letter-spacing:-.005em}
+  .gate-copy{font-size:14.5px;color:var(--ink-soft);margin:0 0 18px;max-width:60ch}
+  .gate-copy a{color:var(--accent);text-decoration:underline}
+  .gate-form{display:flex;gap:10px;flex-wrap:wrap}
+  .hp-field{position:absolute;left:-9999px}
+  .gate-form input[type=email]{flex:1 1 220px;min-width:0;background:#fff;border:1px solid var(--rule);
+    color:var(--ink);font-size:15px;font-family:inherit;padding:11px 14px;border-radius:9px}
+  .gate-form input[type=email]:focus{outline:2px solid var(--accent);outline-offset:-1px}
+  .gate-err{color:var(--unknown);font-size:13.5px;margin:10px 0 0}
+
+  .dealbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:0 0 26px}
+  input[type=text]{flex:1 1 240px;min-width:0;background:var(--surface);border:1px solid var(--rule);
+    color:var(--ink);font-size:16px;font-family:inherit;padding:11px 14px;border-radius:9px}
+  input[type=text]:focus{outline:2px solid var(--accent);outline-offset:-1px}
+  button{font-family:inherit;cursor:pointer;border-radius:9px;border:1px solid var(--rule);
+    background:var(--surface);color:var(--ink);font-size:14.5px;padding:11px 16px;font-weight:600}
+  button:hover{background:var(--surface-2)}
+  .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+
+  .q{border-top:1px solid var(--rule);padding:20px 0}
+  .q-head{display:flex;gap:14px;align-items:baseline;margin:0 0 4px}
+  .q-n{font-size:13px;font-weight:700;color:var(--ink-faint);font-variant-numeric:tabular-nums;flex:0 0 22px}
+  .q-t{font-size:17px;font-weight:650;letter-spacing:-.01em}
+  .q-sub{font-size:14.5px;color:var(--ink-faint);margin:0 0 14px 36px}
+  .opts{display:flex;gap:8px;margin-left:36px;flex-wrap:wrap}
+  .opt{flex:1 1 130px;padding:9px 12px;font-size:14px;font-weight:600;text-align:center;
+    border:1px solid var(--rule);border-radius:9px;background:transparent;color:var(--ink-soft)}
+  .opt.sel[data-v="2"]{background:var(--verified);border-color:var(--verified);color:#fff}
+  .opt.sel[data-v="1"]{background:var(--assumed);border-color:var(--assumed);color:#0e1419}
+  .opt.sel[data-v="0"]{background:var(--unknown);border-color:var(--unknown);color:#fff}
+  .crit{display:inline-block;font-size:10.5px;letter-spacing:.07em;font-weight:700;
+    color:var(--unknown);border:1px solid var(--unknown);border-radius:3px;padding:1px 5px;margin-left:8px;vertical-align:2px}
+
+  .panel{position:sticky;bottom:0;background:var(--bg);border-top:2px solid var(--ink);
+    margin-top:36px;padding:20px 0 14px}
+  .score-row{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin:0 0 10px}
+  .score{font-size:40px;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+  .score-max{font-size:17px;color:var(--ink-faint);font-weight:600}
+  .verdict{font-size:18px;font-weight:650}
+  .bar{height:7px;background:var(--surface-2);border-radius:4px;overflow:hidden;display:flex;margin:0 0 14px}
+  .bar span{height:100%;display:block;transition:width .25s}
+  .tally{display:flex;gap:18px;font-size:13.5px;color:var(--ink-faint);flex-wrap:wrap;margin:0 0 14px}
+  .tally b{color:var(--ink);font-variant-numeric:tabular-nums}
+  .read{font-size:16px;color:var(--ink-soft);margin:0 0 16px}
+  .read strong{color:var(--ink)}
+  .gaps{margin:0 0 18px;padding:0;list-style:none}
+  .gaps li{font-size:15.5px;color:var(--ink-soft);padding:7px 0 7px 16px;position:relative;border-bottom:1px solid var(--rule)}
+  .gaps li::before{content:"";position:absolute;left:0;top:15px;width:7px;height:7px;border-radius:2px}
+  .gaps li.u::before{background:var(--unknown)}
+  .gaps li.a::before{background:var(--assumed)}
+  .acts{display:flex;gap:10px;flex-wrap:wrap}
+
+  .saved{margin-top:52px;border-top:1px solid var(--rule);padding-top:22px}
+  .saved h2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 14px}
+  .srow{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--rule);font-size:15px;flex-wrap:wrap}
+  .srow .nm{font-weight:650;flex:1 1 150px}
+  .srow .hist{display:flex;gap:6px;align-items:center;font-variant-numeric:tabular-nums;font-size:13.5px;color:var(--ink-faint)}
+  .srow .hist b{color:var(--ink);font-size:15px}
+  .srow .del{border:none;background:none;color:var(--ink-faint);font-size:13px;padding:4px 6px}
+  .empty{font-size:14.5px;color:var(--ink-faint)}
+  .foot{margin-top:56px;padding-top:20px;border-top:1px solid var(--rule);font-size:14px;color:var(--ink-faint)}
+  .copyright{margin-top:22px;font-size:13px;color:var(--ink-faint)}
+  .copyright a{color:var(--ink-faint);text-decoration:none;border-bottom:1px solid var(--rule)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="/resources/aspiring-leaders/">&larr; Aspiring Leaders</a>
+  <p class="eyebrow">Toolbox &middot; Enterprise AE to Sales Manager</p>
+  <h1>The Deal Inspection Rubric</h1>
+  <p class="standfirst">Ten questions you can ask about any deal without knowing the account. The score matters less than the split between what you have verified and what you have assumed.</p>
+
+  <div class="gate" id="toolkitGate">
+    <p class="gate-eyebrow">One email unlocks both tools</p>
+    <h2>Get access</h2>
+    <p class="gate-copy">Unlocks the Deal Inspection Rubric and the Orchestration Log, once, on this device. We'll only use this to occasionally share sales-leadership resources &mdash; see our <a href="https://app.termly.io/policy-viewer/policy.html?policyUUID=284c3efe-adea-4fd5-831d-9e0b60da569d" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+    <form class="gate-form" id="gateForm">
+      <p class="hp-field"><label>Don't fill this out: <input type="text" id="hp" name="company" autocomplete="off" tabindex="-1"></label></p>
+      <input type="email" id="gateEmail" placeholder="you@company.com" required autocomplete="email">
+      <button type="submit" class="btn-primary" id="gateBtn">Unlock</button>
+    </form>
+    <p class="gate-err" id="gateErr"></p>
+  </div>
+
+  <div id="toolkitContent" hidden>
+
+  <div class="howto">
+    <p><strong>How to use it.</strong> Run it on your own pipeline every week for a quarter. Then run it on a peer's deal and ask only questions. Then show it to your VP. You will not be proposing a framework, you will be showing something you already use, which is a different conversation entirely.</p>
+  </div>
+
+  <div class="dealbar">
+    <input type="text" id="dealName" placeholder="Deal or account name" autocomplete="off">
+    <button class="btn-primary" id="saveBtn">Save score</button>
+    <button id="clearBtn">Clear answers</button>
+  </div>
+
+  <div id="questions"></div>
+
+  <div class="panel">
+    <div class="score-row">
+      <span class="score" id="score">0</span><span class="score-max">/ 20</span>
+      <span class="verdict" id="verdict">Answer the ten</span>
+    </div>
+    <div class="bar" id="bar"></div>
+    <div class="tally">
+      <span>Verified <b id="tV">0</b></span>
+      <span>Assumed <b id="tA">0</b></span>
+      <span>Unknown <b id="tU">0</b></span>
+      <span>Unanswered <b id="tN">10</b></span>
+    </div>
+    <p class="read" id="read"></p>
+    <ul class="gaps" id="gaps"></ul>
+  </div>
+
+  <div class="saved">
+    <h2>Saved deals</h2>
+    <div id="savedList"><p class="empty">Nothing saved yet. Scores are stored in this browser only.</p></div>
+  </div>
+
+  <p class="foot">Three answers carry a veto: economic buyer, compelling event, and champion proof. If any of those is unknown, the deal is not forecastable no matter what the other seven say. Volume of good answers does not cover a hole in the middle.</p>
+
+  </div>
+
+  <p class="copyright">&copy; 2026 SRENE. All rights reserved. This material may be shared in full with attribution. <a href="https://srene.io">srene.io</a></p>
+
+</div>
+
+<script>
+(function(){
+  var KEY = "srene_toolkit_unlocked";
+  var unlocked = false;
+  try { unlocked = localStorage.getItem(KEY) === "1"; } catch(e){}
+  var gate = document.getElementById("toolkitGate");
+  var content = document.getElementById("toolkitContent");
+  if(unlocked){ gate.hidden = true; content.hidden = false; }
+
+  document.getElementById("gateForm").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var email = document.getElementById("gateEmail").value.trim();
+    var hp = document.getElementById("hp").value;
+    var btn = document.getElementById("gateBtn");
+    var err = document.getElementById("gateErr");
+    err.textContent = "";
+    btn.disabled = true; btn.textContent = "Please wait…";
+    fetch("https://hjumgvnuqvmxdusldeba.supabase.co/rest/v1/rpc/submit_toolkit_lead", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "apikey": "sb_publishable_gRA_qf4uQVX9BKhJHuV6hQ_oMRTypV3",
+        "Authorization": "Bearer sb_publishable_gRA_qf4uQVX9BKhJHuV6hQ_oMRTypV3"
+      },
+      body: JSON.stringify({p_email: email, p_source: "deal-inspection-rubric", p_referrer: document.referrer || null, p_honeypot: hp || null})
+    }).then(function(res){
+      if(!res.ok){ throw new Error("bad"); }
+      try { localStorage.setItem(KEY, "1"); } catch(e){}
+      gate.hidden = true; content.hidden = false;
+    }).catch(function(){
+      err.textContent = "Something went wrong — try again in a moment.";
+      btn.disabled = false; btn.textContent = "Unlock";
+    });
+  });
+})();
+
+var QUESTIONS = [
+  {t:"Have you met the economic buyer?",
+   s:"Not identified. Met. The person who can approve this without asking anyone else.",
+   crit:true,
+   v:"You have been in a conversation with them", a:"You know who it is", u:"You are guessing"},
+  {t:"Is there a date that makes doing nothing expensive?",
+   s:"A contract expiry, a compliance deadline, a launch, a board commitment. Their date, not your quarter end.",
+   crit:true,
+   v:"They named it", a:"You inferred it", u:"There isn't one"},
+  {t:"Can you state the cost of no decision in their numbers?",
+   s:"Not your ROI deck. What it costs them to keep doing what they do now.",
+   v:"They told you the number", a:"You estimated it", u:"Never discussed"},
+  {t:"Has your champion done something costly for you in the last 30 days?",
+   s:"An intro, an internal meeting they called, pushing back on a colleague. Replying to email is not costly.",
+   crit:true,
+   v:"Yes, specifically", a:"They are engaged but passive", u:"No, or you are not sure"},
+  {t:"Do you have a real relationship with someone who is not your champion?",
+   s:"Someone who would take your call if the champion left tomorrow.",
+   v:"Yes, at least one", a:"You have met others", u:"Single threaded"},
+  {t:"Do you know every signature required, in order, with names?",
+   s:"Legal, security, procurement, finance, the signer. Names, not functions.",
+   v:"All of them", a:"Most of them", u:"You assume it is standard"},
+  {t:"Do you know who else they are evaluating, from them?",
+   s:"They told you. Inference from the questions they ask does not count.",
+   v:"They told you directly", a:"You inferred it", u:"No idea"},
+  {t:"Have you seen their actual procurement and legal process?",
+   s:"This one, not the last company's. The number of deals that slip a quarter here is not small.",
+   v:"Walked through it with them", a:"Assuming it resembles others", u:"Not discussed"},
+  {t:"Do you know which budget line this comes from and whether it exists this year?",
+   s:"Allocated, requested, or hypothetical are three very different deals.",
+   v:"Allocated and confirmed", a:"They say it exists", u:"Unknown or next year"},
+  {t:"Is there a scheduled next meeting with named attendees and a purpose?",
+   s:"On a calendar. 'They'll get back to you' is not a next step.",
+   v:"Scheduled with a purpose", a:"Agreed but not booked", u:"Nothing scheduled"}
+];
+
+var answers = new Array(QUESTIONS.length).fill(null);
+var DKEY = "dir:deals:v1";
+
+function el(tag, cls, html){var e=document.createElement(tag); if(cls)e.className=cls; if(html!=null)e.innerHTML=html; return e;}
+
+function render(){
+  var host = document.getElementById("questions");
+  host.innerHTML = "";
+  QUESTIONS.forEach(function(q,i){
+    var d = el("div","q");
+    var h = el("div","q-head");
+    h.appendChild(el("span","q-n", String(i+1).padStart(2,"0")));
+    h.appendChild(el("span","q-t", q.t + (q.crit ? '<span class="crit">VETO</span>' : "")));
+    d.appendChild(h);
+    d.appendChild(el("p","q-sub", q.s));
+    var o = el("div","opts");
+    [[2,q.v],[1,q.a],[0,q.u]].forEach(function(pair){
+      var b = el("button","opt", pair[1]);
+      b.setAttribute("data-v", pair[0]);
+      b.onclick = function(){
+        answers[i] = (answers[i] === pair[0]) ? null : pair[0];
+        render(); update();
+      };
+      if(answers[i] === pair[0]) b.className = "opt sel";
+      o.appendChild(b);
+    });
+    d.appendChild(o);
+    host.appendChild(d);
+  });
+}
+
+function update(){
+  var v=0,a=0,u=0,n=0,total=0;
+  answers.forEach(function(x){
+    if(x===null){n++;return;}
+    total+=x;
+    if(x===2)v++; else if(x===1)a++; else u++;
+  });
+  document.getElementById("score").textContent = total;
+  document.getElementById("tV").textContent = v;
+  document.getElementById("tA").textContent = a;
+  document.getElementById("tU").textContent = u;
+  document.getElementById("tN").textContent = n;
+
+  var bar = document.getElementById("bar");
+  bar.innerHTML = "";
+  [["--verified",v],["--assumed",a],["--unknown",u]].forEach(function(p){
+    var s = el("span");
+    s.style.width = (p[1]/QUESTIONS.length*100) + "%";
+    s.style.background = "var(" + p[0] + ")";
+    bar.appendChild(s);
+  });
+
+  var vetoBroken = [0,1,3].filter(function(i){return answers[i]===0;});
+  var verdict, read = "";
+
+  if(n === QUESTIONS.length){
+    verdict = "Answer the ten";
+  } else if(n > 0){
+    verdict = n + " left";
+  } else if(vetoBroken.length){
+    verdict = "Not forecastable";
+    read = "<strong>A veto answer is unknown.</strong> Whatever the total says, a deal without a met economic buyer, a real deadline, or a champion who has spent something on you is not forecastable. Fix that before anything else on this list.";
+  } else if(total >= 16){
+    verdict = "Forecastable";
+  } else if(total >= 11){
+    verdict = "Real, not forecastable";
+  } else if(total >= 6){
+    verdict = "A conversation, not a deal";
+  } else {
+    verdict = "Hope";
+  }
+  document.getElementById("verdict").textContent = verdict;
+
+  if(n === 0 && !vetoBroken.length){
+    if(a >= 3){
+      read = "<strong>" + a + " assumptions.</strong> This is where the deal dies, not in the unknowns. You know the unknowns are gaps. The assumptions feel like knowledge until the day one of them turns out to be wrong, usually in the last two weeks.";
+    } else if(a > 0){
+      read = "<strong>" + a + " assumption" + (a>1?"s":"") + " left.</strong> Convert them to verified before you commit this deal. An assumption is a gap you have stopped noticing.";
+    } else if(u > 0){
+      read = "<strong>Nothing assumed, " + u + " genuinely unknown.</strong> That is the healthier shape. You know exactly where the work is.";
+    } else {
+      read = "<strong>Everything verified.</strong> Rare. If this is real, the only remaining risk is time. If it feels too clean, re-read question four.";
+    }
+  }
+  document.getElementById("read").innerHTML = read;
+
+  var gaps = document.getElementById("gaps");
+  gaps.innerHTML = "";
+  answers.forEach(function(x,i){
+    if(x===0) gaps.appendChild(el("li","u", "<strong>Unknown</strong> &middot; " + QUESTIONS[i].t));
+  });
+  answers.forEach(function(x,i){
+    if(x===1) gaps.appendChild(el("li","a", "<strong>Assumed</strong> &middot; " + QUESTIONS[i].t));
+  });
+}
+
+function load(){
+  try { return JSON.parse(localStorage.getItem(DKEY)) || {}; }
+  catch(e){ return {}; }
+}
+function persist(obj){
+  try { localStorage.setItem(DKEY, JSON.stringify(obj)); return true; }
+  catch(e){ return false; }
+}
+
+function renderSaved(){
+  var data = load();
+  var host = document.getElementById("savedList");
+  var names = Object.keys(data);
+  if(!names.length){
+    host.innerHTML = '<p class="empty">Nothing saved yet. Scores are stored in this browser only.</p>';
+    return;
+  }
+  host.innerHTML = "";
+  names.sort().forEach(function(nm){
+    var hist = data[nm];
+    var row = el("div","srow");
+    row.appendChild(el("span","nm", nm));
+    var last = hist[hist.length-1];
+    var prev = hist.length > 1 ? hist[hist.length-2] : null;
+    var delta = prev ? (last.s - prev.s) : null;
+    var arrow = delta === null ? "" : (delta > 0 ? " &uarr;+" + delta : (delta < 0 ? " &darr;" + delta : " flat"));
+    row.appendChild(el("span","hist", "<b>" + last.s + "</b>/20" + arrow + " &middot; " + hist.length + " check" + (hist.length>1?"s":"") + " &middot; " + last.d));
+    var del = el("button","del","remove");
+    del.onclick = function(){
+      var d = load(); delete d[nm]; persist(d); renderSaved();
+    };
+    row.appendChild(del);
+    host.appendChild(row);
+  });
+}
+
+document.getElementById("saveBtn").onclick = function(){
+  var nm = document.getElementById("dealName").value.trim();
+  if(!nm){ document.getElementById("dealName").focus(); return; }
+  if(answers.indexOf(null) !== -1){ return; }
+  var total = answers.reduce(function(s,x){return s+x;},0);
+  var data = load();
+  if(!data[nm]) data[nm] = [];
+  data[nm].push({s: total, d: new Date().toLocaleDateString()});
+  if(data[nm].length > 16) data[nm] = data[nm].slice(-16);
+  persist(data);
+  renderSaved();
+};
+
+document.getElementById("clearBtn").onclick = function(){
+  answers = new Array(QUESTIONS.length).fill(null);
+  render(); update();
+};
+
+try {
+  render(); update(); renderSaved();
+} catch(e) {
+  document.getElementById("questions").innerHTML = '<p class="empty">This tool needs local storage to keep your scores. If it stays blocked, the questions above still work, they just will not save between visits.</p>';
+}
+</script>
+</body>
+</html>

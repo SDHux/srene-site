@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mid-Market AE to Enterprise AE | SRENE</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#ffffff; --surface:#F6F5F2; --ink:#1B1F23; --ink-soft:#6B7178;
+    --ink-faint:#6B7178; --rule:#E2E0DA;
+    --b-act:#a8c2d2; --b-deal:#4fa3c4; --b-pipe:#2e8f6e; --b-acct:#14486b;
+    --b-orch:#6d5a86; --b-people:#e3ac56; --b-sys:#9e5b31; --accent:#B94B2C;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:760px;margin:0 auto;padding:48px 24px 72px}
+  .back{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--ink-faint);text-decoration:none;margin:0 0 22px}
+  .back:hover{color:var(--accent)}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 12px}
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(30px,5vw,42px);line-height:1.12;margin:0 0 16px;letter-spacing:-.005em}
+  .standfirst{font-size:18.5px;color:var(--ink-soft);margin:0 0 8px}
+  .meta{font-size:13.5px;color:var(--ink-faint);border-top:1px solid var(--rule);padding-top:14px;margin:28px 0 40px}
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin:54px 0 6px}
+  .sect-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(22px,3.3vw,29px);line-height:1.2;margin:0 0 20px;letter-spacing:-.005em}
+  p{font-size:17px;color:var(--ink-soft);margin:0 0 18px}
+  p strong,li strong{color:var(--ink);font-weight:650}
+  .shift{width:100%;border-collapse:collapse;margin:8px 0 26px;font-size:15.5px}
+  .shift th{text-align:left;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;padding:0 0 10px;border-bottom:1px solid var(--rule)}
+  .shift th:nth-child(2),.shift th:nth-child(3){text-align:right;width:76px}
+  .shift td{padding:13px 0;border-bottom:1px solid var(--rule);color:var(--ink-soft)}
+  .shift td:nth-child(2),.shift td:nth-child(3){text-align:right;font-variant-numeric:tabular-nums;font-weight:650;color:var(--ink)}
+  .dot{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:10px;vertical-align:1px}
+  .up{color:var(--b-people)!important}
+  .down{color:var(--b-deal)!important}
+  ul{padding-left:0;list-style:none;margin:0 0 20px}
+  li{font-size:17px;color:var(--ink-soft);margin:0 0 16px;padding-left:24px;position:relative}
+  li::before{content:"";position:absolute;left:4px;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .callout{background:var(--surface);border-left:3px solid var(--b-orch);padding:20px 24px;margin:28px 0;border-radius:0 10px 10px 0}
+  .callout p{margin:0;font-size:16px}
+  .callout .lbl{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--b-orch);font-weight:700;margin:0 0 8px}
+  .artifact{border:1px solid var(--rule);border-radius:12px;padding:24px 26px;margin:0 0 20px}
+  .artifact h3{font-size:18.5px;margin:0 0 4px;letter-spacing:-.01em}
+  .artifact .tag{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin:0 0 12px}
+  .artifact p{font-size:16px;margin:0 0 12px}
+  .artifact p:last-child{margin:0}
+  .qs{counter-reset:q;margin:0;padding:0;list-style:none}
+  .qs li{padding-left:42px;margin-bottom:22px}
+  .qs li::before{counter-increment:q;content:counter(q);position:absolute;left:0;top:0;width:auto;height:auto;border-radius:0;background:none;color:var(--ink-faint);font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+  .qs .q{display:block;color:var(--ink);font-weight:600;margin-bottom:3px}
+  .qs .t{display:block;font-size:15.5px}
+  .closer{border-top:2px solid var(--ink);margin-top:60px;padding-top:26px}
+  .closer h2{margin-top:0}
+  .next{margin-top:52px;padding-top:22px;border-top:1px solid var(--rule);font-size:15px;color:var(--ink-faint)}
+  .next a{color:var(--accent);text-decoration:none;font-weight:600}
+  .copyright{margin-top:22px;font-size:13px;color:var(--ink-faint)}
+  .copyright a{color:var(--ink-faint);text-decoration:none;border-bottom:1px solid var(--rule)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="/resources/aspiring-leaders/">&larr; Aspiring Leaders</a>
+  <p class="eyebrow">Toolbox &middot; Transition 3 of 4</p>
+  <h1>Mid-Market AE to Enterprise AE</h1>
+  <p class="standfirst">The largest change on the IC ladder. Thirty deals become six accounts, and for the first time you start directing people who do not work for you.</p>
+  <p class="meta">Two bands move by more than fifteen points and a new one appears. Read time about seven minutes.</p>
+
+  <h2>01 / What moves</h2>
+  <p class="sect-title">The mix, before and after</p>
+
+  <table class="shift">
+    <thead><tr><th>Skill band</th><th>Before</th><th>After</th></tr></thead>
+    <tbody>
+      <tr><td><span class="dot" style="background:var(--b-act)"></span>Activity &amp; mechanics</td><td>22%</td><td class="down">10%</td></tr>
+      <tr><td><span class="dot" style="background:var(--b-deal)"></span>Deal craft</td><td>44%</td><td class="down">40%</td></tr>
+      <tr><td><span class="dot" style="background:var(--b-pipe)"></span>Pipeline management</td><td>26%</td><td class="down">12%</td></tr>
+      <tr><td><span class="dot" style="background:var(--b-acct)"></span>Account strategy</td><td>8%</td><td class="up">23%</td></tr>
+      <tr><td><span class="dot" style="background:var(--b-orch)"></span>Internal orchestration</td><td>0%</td><td class="up">15%</td></tr>
+    </tbody>
+  </table>
+
+  <p>Pipeline management halves and account strategy triples. The mid-market rep wins by working thirty deals well. The enterprise rep wins by knowing six organizations better than the people inside them.</p>
+
+  <div class="callout">
+    <p class="lbl">Why this one matters most</p>
+    <p>Internal orchestration appears here and it never leaves. Running the SE, driving the security review, briefing an exec sponsor, keeping a partner honest. It is the only skill on the entire IC ladder that means directing people who do not report to you, and it is the single thing that survives the jump to management. If you have any ambition past Enterprise AE, this band is the reason to take the role.</p>
+  </div>
+
+  <h2>02 / What to stop</h2>
+  <p class="sect-title">The part nobody says out loud</p>
+
+  <p>The habits that made you a good mid-market rep are load-bearing. Removing them is uncomfortable.</p>
+
+  <ul>
+    <li><strong>Stop working the pipeline for comfort.</strong> With six accounts there is no pipeline to hide in. On a slow Tuesday there is no obvious productive thing to do, and the temptation is to manufacture activity. Resist it.</li>
+    <li><strong>Stop being the only person in the room.</strong> Your SE knows things you do not. Your exec can open doors you cannot. Reps who arrive from mid-market habitually do every call alone, because that is what worked.</li>
+    <li><strong>Stop expecting the cycle to fit a quarter.</strong> Twelve to eighteen months means the work you do in March pays in February. Your compensation and your effort are now permanently out of phase.</li>
+    <li><strong>Stop qualifying out on one bad conversation.</strong> In mid-market a cold buyer is a signal to move on. In enterprise it is one of eleven people, and the other ten have not met you.</li>
+  </ul>
+
+  <h2>03 / What to practice</h2>
+  <p class="sect-title">From the seat you are in now</p>
+
+  <p>Enterprise skills are the hardest to practice from below, but not impossible.</p>
+
+  <ul>
+    <li><strong>Org map one account properly.</strong> Take your largest account and map it: names, reporting lines, who has budget, who got promoted recently, who came from where. Then find the three things you assumed.</li>
+    <li><strong>Run your SE deliberately.</strong> Before the next technical call, brief them on what you need and why. Most reps forward a calendar invite. This is orchestration, and it starts the moment you treat it as a decision.</li>
+    <li><strong>Build an account plan nobody asked for.</strong> Pick one account, write a two-year plan for it, and show your manager. The document matters less than being the person who wrote one.</li>
+    <li><strong>Start the orchestration log now.</strong> Every internal person you direct, what you asked for, what you got. It pays off here and it pays off far more at the manager transition.</li>
+  </ul>
+
+  <h2>04 / What proves it</h2>
+  <p class="sect-title">Artifacts you can build before the title</p>
+
+  <p>Three, and the third one is the long game.</p>
+
+  <div class="artifact">
+    <h3>The account map with power lines</h3>
+    <p class="tag">One account, properly done</p>
+    <p>Not an org chart. Who actually influences whom, who owes whom, where the budget really sits, and which relationships predate this company.</p>
+    <p>Mark verified against assumed. An enterprise interviewer will find the assumptions in two questions, and having flagged them yourself is the whole point.</p>
+  </div>
+
+  <div class="artifact">
+    <h3>The two-year account plan</h3>
+    <p class="tag">Unprompted</p>
+    <p>Where this account is today, where it could be in eight quarters, what has to be true at each step, and what you would need internally to get there.</p>
+    <p>Writing one before anyone asks is the clearest available signal that you think in accounts rather than deals.</p>
+  </div>
+
+  <div class="artifact">
+    <h3>The orchestration log</h3>
+    <p class="tag">Starts here, matters most later</p>
+    <p>Four quarters of internal people you directed: the SE you prepped differently, the security review you drove, the exec you briefed before a call that mattered.</p>
+    <p>This is the artifact that gets you the manager job three years from now. Almost nobody starts it early enough to have four quarters of it when they need it.</p>
+  </div>
+
+  <h2>05 / What you will be asked</h2>
+  <p class="sect-title">The interview, and what each question is testing</p>
+
+  <ul class="qs">
+    <li><span class="q">Walk me through the org at your biggest account.</span><span class="t">Depth, and honesty about the edges. Mid-market reps describe a contact list. Enterprise reps describe a system with people in it.</span></li>
+    <li><span class="q">Who did you have to influence internally to win a deal?</span><span class="t">Whether orchestration is a thing you do or a thing that happens to you.</span></li>
+    <li><span class="q">Tell me about an account you worked for a year before it closed.</span><span class="t">Stamina, and whether you can hold a thread across a period longer than a comp plan.</span></li>
+    <li><span class="q">What happened when your champion left?</span><span class="t">Everyone has this story. The useful part is what you had in place before it happened.</span></li>
+  </ul>
+
+  <div class="closer">
+    <h2>How you will know</h2>
+    <p class="sect-title">One test</p>
+    <p>Have a slow week with nothing urgent in front of you, and spend it deepening an account rather than manufacturing activity.</p>
+    <p>That is the whole job. Most mid-market reps cannot sit still long enough to do it, and it is the most common reason a strong performer struggles in their first enterprise year.</p>
+  </div>
+
+  <p class="next">Other transitions: <a href="/resources/aspiring-leaders/inside-sales-to-smb.html">Inside Sales to SMB</a> &middot; <a href="/resources/aspiring-leaders/smb-to-mid-market.html">SMB to Mid-Market</a> &middot; <a href="/resources/aspiring-leaders/mid-market-to-enterprise.html">Mid-Market to Enterprise</a> &middot; <a href="/resources/aspiring-leaders/enterprise-to-sales-manager.html">Enterprise AE to Sales Manager</a></p>
+  <p class="copyright">&copy; 2026 SRENE. All rights reserved. This material may be shared in full with attribution. <a href="https://srene.io">srene.io</a></p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enterprise AE to Sales Manager | SRENE</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff; --surface: #F6F5F2; --ink: #1B1F23; --ink-soft: #6B7178;
+    --ink-faint: #6B7178; --rule: #E2E0DA;
+    --b-deal: #4fa3c4; --b-pipe: #2e8f6e; --b-acct: #14486b;
+    --b-orch: #6d5a86; --b-people: #e3ac56; --b-sys: #9e5b31;
+    --accent: #B94B2C;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.6; -webkit-font-smoothing: antialiased;
+  }
+  a{color:inherit}
+  .wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 88px; }
+  .back{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--ink-faint);text-decoration:none;margin:0 0 22px}
+  .back:hover{color:var(--accent)}
+  .eyebrow { font-family:'JetBrains Mono',monospace;font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin: 0 0 12px; }
+  h1 { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size: clamp(30px, 5vw, 44px); line-height: 1.12; margin: 0 0 16px; letter-spacing: -0.005em; }
+  .standfirst { font-size: 18.5px; color: var(--ink-soft); margin: 0 0 8px; }
+  .meta { font-size: 13.5px; color: var(--ink-faint); border-top: 1px solid var(--rule); padding-top: 14px; margin: 28px 0 44px; }
+  h2 { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-faint); margin: 56px 0 6px; }
+  h2 + .sect-title { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size: clamp(23px, 3.4vw, 30px); line-height: 1.2; margin: 0 0 20px; letter-spacing: -0.005em; }
+  p { font-size: 17px; color: var(--ink-soft); margin: 0 0 18px; }
+  p strong, li strong { color: var(--ink); font-weight: 650; }
+  .shift { width: 100%; border-collapse: collapse; margin: 8px 0 28px; font-size: 15.5px; }
+  .shift th { text-align: left; font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); font-weight: 700; padding: 0 0 10px; border-bottom: 1px solid var(--rule); }
+  .shift th:nth-child(2), .shift th:nth-child(3) { text-align: right; width: 78px; }
+  .shift td { padding: 13px 0; border-bottom: 1px solid var(--rule); color: var(--ink-soft); }
+  .shift td:nth-child(2), .shift td:nth-child(3) { text-align: right; font-variant-numeric: tabular-nums; font-weight: 650; color: var(--ink); }
+  .dot { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 10px; vertical-align: 1px; }
+  .up { color: var(--b-people) !important; }
+  .down { color: var(--b-deal) !important; }
+  ul { padding-left: 0; list-style: none; margin: 0 0 20px; }
+  li { font-size: 17px; color: var(--ink-soft); margin: 0 0 16px; padding-left: 24px; position: relative; }
+  li::before { content: ""; position: absolute; left: 4px; top: 11px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  .callout { background: var(--surface); border-left: 3px solid var(--b-orch); padding: 20px 24px; margin: 28px 0; border-radius: 0 10px 10px 0; }
+  .callout p { margin: 0; font-size: 16px; }
+  .callout .lbl { font-family:'JetBrains Mono',monospace;font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--b-orch); font-weight: 700; margin: 0 0 8px; }
+  .artifact { border: 1px solid var(--rule); border-radius: 12px; padding: 24px 26px; margin: 0 0 20px; }
+  .artifact h3 { font-size: 18.5px; margin: 0 0 4px; letter-spacing: -0.01em; }
+  .artifact .tag { font-family:'JetBrains Mono',monospace;font-size: 11.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); font-weight: 700; margin: 0 0 12px; }
+  .artifact p { font-size: 16px; margin: 0 0 12px; }
+  .artifact p:last-child { margin: 0; }
+  .qs { counter-reset: q; margin: 0; padding: 0; list-style: none; }
+  .qs li { padding-left: 42px; margin-bottom: 22px; }
+  .qs li::before { counter-increment: q; content: counter(q); position: absolute; left: 0; top: 0; width: auto; height: auto; border-radius: 0; background: none; color: var(--ink-faint); font-weight: 700; font-size: 14px; font-variant-numeric: tabular-nums; }
+  .qs .q { display: block; color: var(--ink); font-weight: 600; margin-bottom: 3px; }
+  .qs .t { display: block; font-size: 15.5px; }
+  .closer { border-top: 2px solid var(--ink); margin-top: 64px; padding-top: 28px; }
+  .closer h2 { margin-top: 0; }
+  .next { margin-top: 56px; padding-top: 24px; border-top: 1px solid var(--rule); font-size: 15px; color: var(--ink-faint); }
+  .next a { color: var(--accent); text-decoration: none; font-weight: 600; }
+  .copyright{margin-top:22px;font-size:13px;color:var(--ink-faint)}
+  .copyright a{color:var(--ink-faint);text-decoration:none;border-bottom:1px solid var(--rule)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="/resources/aspiring-leaders/">&larr; Aspiring Leaders</a>
+  <p class="eyebrow">Toolbox &middot; Transition 4 of 4</p>
+  <h1>Enterprise AE to Sales Manager</h1>
+  <p class="standfirst">The other three transitions on this ladder are refinements. This one is a career change wearing the same job family's clothes.</p>
+  <p class="meta">Forty-five percent of this job did not exist in any role beneath it. Read time about nine minutes.</p>
+
+  <h2>01 / What moves</h2>
+  <p class="sect-title">The mix, before and after</p>
+
+  <table class="shift">
+    <thead><tr><th>Skill band</th><th>Ent AE</th><th>Manager</th></tr></thead>
+    <tbody>
+      <tr><td><span class="dot" style="background:var(--b-people)"></span>People leadership</td><td>0%</td><td class="up">30%</td></tr>
+      <tr><td><span class="dot" style="background:var(--b-sys)"></span>Systems &amp; operating cadence</td><td>0%</td><td class="up">15%</td></tr>
+      <tr><td><span class="dot" style="background:var(--b-orch)"></span>Internal orchestration</td><td>15%</td><td>13%</td></tr>
+      <tr><td><span class="dot" style="background:var(--b-deal)"></span>Deal craft</td><td>40%</td><td class="down">18%</td></tr>
+      <tr><td><span class="dot" style="background:var(--b-acct)"></span>Account strategy</td><td>23%</td><td class="down">8%</td></tr>
+      <tr><td><span class="dot" style="background:var(--b-pipe)"></span>Pipeline management</td><td>12%</td><td>10%</td></tr>
+    </tbody>
+  </table>
+
+  <p>Two things appear from nothing and take nearly half the job. Two things you built a fifteen-year reputation on get cut by more than half. One thing carries across almost intact, and it is the only part of this transition you can rehearse.</p>
+
+  <div class="callout">
+    <p class="lbl">The bridge</p>
+    <p>Internal orchestration barely moves, 15% to 13%. Running the SE, pulling in legal and security, managing an exec sponsor, keeping a partner honest. You have been directing people who do not report to you for years. Nobody ever called it management, including you. It is the one asset you carry over the cliff.</p>
+  </div>
+
+  <h2>02 / What to stop</h2>
+  <p class="sect-title">The part nobody says out loud</p>
+
+  <p>Every list of manager skills tells you what to add. The failure mode is never a missing skill. It is an unwillingness to stop.</p>
+
+  <ul>
+    <li><strong>Stop taking the deal.</strong> Your instinct on a stalled deal is now your worst enemy, because you are usually right and it does not matter. A deal you rescue is a deal your rep did not learn to run. You will trade this quarter's number for next year's team, repeatedly, and it will feel wrong every time.</li>
+    <li><strong>Stop being the voice on the exec call.</strong> The single hardest habit to break. You know how to handle a skeptical CFO. Your rep does not, and will not, until you sit there and let a worse conversation happen in front of you.</li>
+    <li><strong>Stop measuring yourself by pipeline you touched.</strong> Your contribution is now invisible and lagging. You will feel unproductive for roughly two quarters. That feeling is not evidence of anything.</li>
+    <li><strong>Stop being everyone's peer.</strong> You now decide comp disputes, territory splits, and who gets the named account. You cannot be the person who complains about the quota and the person who sets it.</li>
+    <li><strong>Stop solving. Start diagnosing.</strong> When a rep brings you a stuck deal, the useful question is not what should he do next. It is why he did not see this six weeks ago.</li>
+  </ul>
+
+  <h2>03 / What to practice</h2>
+  <p class="sect-title">From the seat you are in now</p>
+
+  <p>You do not need the title to get the reps. You need to do four specific things deliberately enough that you can describe them as management practice when someone asks.</p>
+
+  <ul>
+    <li><strong>Onboard the new hire.</strong> The cheapest management rep available and almost nobody volunteers. You will discover that everything obvious to you is invisible to them, which is the entire job in miniature.</li>
+    <li><strong>Run a deal review on a peer's deal without touching it.</strong> Ask only questions. Take no action. Notice how badly you want to take it.</li>
+    <li><strong>Ask to see how your quota was set.</strong> Most reps never do. Ask your manager to walk through the capacity math, the ramp assumptions, and what got negotiated. This is the operating cadence band, and thirty minutes buys you more than a book will.</li>
+    <li><strong>Name your orchestration.</strong> Start writing down every internal person you directed this quarter, what you asked for, and what you got. You have done this for years. You have never once been able to describe it.</li>
+  </ul>
+
+  <h2>04 / What proves it</h2>
+  <p class="sect-title">Three artifacts, built before anyone gives you the title</p>
+
+  <p>Advice is cheap and everyone interviewing has read the same books. An artifact you have actually used for a quarter is not.</p>
+
+  <div class="artifact">
+    <h3>The deal inspection rubric</h3>
+    <p class="tag">The one that matters most</p>
+    <p>Eight to ten questions you can ask about any deal without knowing the account. Economic buyer identified and met. Compelling event with a date attached. What happens if they do nothing. Who else has to sign. Last time the champion did something costly for you.</p>
+    <p>Run it on your own pipeline every week for a quarter. Then run it on a peer's deal. Then show it to your VP. You are not proposing a framework, you are showing something you already use, which is a completely different conversation.</p>
+  </div>
+
+  <div class="artifact">
+    <h3>The orchestration log</h3>
+    <p class="tag">Evidence for a skill you cannot otherwise prove</p>
+    <p>Four quarters of internal people you directed: the SE you prepped differently for a technical win, the security review you drove, the exec sponsor you briefed before a call that mattered. What you asked for, what you got, what you would do differently.</p>
+    <p>This turns fifteen percent of your job that nobody sees into the strongest evidence you have that you can lead without authority.</p>
+  </div>
+
+  <div class="artifact">
+    <h3>The coaching note</h3>
+    <p class="tag">Proof you can hold back</p>
+    <p>Pick one deal from the last year you would have taken over. Write what you would have asked instead, and what you think the rep would have learned. One page.</p>
+    <p>It is a short document and it is the single clearest signal that you understand what changes at the cliff.</p>
+  </div>
+
+  <h2>05 / What you will be asked</h2>
+  <p class="sect-title">The interview, and what each question is really testing</p>
+
+  <ul class="qs">
+    <li><span class="q">Tell me about a rep you would let go.</span><span class="t">Whether you can hold a standard when it costs you socially. Anyone who says they have never met one is telling you they avoid the conversation.</span></li>
+    <li><span class="q">A rep is at sixty percent at mid-quarter. What do you do in week one?</span><span class="t">Diagnosis versus rescue. If your answer involves getting into the deals, you have failed it.</span></li>
+    <li><span class="q">How do you decide commit versus best case?</span><span class="t">Forecast discipline, and whether you have ever thought about a number that is not your own.</span></li>
+    <li><span class="q">Your best rep wants an account that belongs to someone else.</span><span class="t">Whether you can be fair when being fair is expensive. There is no clean answer, and reaching for one is the wrong move.</span></li>
+    <li><span class="q">What did you do the last time you disagreed with your quota?</span><span class="t">Whether you can carry a number you did not choose, which is now the entire job.</span></li>
+  </ul>
+
+  <div class="closer">
+    <h2>How you will know</h2>
+    <p class="sect-title">One test</p>
+    <p>Watch a deal you could save go sideways, ask questions instead of taking it, and be at peace with the outcome either way.</p>
+    <p>If that sentence sounds like malpractice to you, you are not ready, and there is no shame in that. Plenty of excellent Enterprise AEs read it that way for their entire careers and build better ones than the managers above them. The cliff is a choice, not a promotion.</p>
+  </div>
+
+  <p class="next">Other transitions in this series: <a href="/resources/aspiring-leaders/inside-sales-to-smb.html">Inside Sales to SMB</a> &middot; <a href="/resources/aspiring-leaders/smb-to-mid-market.html">SMB to Mid-Market</a> &middot; <a href="/resources/aspiring-leaders/mid-market-to-enterprise.html">Mid-Market to Enterprise</a></p>
+
+  <p class="copyright">&copy; 2026 SRENE. All rights reserved. This material may be shared in full with attribution. <a href="https://srene.io">srene.io</a></p>
+</div>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SMB AE to Mid-Market AE | SRENE</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#ffffff; --surface:#F6F5F2; --ink:#1B1F23; --ink-soft:#6B7178;
+    --ink-faint:#6B7178; --rule:#E2E0DA;
+    --b-act:#a8c2d2; --b-deal:#4fa3c4; --b-pipe:#2e8f6e; --b-acct:#14486b;
+    --b-orch:#6d5a86; --b-people:#e3ac56; --b-sys:#9e5b31; --accent:#B94B2C;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:760px;margin:0 auto;padding:48px 24px 72px}
+  .back{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--ink-faint);text-decoration:none;margin:0 0 22px}
+  .back:hover{color:var(--accent)}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 12px}
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(30px,5vw,42px);line-height:1.12;margin:0 0 16px;letter-spacing:-.005em}
+  .standfirst{font-size:18.5px;color:var(--ink-soft);margin:0 0 8px}
+  .meta{font-size:13.5px;color:var(--ink-faint);border-top:1px solid var(--rule);padding-top:14px;margin:28px 0 40px}
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin:54px 0 6px}
+  .sect-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(22px,3.3vw,29px);line-height:1.2;margin:0 0 20px;letter-spacing:-.005em}
+  p{font-size:17px;color:var(--ink-soft);margin:0 0 18px}
+  p strong,li strong{color:var(--ink);font-weight:650}
+  .shift{width:100%;border-collapse:collapse;margin:8px 0 26px;font-size:15.5px}
+  .shift th{text-align:left;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;padding:0 0 10px;border-bottom:1px solid var(--rule)}
+  .shift th:nth-child(2),.shift th:nth-child(3){text-align:right;width:76px}
+  .shift td{padding:13px 0;border-bottom:1px solid var(--rule);color:var(--ink-soft)}
+  .shift td:nth-child(2),.shift td:nth-child(3){text-align:right;font-variant-numeric:tabular-nums;font-weight:650;color:var(--ink)}
+  .dot{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:10px;vertical-align:1px}
+  .up{color:var(--b-people)!important}
+  .down{color:var(--b-deal)!important}
+  ul{padding-left:0;list-style:none;margin:0 0 20px}
+  li{font-size:17px;color:var(--ink-soft);margin:0 0 16px;padding-left:24px;position:relative}
+  li::before{content:"";position:absolute;left:4px;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .callout{background:var(--surface);border-left:3px solid var(--b-orch);padding:20px 24px;margin:28px 0;border-radius:0 10px 10px 0}
+  .callout p{margin:0;font-size:16px}
+  .callout .lbl{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--b-orch);font-weight:700;margin:0 0 8px}
+  .artifact{border:1px solid var(--rule);border-radius:12px;padding:24px 26px;margin:0 0 20px}
+  .artifact h3{font-size:18.5px;margin:0 0 4px;letter-spacing:-.01em}
+  .artifact .tag{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin:0 0 12px}
+  .artifact p{font-size:16px;margin:0 0 12px}
+  .artifact p:last-child{margin:0}
+  .qs{counter-reset:q;margin:0;padding:0;list-style:none}
+  .qs li{padding-left:42px;margin-bottom:22px}
+  .qs li::before{counter-increment:q;content:counter(q);position:absolute;left:0;top:0;width:auto;height:auto;border-radius:0;background:none;color:var(--ink-faint);font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+  .qs .q{display:block;color:var(--ink);font-weight:600;margin-bottom:3px}
+  .qs .t{display:block;font-size:15.5px}
+  .closer{border-top:2px solid var(--ink);margin-top:60px;padding-top:26px}
+  .closer h2{margin-top:0}
+  .next{margin-top:52px;padding-top:22px;border-top:1px solid var(--rule);font-size:15px;color:var(--ink-faint)}
+  .next a{color:var(--accent);text-decoration:none;font-weight:600}
+  .copyright{margin-top:22px;font-size:13px;color:var(--ink-faint)}
+  .copyright a{color:var(--ink-faint);text-decoration:none;border-bottom:1px solid var(--rule)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="/resources/aspiring-leaders/">&larr; Aspiring Leaders</a>
+  <p class="eyebrow">Toolbox &middot; Transition 2 of 4</p>
+  <h1>SMB AE to Mid-Market AE</h1>
+  <p class="standfirst">One buyer becomes three. The cycle outlives your memory of the first call. Volume stops being a virtue and becomes a management problem.</p>
+  <p class="meta">The first transition where a new band appears. Read time about six minutes.</p>
+
+  <h2>01 / What moves</h2>
+  <p class="sect-title">The mix, before and after</p>
+
+  <table class="shift">
+    <thead><tr><th>Skill band</th><th>Before</th><th>After</th></tr></thead>
+    <tbody>
+      <tr><td><span class="dot" style="background:var(--b-act)"></span>Activity &amp; mechanics</td><td>38%</td><td class="down">22%</td></tr>
+      <tr><td><span class="dot" style="background:var(--b-deal)"></span>Deal craft</td><td>42%</td><td class="up">44%</td></tr>
+      <tr><td><span class="dot" style="background:var(--b-pipe)"></span>Pipeline management</td><td>20%</td><td class="up">26%</td></tr>
+      <tr><td><span class="dot" style="background:var(--b-acct)"></span>Account strategy</td><td>0%</td><td class="up">8%</td></tr>
+    </tbody>
+  </table>
+
+  <p>Deal craft barely moves, which is misleading. It holds the same share while getting materially harder, because the thing you are now doing well involves more than one person and more than one month.</p>
+
+  <div class="callout">
+    <p class="lbl">The real change</p>
+    <p>Pipeline management becomes the largest it will ever be. Twenty-five to thirty-five live deals is more than anyone can hold in their head, and the reps who fail here do not fail on skill. They fail because they kept running an eight-deal process on a thirty-deal book.</p>
+  </div>
+
+  <h2>02 / What to stop</h2>
+  <p class="sect-title">The part nobody says out loud</p>
+
+  <p>Two of these are habits. Two are beliefs.</p>
+
+  <ul>
+    <li><strong>Stop relying on memory.</strong> At SMB you could hold every deal in your head and it worked. At thirty deals it silently stops working, and you will not notice until three of them go quiet at once.</li>
+    <li><strong>Stop trying to close on the first call.</strong> The reflex that made you efficient now makes you look like you are not listening. There is a second and a third person in this decision and neither has met you.</li>
+    <li><strong>Stop treating every deal as equally worth your time.</strong> This is the belief that costs the most. Thirty deals do not deserve thirty equal hours. Deciding where not to spend Tuesday is now a real skill.</li>
+    <li><strong>Stop forecasting on feel.</strong> You got away with it on volume. You will not get away with it when eight deals make your quarter and one of them is a fiction you like.</li>
+  </ul>
+
+  <h2>03 / What to practice</h2>
+  <p class="sect-title">From the seat you are in now</p>
+
+  <p>The mid-market skills are all learnable from an SMB seat with deliberate effort.</p>
+
+  <ul>
+    <li><strong>Forecast yourself and check.</strong> Every Monday, write down which deals will close this quarter. Check it at the end. Almost nobody does this and it is the single fastest way to find out what you actually believe.</li>
+    <li><strong>Write down the decision process.</strong> For your five largest open deals, write who signs, in what order. You will find you do not know, which is the point.</li>
+    <li><strong>Triage on purpose.</strong> Split your pipeline into three tiers and assign yourself an hours budget per tier. Hold it for a month.</li>
+    <li><strong>Find the second person.</strong> On every deal over a certain size, get one real conversation with someone who is not your main contact. This is multi-threading at its simplest and it is the habit that carries you to Enterprise.</li>
+  </ul>
+
+  <h2>04 / What proves it</h2>
+  <p class="sect-title">Artifacts you can build before the title</p>
+
+  <p>One artifact here beats anything else you could build.</p>
+
+  <div class="artifact">
+    <h3>The personal forecast log</h3>
+    <p class="tag">Two quarters, brutal</p>
+    <p>Your call on every deal, week by week, against what actually happened. Not the CRM's number, yours.</p>
+    <p>Almost no rep has this and every sales leader wants to see it. It answers the only question that matters about a mid-market rep, which is whether you know what you know.</p>
+  </div>
+
+  <div class="artifact">
+    <h3>The decision map</h3>
+    <p class="tag">Five deals, one page each</p>
+    <p>Who signs, in what order, who can stop it, and how you found out. Mark clearly which parts you verified and which you assumed.</p>
+    <p>The assumed/verified split is what makes it credible. A clean map with no assumptions marked reads as fiction to anyone who has run deals.</p>
+  </div>
+
+  <h2>05 / What you will be asked</h2>
+  <p class="sect-title">The interview, and what each question is testing</p>
+
+  <ul class="qs">
+    <li><span class="q">How accurate is your forecast?</span><span class="t">Whether you have ever measured it. The answer 'pretty good' is a fail.</span></li>
+    <li><span class="q">How do you decide where to spend Tuesday?</span><span class="t">Whether you triage or react. Reps who work whatever is loudest describe their week chronologically.</span></li>
+    <li><span class="q">Tell me about a deal where you were single threaded.</span><span class="t">Whether you know the failure mode by experience or by vocabulary.</span></li>
+    <li><span class="q">What is in your pipeline that you know is not real?</span><span class="t">Honesty under mild pressure. Everyone has one. Saying so is more impressive than a clean answer.</span></li>
+  </ul>
+
+  <div class="closer">
+    <h2>How you will know</h2>
+    <p class="sect-title">One test</p>
+    <p>Look at your pipeline and name the three deals you are carrying because removing them would feel bad.</p>
+    <p>If you can do that without flinching, you are managing a book rather than collecting one.</p>
+  </div>
+
+  <p class="next">Other transitions: <a href="/resources/aspiring-leaders/inside-sales-to-smb.html">Inside Sales to SMB</a> &middot; <a href="/resources/aspiring-leaders/smb-to-mid-market.html">SMB to Mid-Market</a> &middot; <a href="/resources/aspiring-leaders/mid-market-to-enterprise.html">Mid-Market to Enterprise</a> &middot; <a href="/resources/aspiring-leaders/enterprise-to-sales-manager.html">Enterprise AE to Sales Manager</a></p>
+  <p class="copyright">&copy; 2026 SRENE. All rights reserved. This material may be shared in full with attribution. <a href="https://srene.io">srene.io</a></p>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>From Rep to Sales Leader | SRENE</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --surface: #F6F5F2;
+    --ink: #1B1F23;
+    --ink-soft: #6B7178;
+    --ink-faint: #6B7178;
+    --rule: #E2E0DA;
+    --band-a: #a8c2d2;
+    --band-b: #4fa3c4;
+    --band-c: #2e8f6e;
+    --band-d: #14486b;
+    --band-e: #6d5a86;
+    --band-f: #e3ac56;
+    --band-g: #9e5b31;
+    --accent: #B94B2C;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height: 1.55; -webkit-font-smoothing: antialiased;
+  }
+  a{color:inherit}
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 48px 24px 72px; }
+  .back{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--ink-faint);text-decoration:none;margin:0 0 22px}
+  .back:hover{color:var(--accent)}
+  .eyebrow { font-family:'JetBrains Mono',monospace;font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin: 0 0 10px; }
+  h1 { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size: clamp(28px, 4vw, 42px); line-height: 1.1; margin: 0 0 12px; letter-spacing: -0.005em; }
+  .standfirst { font-size: 17px; color: var(--ink-soft); max-width: 64ch; margin: 0 0 36px; }
+  .chart-frame { overflow-x: auto; margin: 0 -8px 8px; padding: 0 8px; }
+  svg { display: block; width: 100%; height: auto; min-width: 760px; }
+  .caption { font-size: 13px; color: var(--ink-faint); margin: 4px 0 40px; max-width: 80ch; }
+  .legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 18px 28px; margin: 0 0 44px; }
+  .lg-item { display: flex; gap: 12px; align-items: flex-start; }
+  .swatch { width: 14px; height: 14px; border-radius: 3px; flex: 0 0 auto; margin-top: 4px; }
+  .lg-name { font-weight: 650; font-size: 14.5px; display: block; }
+  .lg-desc { font-size: 13.5px; color: var(--ink-soft); }
+  h2 { font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size: 24px; margin: 44px 0 14px; letter-spacing: -0.005em; }
+  .takes { border-top: 1px solid var(--rule); padding-top: 4px; }
+  .take { border-bottom: 1px solid var(--rule); padding: 20px 0; }
+  .take h3 { font-size: 16.5px; margin: 0 0 6px; }
+  .take p { margin: 0; color: var(--ink-soft); font-size: 15px; max-width: 74ch; }
+  .note { background: var(--surface); border-left: 3px solid var(--accent); padding: 18px 22px; margin: 36px 0 0; font-size: 14.5px; color: var(--ink-soft); max-width: 74ch; border-radius: 0 10px 10px 0; }
+  .note strong { color: var(--ink); }
+  .copyright{margin-top:22px;font-size:13px;color:var(--ink-faint)}
+  .copyright a{color:var(--ink-faint);text-decoration:none;border-bottom:1px solid var(--rule)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="/resources/aspiring-leaders/">&larr; Aspiring Leaders</a>
+  <p class="eyebrow">Resources &middot; For aspiring sales leaders</p>
+  <h1>From Rep to Sales Leader</h1>
+  <p class="standfirst">Three steps up the ladder are the same skills rebalancing. Then the job changes twice: once at Enterprise, and much harder at the manager seat. Here is what actually moves, and where.</p>
+
+  <div class="chart-frame">
+  <svg viewBox="0 0 1100 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stacked area chart showing how seven skill bands change as a share of the job across five roles, from Inside Sales to Sales Manager.">
+
+    <!-- transition zones -->
+    <rect x="590" y="120" width="205" height="360" fill="var(--ink)" opacity="0.035"/>
+    <rect x="795" y="120" width="205" height="360" fill="var(--ink)" opacity="0.075"/>
+
+    <!-- gridlines -->
+    <line x1="180" y1="480" x2="1000" y2="480" stroke="var(--rule)" stroke-width="1"/>
+    <line x1="180" y1="390" x2="1000" y2="390" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2 4"/>
+    <line x1="180" y1="300" x2="1000" y2="300" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2 4"/>
+    <line x1="180" y1="210" x2="1000" y2="210" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2 4"/>
+    <line x1="180" y1="120" x2="1000" y2="120" stroke="var(--rule)" stroke-width="1"/>
+
+    <text x="168" y="484" text-anchor="end" font-size="11" fill="var(--ink-faint)">0%</text>
+    <text x="168" y="304" text-anchor="end" font-size="11" fill="var(--ink-faint)">50%</text>
+    <text x="168" y="124" text-anchor="end" font-size="11" fill="var(--ink-faint)">100%</text>
+    <text x="64" y="300" text-anchor="middle" font-size="11.5" fill="var(--ink-faint)" font-weight="600" transform="rotate(-90 64 300)">SHARE OF THE JOB</text>
+
+    <!-- bands, bottom to top -->
+    <path d="M 180,282 L 385,343.2 L 590,400.8 L 795,444 L 1000,458.4 L 1000,480 L 795,480 L 590,480 L 385,480 L 180,480 Z" fill="var(--band-a)"/>
+    <path d="M 180,174 L 385,192 L 590,242.4 L 795,300 L 1000,393.6 L 1000,458.4 L 795,444 L 590,400.8 L 385,343.2 L 180,282 Z" fill="var(--band-b)"/>
+    <path d="M 180,120 L 385,120 L 590,148.8 L 795,256.8 L 1000,357.6 L 1000,393.6 L 795,300 L 590,242.4 L 385,192 L 180,174 Z" fill="var(--band-c)"/>
+    <path d="M 180,120 L 385,120 L 590,120 L 795,174 L 1000,328.8 L 1000,357.6 L 795,256.8 L 590,148.8 L 385,120 L 180,120 Z" fill="var(--band-d)"/>
+    <path d="M 180,120 L 385,120 L 590,120 L 795,120 L 1000,282 L 1000,328.8 L 795,174 L 590,120 L 385,120 L 180,120 Z" fill="var(--band-e)"/>
+    <path d="M 180,120 L 795,120 L 1000,174 L 1000,282 L 795,120 Z" fill="var(--band-f)"/>
+    <path d="M 180,120 L 1000,120 L 1000,174 L 795,120 Z" fill="var(--band-g)"/>
+
+    <!-- band separators -->
+    <polyline points="180,282 385,343.2 590,400.8 795,444 1000,458.4" fill="none" stroke="var(--bg)" stroke-width="1.75"/>
+    <polyline points="180,174 385,192 590,242.4 795,300 1000,393.6" fill="none" stroke="var(--bg)" stroke-width="1.75"/>
+    <polyline points="385,120 590,148.8 795,256.8 1000,357.6" fill="none" stroke="var(--bg)" stroke-width="1.75"/>
+    <polyline points="590,120 795,174 1000,328.8" fill="none" stroke="var(--bg)" stroke-width="1.75"/>
+    <polyline points="795,120 1000,282" fill="none" stroke="var(--bg)" stroke-width="1.75"/>
+    <polyline points="795,120 1000,174" fill="none" stroke="var(--bg)" stroke-width="1.75"/>
+
+    <!-- zone edges -->
+    <line x1="590" y1="100" x2="590" y2="480" stroke="var(--ink)" stroke-width="1.25" stroke-dasharray="4 4" opacity="0.4"/>
+    <line x1="795" y1="100" x2="795" y2="480" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.7"/>
+    <line x1="1000" y1="100" x2="1000" y2="480" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.7"/>
+
+    <text x="385" y="92" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink-faint)">Same three skills, rebalancing</text>
+    <text x="692.5" y="92" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink-soft)" letter-spacing="0.06em">THE ENTERPRISE SHIFT</text>
+    <text x="897.5" y="92" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)" letter-spacing="0.06em">THE CLIFF</text>
+
+    <!-- role labels -->
+    <g font-size="13" fill="var(--ink)" text-anchor="middle" font-weight="600">
+      <text x="180" y="506">Inside Sales</text>
+      <text x="385" y="506">SMB AE</text>
+      <text x="590" y="506">Mid-Market AE</text>
+      <text x="795" y="506">Enterprise AE</text>
+      <text x="1000" y="506">Sales Manager</text>
+    </g>
+    <g font-size="11" fill="var(--ink-faint)" text-anchor="middle" letter-spacing="0.08em">
+      <text x="487" y="528">INDIVIDUAL CONTRIBUTOR</text>
+      <text x="1000" y="528">LEADER</text>
+    </g>
+
+  </svg>
+  </div>
+  <p class="caption">Each column sums to 100%. Widths show what the role is measured on, not what it is allowed to touch. The two shaded zones are the transitions where the mix genuinely breaks rather than drifts.</p>
+
+  <div class="legend">
+    <div class="lg-item"><span class="swatch" style="background:var(--band-a)"></span><span><span class="lg-name">Activity &amp; mechanics</span><span class="lg-desc">Volume, call control, objection handling, CRM hygiene. Never disappears, stops being the scoreboard.</span></span></div>
+    <div class="lg-item"><span class="swatch" style="background:var(--band-b)"></span><span><span class="lg-name">Deal craft</span><span class="lg-desc">Discovery, qualification, business case, negotiation, close planning. Harder at every level, not bigger.</span></span></div>
+    <div class="lg-item"><span class="swatch" style="background:var(--band-c)"></span><span><span class="lg-name">Pipeline management</span><span class="lg-desc">Carrying thirty open deals, coverage math, forecasting a book of volume. Peaks at Mid-Market.</span></span></div>
+    <div class="lg-item"><span class="swatch" style="background:var(--band-d)"></span><span><span class="lg-name">Account strategy</span><span class="lg-desc">Deep org mapping on a handful of named accounts, land and expand, tracking who moved where.</span></span></div>
+    <div class="lg-item"><span class="swatch" style="background:var(--band-e)"></span><span><span class="lg-name">Internal orchestration</span><span class="lg-desc">Directing the SE, legal, security, exec sponsors, partners. People who do not report to you.</span></span></div>
+    <div class="lg-item"><span class="swatch" style="background:var(--band-f)"></span><span><span class="lg-name">People leadership</span><span class="lg-desc">Coaching, hiring, performance management, retention. Zero before the manager seat.</span></span></div>
+    <div class="lg-item"><span class="swatch" style="background:var(--band-g)"></span><span><span class="lg-name">Systems &amp; operating cadence</span><span class="lg-desc">Forecast discipline, inspection rhythm, running a repeatable weekly mechanism.</span></span></div>
+  </div>
+
+  <h2>What the shape is telling you</h2>
+  <div class="takes">
+    <div class="take">
+      <h3>Enterprise is not a bigger Mid-Market job</h3>
+      <p>Pipeline management halves and account strategy triples. The Mid-Market rep wins by working thirty deals well. The Enterprise rep wins by knowing six organizations better than the people inside them. Those are different skills that happen to share a job title family.</p>
+    </div>
+    <div class="take">
+      <h3>Deal craft holds its share and gets much harder</h3>
+      <p>It sits near forty percent from SMB through Enterprise. That flatness is misleading: the enterprise version involves a buying committee, a procurement gate, and a cycle that outlives your memory of the first call. Same share of the job, different degree of difficulty.</p>
+    </div>
+    <div class="take">
+      <h3>Internal orchestration is the only rehearsal you get</h3>
+      <p>Running the SE, pulling in legal and security, managing an exec sponsor. It is the one skill on the entire IC ladder that means directing people who do not report to you, and it is the only band that carries across the cliff almost intact. If you want to be a manager, this is the part of the Enterprise job to volunteer for.</p>
+    </div>
+    <div class="take">
+      <h3>Forty-five percent of the manager job did not exist before</h3>
+      <p>People leadership and operating cadence are zero in every role beneath it. There is no seat on the IC ladder where you practice either one, and nobody has ever assessed you on them.</p>
+    </div>
+    <div class="take">
+      <h3>The promotion is a subtraction</h3>
+      <p>Deal craft drops from forty percent to eighteen. You do not add management to what you already do. You give up the work you are best at to make room for work you have never done. That trade is the job.</p>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Two honest caveats.</strong> Titles vary by company, and a Mid-Market AE at a 5,000 person org may carry more than an Enterprise AE at a startup. The percentages are directional, drawn from how these roles are scoped and compensated, not from a survey. Both are worth stating on the page rather than implying precision that is not there.
+  </div>
+
+  <p class="copyright">&copy; 2026 SRENE. All rights reserved. This material may be shared in full with attribution. <a href="https://srene.io">srene.io</a></p>
+</div>
+</body>
+</html>

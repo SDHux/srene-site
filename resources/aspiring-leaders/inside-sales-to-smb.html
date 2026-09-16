@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Inside Sales to SMB AE | SRENE</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#ffffff; --surface:#F6F5F2; --ink:#1B1F23; --ink-soft:#6B7178;
+    --ink-faint:#6B7178; --rule:#E2E0DA;
+    --b-act:#a8c2d2; --b-deal:#4fa3c4; --b-pipe:#2e8f6e; --b-acct:#14486b;
+    --b-orch:#6d5a86; --b-people:#e3ac56; --b-sys:#9e5b31; --accent:#B94B2C;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:760px;margin:0 auto;padding:48px 24px 72px}
+  .back{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--ink-faint);text-decoration:none;margin:0 0 22px}
+  .back:hover{color:var(--accent)}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 12px}
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(30px,5vw,42px);line-height:1.12;margin:0 0 16px;letter-spacing:-.005em}
+  .standfirst{font-size:18.5px;color:var(--ink-soft);margin:0 0 8px}
+  .meta{font-size:13.5px;color:var(--ink-faint);border-top:1px solid var(--rule);padding-top:14px;margin:28px 0 40px}
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin:54px 0 6px}
+  .sect-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(22px,3.3vw,29px);line-height:1.2;margin:0 0 20px;letter-spacing:-.005em}
+  p{font-size:17px;color:var(--ink-soft);margin:0 0 18px}
+  p strong,li strong{color:var(--ink);font-weight:650}
+  .shift{width:100%;border-collapse:collapse;margin:8px 0 26px;font-size:15.5px}
+  .shift th{text-align:left;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;padding:0 0 10px;border-bottom:1px solid var(--rule)}
+  .shift th:nth-child(2),.shift th:nth-child(3){text-align:right;width:76px}
+  .shift td{padding:13px 0;border-bottom:1px solid var(--rule);color:var(--ink-soft)}
+  .shift td:nth-child(2),.shift td:nth-child(3){text-align:right;font-variant-numeric:tabular-nums;font-weight:650;color:var(--ink)}
+  .dot{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:10px;vertical-align:1px}
+  .up{color:var(--b-people)!important}
+  .down{color:var(--b-deal)!important}
+  ul{padding-left:0;list-style:none;margin:0 0 20px}
+  li{font-size:17px;color:var(--ink-soft);margin:0 0 16px;padding-left:24px;position:relative}
+  li::before{content:"";position:absolute;left:4px;top:11px;width:6px;height:6px;border-radius:50%;background:var(--accent)}
+  .callout{background:var(--surface);border-left:3px solid var(--b-orch);padding:20px 24px;margin:28px 0;border-radius:0 10px 10px 0}
+  .callout p{margin:0;font-size:16px}
+  .callout .lbl{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--b-orch);font-weight:700;margin:0 0 8px}
+  .artifact{border:1px solid var(--rule);border-radius:12px;padding:24px 26px;margin:0 0 20px}
+  .artifact h3{font-size:18.5px;margin:0 0 4px;letter-spacing:-.01em}
+  .artifact .tag{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin:0 0 12px}
+  .artifact p{font-size:16px;margin:0 0 12px}
+  .artifact p:last-child{margin:0}
+  .qs{counter-reset:q;margin:0;padding:0;list-style:none}
+  .qs li{padding-left:42px;margin-bottom:22px}
+  .qs li::before{counter-increment:q;content:counter(q);position:absolute;left:0;top:0;width:auto;height:auto;border-radius:0;background:none;color:var(--ink-faint);font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+  .qs .q{display:block;color:var(--ink);font-weight:600;margin-bottom:3px}
+  .qs .t{display:block;font-size:15.5px}
+  .closer{border-top:2px solid var(--ink);margin-top:60px;padding-top:26px}
+  .closer h2{margin-top:0}
+  .next{margin-top:52px;padding-top:22px;border-top:1px solid var(--rule);font-size:15px;color:var(--ink-faint)}
+  .next a{color:var(--accent);text-decoration:none;font-weight:600}
+  .copyright{margin-top:22px;font-size:13px;color:var(--ink-faint)}
+  .copyright a{color:var(--ink-faint);text-decoration:none;border-bottom:1px solid var(--rule)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="/resources/aspiring-leaders/">&larr; Aspiring Leaders</a>
+  <p class="eyebrow">Toolbox &middot; Transition 1 of 4</p>
+  <h1>Inside Sales to SMB AE</h1>
+  <p class="standfirst">The smallest step on the ladder, and the one where the measurement changes underneath you.</p>
+  <p class="meta">Activity drops seventeen points. Nothing else appears. Read time about five minutes.</p>
+
+  <h2>01 / What moves</h2>
+  <p class="sect-title">The mix, before and after</p>
+
+  <table class="shift">
+    <thead><tr><th>Skill band</th><th>Before</th><th>After</th></tr></thead>
+    <tbody>
+      <tr><td><span class="dot" style="background:var(--b-act)"></span>Activity &amp; mechanics</td><td>55%</td><td class="down">38%</td></tr>
+      <tr><td><span class="dot" style="background:var(--b-deal)"></span>Deal craft</td><td>30%</td><td class="up">42%</td></tr>
+      <tr><td><span class="dot" style="background:var(--b-pipe)"></span>Pipeline management</td><td>15%</td><td class="up">20%</td></tr>
+    </tbody>
+  </table>
+
+  <p>No new bands appear. The same three rebalance, and the one you were best at shrinks the most. That pattern repeats at every step up this ladder, which is worth noticing now rather than four roles from now.</p>
+
+  <div class="callout">
+    <p class="lbl">The real change</p>
+    <p>You stop being measured on inputs and start being measured on outcomes. Nobody counts your dials any more. They count whether the deal closed. That sounds like freedom for about three weeks, and then it becomes the most uncomfortable thing about the job, because effort no longer protects you.</p>
+  </div>
+
+  <h2>02 / What to stop</h2>
+  <p class="sect-title">The part nobody says out loud</p>
+
+  <p>The habits that made you good at inside sales are the ones that will hold you back now.</p>
+
+  <ul>
+    <li><strong>Stop counting activity as progress.</strong> Fifty calls used to be a good day. Now it is a good day only if it produced something. This is genuinely hard to internalize, because activity is measurable today and outcomes are measurable in six weeks.</li>
+    <li><strong>Stop treating interested as qualified.</strong> Interest is the cheapest thing a prospect can give you. You will fill a pipeline with it and miss your number holding a stack of pleasant conversations.</li>
+    <li><strong>Stop handing off.</strong> There is nobody downstream now. The awkward part of the conversation, the pricing, the signature, the moment where you ask for money out loud, is yours.</li>
+    <li><strong>Stop apologizing for the price.</strong> Watch how many words you put between the number and the silence after it. The number should be the last thing in the sentence.</li>
+  </ul>
+
+  <h2>03 / What to practice</h2>
+  <p class="sect-title">From the seat you are in now</p>
+
+  <p>Everything below is available to you in an inside sales seat if you ask.</p>
+
+  <ul>
+    <li><strong>Sit in on closes.</strong> Ask three AEs if you can listen to their last two closing calls. Not demos. Closes. The part nobody records for training.</li>
+    <li><strong>Run one full cycle yourself.</strong> Ask for a small deal you can take end to end. Most managers will say yes because the downside is tiny and almost nobody asks.</li>
+    <li><strong>Write down your qualification bar.</strong> Three things that must be true before you spend real time. Then hold it for a month and count how often you broke it.</li>
+    <li><strong>Practice asking for money out loud.</strong> Not in your head. Out loud, with a colleague, until the pause after the number stops feeling like something you have to fill.</li>
+  </ul>
+
+  <h2>04 / What proves it</h2>
+  <p class="sect-title">Artifacts you can build before the title</p>
+
+  <p>Two small things, and small is fine at this level.</p>
+
+  <div class="artifact">
+    <h3>The end-to-end deal write-up</h3>
+    <p class="tag">One page, one deal</p>
+    <p>Pick the first deal you took from first call to signature. Write what happened, where it nearly died, and what you would do differently.</p>
+    <p>The point is not the deal. It is having one concrete story you can tell in detail, which is the entire content of an SMB AE interview.</p>
+  </div>
+
+  <div class="artifact">
+    <h3>Your qualification bar</h3>
+    <p class="tag">Three lines</p>
+    <p>Written down, dated, and honestly assessed after a month. Note every time you broke it and what happened.</p>
+    <p>Most reps at this level have never articulated one. Having it in writing, with evidence of where you failed to hold it, reads as far more senior than a clean framework you invented for the interview.</p>
+  </div>
+
+  <h2>05 / What you will be asked</h2>
+  <p class="sect-title">The interview, and what each question is testing</p>
+
+  <ul class="qs">
+    <li><span class="q">Walk me through a deal you closed end to end.</span><span class="t">Whether you have actually owned one, or only participated in several. The detail gives it away in about ninety seconds.</span></li>
+    <li><span class="q">Tell me about a deal you disqualified.</span><span class="t">Whether you have a bar at all. If you have never walked away from anything, you do not have one.</span></li>
+    <li><span class="q">What is your close rate and how do you know?</span><span class="t">Whether you track your own numbers or wait for someone to report them to you.</span></li>
+  </ul>
+
+  <div class="closer">
+    <h2>How you will know</h2>
+    <p class="sect-title">One test</p>
+    <p>Sit in a silence after you have said the price, and let them speak first.</p>
+    <p>It is a small thing and it is the clearest signal that you have stopped being measured on effort.</p>
+  </div>
+
+  <p class="next">Other transitions: <a href="/resources/aspiring-leaders/inside-sales-to-smb.html">Inside Sales to SMB</a> &middot; <a href="/resources/aspiring-leaders/smb-to-mid-market.html">SMB to Mid-Market</a> &middot; <a href="/resources/aspiring-leaders/mid-market-to-enterprise.html">Mid-Market to Enterprise</a> &middot; <a href="/resources/aspiring-leaders/enterprise-to-sales-manager.html">Enterprise AE to Sales Manager</a></p>
+  <p class="copyright">&copy; 2026 SRENE. All rights reserved. This material may be shared in full with attribution. <a href="https://srene.io">srene.io</a></p>
+
+</div>
+</body>
+</html>

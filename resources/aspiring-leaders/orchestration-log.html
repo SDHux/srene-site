@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Orchestration Log | SRENE</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;--surface:#F6F5F2;--surface-2:#F0EEE6;
+    --ink:#1B1F23;--ink-soft:#6B7178;--ink-faint:#6B7178;--rule:#E2E0DA;
+    --orch:#B94B2C;--got:#2C6E63;--part:#e3ac56;--no:#D65F3C;--accent:#B94B2C;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+    line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:860px;margin:0 auto;padding:44px 22px 80px}
+  .back{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--ink-faint);text-decoration:none;margin:0 0 22px}
+  .back:hover{color:var(--accent)}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600;margin:0 0 11px}
+  h1{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(28px,4.6vw,40px);line-height:1.12;margin:0 0 14px;letter-spacing:-.005em}
+  .standfirst{font-size:17.5px;color:var(--ink-soft);margin:0 0 26px}
+  .howto{background:var(--surface);border-left:3px solid var(--orch);padding:16px 20px;border-radius:0 10px 10px 0;margin:0 0 20px}
+  .howto p{margin:0 0 12px;font-size:15px;color:var(--ink-soft)}
+  .howto p:last-child{margin:0}
+  .howto strong{color:var(--ink)}
+
+  /* Email gate */
+  .gate{border:1px solid var(--rule);border-radius:14px;padding:28px 26px;margin:0 0 40px;background:var(--surface)}
+  .gate-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 8px}
+  .gate h2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:24px;margin:0 0 8px;letter-spacing:-.005em}
+  .gate-copy{font-size:14.5px;color:var(--ink-soft);margin:0 0 18px;max-width:60ch}
+  .gate-copy a{color:var(--accent);text-decoration:underline}
+  .gate-form{display:flex;gap:10px;flex-wrap:wrap}
+  .hp-field{position:absolute;left:-9999px}
+  .gate-form input[type=email]{flex:1 1 220px;min-width:0;background:#fff;border:1px solid var(--rule);
+    color:var(--ink);font-size:15px;font-family:inherit;padding:11px 14px;border-radius:9px}
+  .gate-form input[type=email]:focus{outline:2px solid var(--accent);outline-offset:-1px}
+  .gate-err{color:var(--no);font-size:13.5px;margin:10px 0 0}
+
+  h2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin:44px 0 14px}
+
+  .form{background:var(--surface);border:1px solid var(--rule);border-radius:12px;padding:22px 24px;margin:0 0 12px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 14px}
+  @media(max-width:620px){.grid{grid-template-columns:1fr}}
+  .fld label{display:block;font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin:0 0 6px}
+  .hint{font-size:13px;color:var(--ink-faint);margin:6px 0 0;font-weight:400;letter-spacing:0;text-transform:none}
+  input,select,textarea{width:100%;background:var(--bg);border:1px solid var(--rule);color:var(--ink);
+    font-size:15.5px;font-family:inherit;padding:10px 12px;border-radius:9px;line-height:1.5}
+  textarea{resize:vertical;min-height:74px}
+  input:focus,select:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:-1px}
+  .outs{display:flex;gap:8px;flex-wrap:wrap}
+  .out{flex:1 1 110px;padding:9px 10px;font-size:14px;font-weight:600;text-align:center;cursor:pointer;
+    border:1px solid var(--rule);border-radius:9px;background:transparent;color:var(--ink-soft);font-family:inherit}
+  .out.sel[data-o="got"]{background:var(--got);border-color:var(--got);color:#fff}
+  .out.sel[data-o="part"]{background:var(--part);border-color:var(--part);color:#0e1419}
+  .out.sel[data-o="no"]{background:var(--no);border-color:var(--no);color:#fff}
+  button{font-family:inherit;cursor:pointer;border-radius:9px;border:1px solid var(--rule);
+    background:var(--surface);color:var(--ink);font-size:14.5px;padding:11px 18px;font-weight:600}
+  button:hover{background:var(--surface-2)}
+  .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  .acts{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+  .err{color:var(--no);font-size:14px;margin:12px 0 0;display:none}
+
+  .summary{border:1px solid var(--rule);border-radius:12px;padding:22px 24px;margin:0 0 26px}
+  .stats{display:flex;gap:28px;flex-wrap:wrap;margin:0 0 16px}
+  .stat b{display:block;font-size:30px;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.1}
+  .stat span{font-size:12.5px;color:var(--ink-faint);letter-spacing:.05em;text-transform:uppercase;font-weight:600}
+  .cov{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 14px}
+  .chip{font-size:12.5px;padding:4px 10px;border-radius:20px;border:1px solid var(--rule);color:var(--ink-faint)}
+  .chip.on{background:var(--orch);border-color:var(--orch);color:#fff;font-weight:600}
+  .readout{font-size:15.5px;color:var(--ink-soft);margin:0}
+  .readout strong{color:var(--ink)}
+
+  .entry{border-top:1px solid var(--rule);padding:18px 0}
+  .e-top{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;margin:0 0 6px}
+  .e-acct{font-weight:650;font-size:16.5px}
+  .e-role{font-size:12.5px;padding:2px 9px;border-radius:20px;background:var(--surface-2);color:var(--ink-soft);font-weight:600}
+  .e-date{font-size:13px;color:var(--ink-faint);margin-left:auto}
+  .e-ask{font-size:15.5px;color:var(--ink);margin:0 0 6px}
+  .e-did{font-size:15.5px;color:var(--ink-soft);margin:0 0 8px}
+  .e-out{font-size:12.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+  .e-out.got{color:var(--got)}.e-out.part{color:var(--part)}.e-out.no{color:var(--no)}
+  .e-del{border:none;background:none;color:var(--ink-faint);font-size:13px;padding:2px 0;margin-left:12px;font-weight:500}
+  .empty{font-size:15px;color:var(--ink-faint);padding:20px 0}
+  #exportBox{width:100%;min-height:200px;margin-top:12px;display:none;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
+  .copyright{margin-top:48px;padding-top:20px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-faint)}
+  .copyright a{color:var(--ink-faint);text-decoration:none;border-bottom:1px solid var(--rule)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="/resources/aspiring-leaders/">&larr; Aspiring Leaders</a>
+  <p class="eyebrow">Toolbox &middot; Mid-Market to Enterprise &middot; Enterprise to Sales Manager</p>
+  <h1>The Orchestration Log</h1>
+  <p class="standfirst">You have been directing people who do not report to you for years. Nobody ever called it management, including you. This is where you write it down.</p>
+
+  <div class="gate" id="toolkitGate">
+    <p class="gate-eyebrow">One email unlocks both tools</p>
+    <h2>Get access</h2>
+    <p class="gate-copy">Unlocks the Orchestration Log and the Deal Inspection Rubric, once, on this device. We'll only use this to occasionally share sales-leadership resources &mdash; see our <a href="https://app.termly.io/policy-viewer/policy.html?policyUUID=284c3efe-adea-4fd5-831d-9e0b60da569d" target="_blank" rel="noopener">Privacy Policy</a>.</p>
+    <form class="gate-form" id="gateForm">
+      <p class="hp-field"><label>Don't fill this out: <input type="text" id="hp" name="company" autocomplete="off" tabindex="-1"></label></p>
+      <input type="email" id="gateEmail" placeholder="you@company.com" required autocomplete="email">
+      <button type="submit" class="btn-primary" id="gateBtn">Unlock</button>
+    </form>
+    <p class="gate-err" id="gateErr"></p>
+  </div>
+
+  <div id="toolkitContent" hidden>
+
+  <div class="howto">
+    <p><strong>Why this exists.</strong> Internal orchestration is fifteen percent of the Enterprise AE job and thirteen percent of the manager job. It is the only skill on the IC ladder that survives the jump, and the only one you cannot prove with a quota attainment number.</p>
+    <p><strong>The field that matters is "what you did."</strong> Anyone can write "asked the SE to join the call." The version worth logging is what you knew, how you framed the ask, and what you changed about how they showed up. That gap is the entire difference between coordinating and leading.</p>
+  </div>
+
+  <h2>Add an entry</h2>
+  <div class="form">
+    <div class="grid">
+      <div class="fld">
+        <label for="acct">Account or deal</label>
+        <input type="text" id="acct" autocomplete="off" placeholder="Northwind Logistics">
+      </div>
+      <div class="fld">
+        <label for="role">Who you directed</label>
+        <select id="role">
+          <option value="">Choose one</option>
+          <option>Solutions Engineer</option>
+          <option>Security / InfoSec</option>
+          <option>Legal</option>
+          <option>Finance / Deal Desk</option>
+          <option>Executive sponsor</option>
+          <option>Product</option>
+          <option>Customer Success</option>
+          <option>Partner / Channel</option>
+          <option>Support</option>
+          <option>Marketing</option>
+        </select>
+      </div>
+    </div>
+    <div class="fld" style="margin-bottom:14px">
+      <label for="ask">What you asked for</label>
+      <input type="text" id="ask" autocomplete="off" placeholder="SE to lead the technical session instead of demoing">
+    </div>
+    <div class="fld" style="margin-bottom:14px">
+      <label for="did">What you did to get it
+        <span class="hint">The prep, the framing, the context you gave them, the escalation. Not the request.</span>
+      </label>
+      <textarea id="did" placeholder="Briefed him on the CTO's migration scepticism from the last call. Asked him to open with the rollback path rather than the feature tour, and to name the two things we do badly before the CTO did."></textarea>
+    </div>
+    <div class="fld">
+      <label>Outcome</label>
+      <div class="outs">
+        <button class="out" data-o="got">Got what I asked</button>
+        <button class="out" data-o="part">Partially</button>
+        <button class="out" data-o="no">Did not get it</button>
+      </div>
+    </div>
+    <div class="acts">
+      <button class="btn-primary" id="addBtn">Add entry</button>
+      <button id="exportBtn">Export as text</button>
+    </div>
+    <p class="err" id="err"></p>
+    <textarea id="exportBox" readonly></textarea>
+  </div>
+
+  <h2>Your record</h2>
+  <div class="summary">
+    <div class="stats">
+      <div class="stat"><b id="sTotal">0</b><span>Entries</span></div>
+      <div class="stat"><b id="sAccts">0</b><span>Accounts</span></div>
+      <div class="stat"><b id="sFns">0</b><span>Functions</span></div>
+      <div class="stat"><b id="sRate">&ndash;</b><span>Got what I asked</span></div>
+    </div>
+    <div class="cov" id="cov"></div>
+    <p class="readout" id="readout"></p>
+  </div>
+
+  <div id="list"></div>
+
+  </div>
+
+  <p class="copyright">&copy; 2026 SRENE. All rights reserved. This material may be shared in full with attribution. <a href="https://srene.io">srene.io</a></p>
+
+</div>
+
+<script>
+(function(){
+  var KEY = "srene_toolkit_unlocked";
+  var unlocked = false;
+  try { unlocked = localStorage.getItem(KEY) === "1"; } catch(e){}
+  var gate = document.getElementById("toolkitGate");
+  var content = document.getElementById("toolkitContent");
+  if(unlocked){ gate.hidden = true; content.hidden = false; }
+
+  document.getElementById("gateForm").addEventListener("submit", function(ev){
+    ev.preventDefault();
+    var email = document.getElementById("gateEmail").value.trim();
+    var hp = document.getElementById("hp").value;
+    var btn = document.getElementById("gateBtn");
+    var err = document.getElementById("gateErr");
+    err.textContent = "";
+    btn.disabled = true; btn.textContent = "Please wait…";
+    fetch("https://hjumgvnuqvmxdusldeba.supabase.co/rest/v1/rpc/submit_toolkit_lead", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "apikey": "sb_publishable_gRA_qf4uQVX9BKhJHuV6hQ_oMRTypV3",
+        "Authorization": "Bearer sb_publishable_gRA_qf4uQVX9BKhJHuV6hQ_oMRTypV3"
+      },
+      body: JSON.stringify({p_email: email, p_source: "orchestration-log", p_referrer: document.referrer || null, p_honeypot: hp || null})
+    }).then(function(res){
+      if(!res.ok){ throw new Error("bad"); }
+      try { localStorage.setItem(KEY, "1"); } catch(e){}
+      gate.hidden = true; content.hidden = false;
+    }).catch(function(){
+      err.textContent = "Something went wrong — try again in a moment.";
+      btn.disabled = false; btn.textContent = "Unlock";
+    });
+  });
+})();
+
+var KEY = "orchlog:v1";
+var ROLES = ["Solutions Engineer","Security / InfoSec","Legal","Finance / Deal Desk",
+             "Executive sponsor","Product","Customer Success","Partner / Channel","Support","Marketing"];
+var outcome = null;
+
+function load(){ try{ return JSON.parse(localStorage.getItem(KEY)) || []; }catch(e){ return []; } }
+function save(a){ try{ localStorage.setItem(KEY, JSON.stringify(a)); return true; }catch(e){ return false; } }
+function esc(s){ return String(s).replace(/[&<>"]/g, function(c){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+
+Array.prototype.forEach.call(document.querySelectorAll(".out"), function(b){
+  b.onclick = function(){
+    outcome = (outcome === b.dataset.o) ? null : b.dataset.o;
+    Array.prototype.forEach.call(document.querySelectorAll(".out"), function(x){
+      x.className = (x.dataset.o === outcome) ? "out sel" : "out";
+    });
+  };
+});
+
+function fail(msg){
+  var e = document.getElementById("err");
+  e.textContent = msg; e.style.display = "block";
+  setTimeout(function(){ e.style.display = "none"; }, 3200);
+}
+
+document.getElementById("addBtn").onclick = function(){
+  var acct = document.getElementById("acct").value.trim();
+  var role = document.getElementById("role").value;
+  var ask  = document.getElementById("ask").value.trim();
+  var did  = document.getElementById("did").value.trim();
+  if(!acct || !role || !ask){ return fail("Account, function, and the ask are all required."); }
+  if(did.length < 25){ return fail("Say more about what you did. Under 25 characters is a request, not orchestration."); }
+  if(!outcome){ return fail("Pick an outcome. The ones that did not work are the useful ones."); }
+
+  var arr = load();
+  arr.unshift({a:acct, r:role, q:ask, d:did, o:outcome, t:Date.now()});
+  if(!save(arr)){ return fail("Could not save to this browser. Storage may be blocked."); }
+
+  document.getElementById("acct").value = "";
+  document.getElementById("ask").value = "";
+  document.getElementById("did").value = "";
+  document.getElementById("role").value = "";
+  outcome = null;
+  Array.prototype.forEach.call(document.querySelectorAll(".out"), function(x){ x.className = "out"; });
+  render();
+};
+
+document.getElementById("exportBtn").onclick = function(){
+  var arr = load();
+  if(!arr.length){ return fail("Nothing to export yet."); }
+  var lines = ["ORCHESTRATION LOG", "Exported " + new Date().toLocaleDateString(), ""];
+  arr.forEach(function(e){
+    var lbl = {got:"Got what I asked", part:"Partially", no:"Did not get it"}[e.o];
+    lines.push(new Date(e.t).toLocaleDateString() + "  |  " + e.a + "  |  " + e.r);
+    lines.push("Asked:   " + e.q);
+    lines.push("Did:     " + e.d);
+    lines.push("Outcome: " + lbl);
+    lines.push("");
+  });
+  var box = document.getElementById("exportBox");
+  box.value = lines.join("\n");
+  box.style.display = "block";
+  box.select();
+  try { document.execCommand("copy"); } catch(e){}
+};
+
+function render(){
+  var arr = load();
+  var list = document.getElementById("list");
+
+  var accts = {}, fns = {}, got = 0;
+  arr.forEach(function(e){ accts[e.a]=1; fns[e.r]=1; if(e.o==="got") got++; });
+  var nA = Object.keys(accts).length, nF = Object.keys(fns).length;
+
+  document.getElementById("sTotal").textContent = arr.length;
+  document.getElementById("sAccts").textContent = nA;
+  document.getElementById("sFns").textContent = nF;
+  document.getElementById("sRate").textContent = arr.length ? Math.round(got/arr.length*100) + "%" : "–";
+
+  var cov = document.getElementById("cov");
+  cov.innerHTML = "";
+  ROLES.forEach(function(r){
+    var c = document.createElement("span");
+    c.className = fns[r] ? "chip on" : "chip";
+    c.textContent = r;
+    cov.appendChild(c);
+  });
+
+  var read = "";
+  if(!arr.length){
+    read = "Start with last week. You almost certainly directed someone and did not think of it that way.";
+  } else if(arr.length < 8){
+    read = "<strong>" + arr.length + " entries.</strong> Keep going. The useful threshold is four quarters, because that is what makes it evidence rather than a list.";
+  } else if(nF <= 3){
+    read = "<strong>Narrow coverage.</strong> " + nF + " functions across " + arr.length + " entries. Directing the same SE repeatedly is a working relationship. Directing legal, security, and an exec is orchestration. The unlit chips above are the gap.";
+  } else if(arr.length && got/arr.length > 0.9){
+    read = "<strong>Everything worked.</strong> That usually means you are only logging the easy asks. The entries where you did not get what you wanted are the ones a hiring manager will ask about.";
+  } else {
+    read = "<strong>" + arr.length + " entries across " + nF + " functions and " + nA + " accounts.</strong> This is the shape of a real record. When someone asks how you lead without authority, you now answer with specifics instead of adjectives.";
+  }
+  document.getElementById("readout").innerHTML = read;
+
+  if(!arr.length){
+    list.innerHTML = '<p class="empty">No entries yet. Stored in this browser only, never sent anywhere.</p>';
+    return;
+  }
+  list.innerHTML = "";
+  arr.forEach(function(e, i){
+    var lbl = {got:"Got what I asked", part:"Partially", no:"Did not get it"}[e.o];
+    var d = document.createElement("div");
+    d.className = "entry";
+    d.innerHTML =
+      '<div class="e-top"><span class="e-acct">' + esc(e.a) + '</span>' +
+      '<span class="e-role">' + esc(e.r) + '</span>' +
+      '<span class="e-date">' + new Date(e.t).toLocaleDateString() + '</span></div>' +
+      '<p class="e-ask">' + esc(e.q) + '</p>' +
+      '<p class="e-did">' + esc(e.d) + '</p>' +
+      '<span class="e-out ' + e.o + '">' + lbl + '</span>';
+    var del = document.createElement("button");
+    del.className = "e-del"; del.textContent = "remove";
+    del.onclick = function(){ var a = load(); a.splice(i,1); save(a); render(); };
+    d.appendChild(del);
+    list.appendChild(d);
+  });
+}
+
+try {
+  render();
+} catch(e) {
+  document.getElementById("list").innerHTML = '<p class="empty">This tool needs local storage to keep your entries. If it stays blocked, the form above still works, it just will not save between visits.</p>';
+}
+</script>
+</body>
+</html>
