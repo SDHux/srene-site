@@ -25,7 +25,8 @@
     font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
     line-height:1.6;-webkit-font-smoothing:antialiased}
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:960px;margin:0 auto;padding:52px 24px 80px}
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+  .top{padding:52px 24px 0}
 
   .back{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--ink-faint);margin:0 0 22px}
   .back:hover{color:var(--accent)}
@@ -33,80 +34,152 @@
   h1{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(32px,5.4vw,48px);line-height:1.08;margin:0 0 18px;letter-spacing:-.005em}
   .standfirst{font-size:19px;color:var(--ink-soft);max-width:64ch;margin:0 0 12px}
 
-  h2.kicker{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);
-     font-weight:700;margin:0 0 6px;padding-top:24px;border-top:1px solid var(--rule)}
-  .sec{margin-top:64px}
+  h2.kicker{font-family:'JetBrains Mono',monospace;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin:0 0 6px}
   .sec-title{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(22px,3.2vw,28px);line-height:1.2;margin:0 0 10px;letter-spacing:-.005em}
   .sec-note{font-size:16.5px;color:var(--ink-soft);max-width:66ch;margin:0 0 28px}
 
-  .hero{display:block;border:1px solid var(--rule);border-radius:16px;overflow:hidden;
-        margin:44px 0 0;background:var(--surface);transition:border-color .15s,box-shadow .15s}
-  .hero:hover{border-color:var(--accent);box-shadow:var(--shadow-card,0 12px 28px -14px rgba(27,31,35,.18))}
-  .hero-bars{display:flex;height:8px}
-  .hero-bars span{flex:1}
-  .hero-body{padding:28px 30px}
-  .hero .tag{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 9px}
-  .hero h3{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(22px,3vw,28px);margin:0 0 10px;letter-spacing:-.005em;line-height:1.2}
-  .hero p{font-size:16.5px;color:var(--ink-soft);margin:0 0 16px;max-width:62ch}
-  .hero .go{font-size:14.5px;font-weight:650;color:var(--accent)}
+  /* ---------- Section bands, alternating like the main site ---------- */
+  .band{padding:64px 0}
+  .band-light{background:var(--bg)}
+  .band-tint{background:var(--surface)}
+  .band-dark{
+    position:relative;overflow:hidden;color:#F4F2ED;
+    background:
+      radial-gradient(1000px 480px at 80% 0%, rgba(185,75,44,0.20), transparent 60%),
+      linear-gradient(180deg, #1B1F23, #2A3138);
+  }
+  .band-dark .kicker{color:#E08968}
+  .band-dark .sec-title{color:#fff}
+  .band-dark .sec-note{color:#C9BCAC}
 
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:16px}
-  .card{border:1px solid var(--rule);border-radius:14px;padding:22px 24px;display:flex;
-        flex-direction:column;transition:border-color .15s}
-  .card:hover{border-color:var(--accent)}
+  /* ---------- Hero: real chart on dark ---------- */
+  .hero-dark{border-radius:20px;padding:40px 36px 36px;margin-top:0}
+  .hero-dark .tag{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:#E08968;font-weight:700;margin:0 0 10px}
+  .hero-dark h2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:clamp(24px,3.6vw,32px);margin:0 0 12px;letter-spacing:-.005em;line-height:1.2;color:#fff}
+  .hero-dark > p{font-size:16.5px;color:#C9BCAC;margin:0 0 28px;max-width:62ch}
+  .mini-chart{
+    --bg:#20242a;--ink:#F4F2ED;--ink-soft:#C9BCAC;--ink-faint:rgba(244,242,237,.55);--rule:rgba(244,242,237,.14);
+    overflow-x:auto;margin:0 0 24px
+  }
+  .mini-chart svg{display:block;width:100%;height:auto;min-width:620px}
+  .mini-legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:9px 20px;margin:0 0 26px}
+  .mini-legend .li{display:flex;align-items:center;gap:9px;font-size:13.5px;color:#E4D9CB}
+  .mini-legend .sw{width:11px;height:11px;border-radius:3px;flex:0 0 auto}
+  .hero-dark .go{display:inline-flex;align-items:center;gap:8px;font-size:14.5px;font-weight:650;color:#fff;
+    border:1.5px solid rgba(255,255,255,.35);border-radius:10px;padding:11px 20px}
+  .hero-dark .go:hover{border-color:#fff}
+
+  /* ---------- Toolbox cards, fixed 2x2 ---------- */
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media(max-width:640px){.cards{grid-template-columns:1fr}}
+  .card{border:1px solid var(--rule);border-radius:14px;padding:24px 26px;display:flex;
+        flex-direction:column;background:var(--bg);transition:border-color .15s,box-shadow .15s}
+  .card:hover{border-color:var(--accent);box-shadow:0 12px 28px -16px rgba(27,31,35,.18)}
   .card .num{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;margin:0 0 8px}
-  .card h3{font-size:18.5px;margin:0 0 8px;letter-spacing:-.005em;line-height:1.25}
+  .card h3{font-size:19px;margin:0 0 8px;letter-spacing:-.005em;line-height:1.25}
   .card p{font-size:15px;color:var(--ink-soft);margin:0 0 16px;flex:1}
   .card .foot{font-size:13px;color:var(--ink-faint);display:flex;justify-content:space-between;gap:10px}
   .card .foot b{color:var(--accent);font-weight:650}
   .rail{height:3px;border-radius:2px;margin:0 0 16px;width:44px}
 
-  .tool{display:flex;gap:20px;align-items:flex-start;border:1px solid var(--rule);
-        border-radius:14px;padding:22px 24px;margin:0 0 14px;transition:border-color .15s}
-  .tool:hover{border-color:var(--accent)}
+  /* ---------- Tools, on dark ---------- */
+  .tool{display:flex;gap:20px;align-items:flex-start;border:1px solid rgba(244,242,237,.16);
+        border-radius:14px;padding:22px 24px;margin:0 0 14px;background:rgba(244,242,237,.04);transition:border-color .15s}
+  .tool:hover{border-color:rgba(224,137,104,.6)}
   .tool .ic{flex:0 0 40px;height:40px;border-radius:10px;display:flex;align-items:center;
-            justify-content:center;font-size:19px}
+            justify-content:center;font-size:19px;background:rgba(244,242,237,.08)}
   .tool .bd{flex:1}
-  .tool h3{font-size:18.5px;margin:0 0 6px;letter-spacing:-.005em}
-  .tool p{font-size:15.5px;color:var(--ink-soft);margin:0 0 10px}
-  .tool .meta{font-size:13px;color:var(--ink-faint)}
+  .tool h3{font-size:18.5px;margin:0 0 6px;letter-spacing:-.005em;color:#fff}
+  .tool p{font-size:15.5px;color:#C9BCAC;margin:0 0 10px}
+  .tool .meta{font-size:13px;color:rgba(244,242,237,.55)}
 
   .pb{border-top:1px solid var(--rule);padding:20px 0;display:flex;gap:18px;align-items:baseline;flex-wrap:wrap}
   .pb h3{font-size:17.5px;margin:0;letter-spacing:-.005em;flex:1 1 220px}
   .pb p{font-size:15px;color:var(--ink-soft);margin:0;flex:2 1 300px}
-  .pb .go{font-size:13.5px;font-weight:650;color:var(--accent)}
+  .pb .go-pb{font-size:13.5px;font-weight:650;color:var(--accent)}
 
-  .copyright{margin-top:64px;padding-top:22px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-faint)}
+  .copyright{padding:36px 24px 60px;font-size:13px;color:var(--ink-faint)}
   .copyright a{border-bottom:1px solid var(--rule)}
 </style>
 </head>
 <body>
-<div class="wrap">
 
+<div class="top">
   <a class="back" href="/resources.html">&larr; Resources</a>
   <p class="eyebrow">SRENE &middot; Resources</p>
   <h1>For reps who want to lead</h1>
   <p class="standfirst">Most sales content teaches you to hit this quarter's number. Almost none of it tells you what the next job actually requires, what you have to give up to take it, or how to prove you can do it before anyone offers it to you. That is what this is.</p>
+</div>
 
-  <a class="hero" href="/resources/aspiring-leaders/skill-architecture.html">
-    <div class="hero-bars">
-      <span style="background:var(--b-act)"></span>
-      <span style="background:var(--b-deal)"></span>
-      <span style="background:var(--b-pipe)"></span>
-      <span style="background:var(--b-acct)"></span>
-      <span style="background:var(--b-orch)"></span>
-      <span style="background:var(--b-people)"></span>
-      <span style="background:var(--b-sys)"></span>
-    </div>
-    <div class="hero-body">
+<div class="band band-dark">
+  <div class="wrap">
+    <a class="hero-dark" href="/resources/aspiring-leaders/skill-architecture.html" style="display:block;color:inherit">
       <p class="tag">Start here</p>
-      <h3>From Rep to Sales Leader: the skill architecture</h3>
+      <h2>From Rep to Sales Leader: the skill architecture</h2>
       <p>Seven skill bands across five roles, from Inside Sales to Sales Manager. Three steps up the ladder are the same skills rebalancing. Then the job changes twice, and nearly half the manager role did not exist in any seat beneath it.</p>
-      <span class="go">Read the chart &rarr;</span>
-    </div>
-  </a>
 
-  <div class="sec">
+      <div class="mini-chart">
+        <svg viewBox="0 0 1100 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stacked area chart showing how seven skill bands change across five roles, from Inside Sales to Sales Manager.">
+          <rect x="590" y="120" width="205" height="360" fill="var(--ink)" opacity="0.06"/>
+          <rect x="795" y="120" width="205" height="360" fill="var(--ink)" opacity="0.12"/>
+          <line x1="180" y1="480" x2="1000" y2="480" stroke="var(--rule)" stroke-width="1"/>
+          <line x1="180" y1="390" x2="1000" y2="390" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2 4"/>
+          <line x1="180" y1="300" x2="1000" y2="300" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2 4"/>
+          <line x1="180" y1="210" x2="1000" y2="210" stroke="var(--rule)" stroke-width="1" stroke-dasharray="2 4"/>
+          <line x1="180" y1="120" x2="1000" y2="120" stroke="var(--rule)" stroke-width="1"/>
+          <text x="168" y="484" text-anchor="end" font-size="11" fill="var(--ink-faint)">0%</text>
+          <text x="168" y="304" text-anchor="end" font-size="11" fill="var(--ink-faint)">50%</text>
+          <text x="168" y="124" text-anchor="end" font-size="11" fill="var(--ink-faint)">100%</text>
+          <path d="M 180,282 L 385,343.2 L 590,400.8 L 795,444 L 1000,458.4 L 1000,480 L 795,480 L 590,480 L 385,480 L 180,480 Z" fill="var(--b-act)"/>
+          <path d="M 180,174 L 385,192 L 590,242.4 L 795,300 L 1000,393.6 L 1000,458.4 L 795,444 L 590,400.8 L 385,343.2 L 180,282 Z" fill="var(--b-deal)"/>
+          <path d="M 180,120 L 385,120 L 590,148.8 L 795,256.8 L 1000,357.6 L 1000,393.6 L 795,300 L 590,242.4 L 385,192 L 180,174 Z" fill="var(--b-pipe)"/>
+          <path d="M 180,120 L 385,120 L 590,120 L 795,174 L 1000,328.8 L 1000,357.6 L 795,256.8 L 590,148.8 L 385,120 L 180,120 Z" fill="var(--b-acct)"/>
+          <path d="M 180,120 L 385,120 L 590,120 L 795,120 L 1000,282 L 1000,328.8 L 795,174 L 590,120 L 385,120 L 180,120 Z" fill="var(--b-orch)"/>
+          <path d="M 180,120 L 795,120 L 1000,174 L 1000,282 L 795,120 Z" fill="var(--b-people)"/>
+          <path d="M 180,120 L 1000,120 L 1000,174 L 795,120 Z" fill="var(--b-sys)"/>
+          <polyline points="180,282 385,343.2 590,400.8 795,444 1000,458.4" fill="none" stroke="var(--bg)" stroke-width="1.75"/>
+          <polyline points="180,174 385,192 590,242.4 795,300 1000,393.6" fill="none" stroke="var(--bg)" stroke-width="1.75"/>
+          <polyline points="385,120 590,148.8 795,256.8 1000,357.6" fill="none" stroke="var(--bg)" stroke-width="1.75"/>
+          <polyline points="590,120 795,174 1000,328.8" fill="none" stroke="var(--bg)" stroke-width="1.75"/>
+          <polyline points="795,120 1000,282" fill="none" stroke="var(--bg)" stroke-width="1.75"/>
+          <polyline points="795,120 1000,174" fill="none" stroke="var(--bg)" stroke-width="1.75"/>
+          <line x1="590" y1="100" x2="590" y2="480" stroke="var(--ink)" stroke-width="1.25" stroke-dasharray="4 4" opacity="0.4"/>
+          <line x1="795" y1="100" x2="795" y2="480" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.7"/>
+          <line x1="1000" y1="100" x2="1000" y2="480" stroke="var(--ink)" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.7"/>
+          <text x="385" y="92" text-anchor="middle" font-size="12" font-weight="600" fill="var(--ink-faint)">Same three skills, rebalancing</text>
+          <text x="692.5" y="92" text-anchor="middle" font-size="11.5" font-weight="700" fill="var(--ink-soft)" letter-spacing="0.06em">THE ENTERPRISE SHIFT</text>
+          <text x="897.5" y="92" text-anchor="middle" font-size="12.5" font-weight="700" fill="var(--ink)" letter-spacing="0.06em">THE CLIFF</text>
+          <g font-size="13" fill="var(--ink)" text-anchor="middle" font-weight="600">
+            <text x="180" y="506">Inside Sales</text>
+            <text x="385" y="506">SMB AE</text>
+            <text x="590" y="506">Mid-Market AE</text>
+            <text x="795" y="506">Enterprise AE</text>
+            <text x="1000" y="506">Sales Manager</text>
+          </g>
+          <g font-size="11" fill="var(--ink-faint)" text-anchor="middle" letter-spacing="0.08em">
+            <text x="487" y="528">INDIVIDUAL CONTRIBUTOR</text>
+            <text x="1000" y="528">LEADER</text>
+          </g>
+        </svg>
+      </div>
+
+      <div class="mini-legend">
+        <span class="li"><span class="sw" style="background:var(--b-act)"></span>Activity &amp; mechanics</span>
+        <span class="li"><span class="sw" style="background:var(--b-deal)"></span>Deal craft</span>
+        <span class="li"><span class="sw" style="background:var(--b-pipe)"></span>Pipeline management</span>
+        <span class="li"><span class="sw" style="background:var(--b-acct)"></span>Account strategy</span>
+        <span class="li"><span class="sw" style="background:var(--b-orch)"></span>Internal orchestration</span>
+        <span class="li"><span class="sw" style="background:var(--b-people)"></span>People leadership</span>
+        <span class="li"><span class="sw" style="background:var(--b-sys)"></span>Systems &amp; operating cadence</span>
+      </div>
+
+      <span class="go">Read the chart &rarr;</span>
+    </a>
+  </div>
+</div>
+
+<div class="band band-tint">
+  <div class="wrap">
     <h2 class="kicker">The toolbox</h2>
     <p class="sec-title">Four transitions, one at a time</p>
     <p class="sec-note">Each one covers what moves in the mix, what you have to stop doing, what to practice from the seat you are in now, the artifact that proves it, and the questions you will actually be asked.</p>
@@ -145,14 +218,16 @@
       </a>
     </div>
   </div>
+</div>
 
-  <div class="sec">
+<div class="band band-dark">
+  <div class="wrap">
     <h2 class="kicker">Tools</h2>
     <p class="sec-title">Two things you actually use</p>
     <p class="sec-note">Both run in your browser. One email unlocks both, once, on this device &mdash; nothing else is required and your entries stay on your own device.</p>
 
     <a class="tool" href="/resources/aspiring-leaders/deal-inspection-rubric.html">
-      <div class="ic" style="background:var(--surface-2)">&#128269;</div>
+      <div class="ic">&#128269;</div>
       <div class="bd">
         <h3>The Deal Inspection Rubric</h3>
         <p>Ten questions you can ask about any deal without knowing the account. Every answer is verified, assumed, or unknown, because reps do not lose deals on the gaps they know about. They lose them on the things they were sure of that nobody ever confirmed.</p>
@@ -161,7 +236,7 @@
     </a>
 
     <a class="tool" href="/resources/aspiring-leaders/orchestration-log.html">
-      <div class="ic" style="background:var(--surface-2)">&#128451;</div>
+      <div class="ic">&#128451;</div>
       <div class="bd">
         <h3>The Orchestration Log</h3>
         <p>A record of every internal person you directed, what you asked for, and what you did to get it. You have been leading without authority for years and have never once been able to describe it.</p>
@@ -169,26 +244,28 @@
       </div>
     </a>
   </div>
+</div>
 
-  <div class="sec">
+<div class="band band-light">
+  <div class="wrap">
     <h2 class="kicker">Playbooks</h2>
     <p class="sec-title">Long form, for the job you have now</p>
 
     <a class="pb" href="/playbooks/SRENE_Prospecting_Playbook.pdf" download>
       <h3>The Prospecting Playbook</h3>
       <p>Building pipeline into named enterprise accounts when nobody is answering.</p>
-      <span class="go">PDF &rarr;</span>
+      <span class="go-pb">PDF &rarr;</span>
     </a>
 
     <a class="pb" href="/playbooks/SRENE_Enterprise_Motions_Playbook.pdf" download>
       <h3>The Enterprise Motions Playbook</h3>
       <p>Running a multi-threaded enterprise cycle from first meeting to signature.</p>
-      <span class="go">PDF &rarr;</span>
+      <span class="go-pb">PDF &rarr;</span>
     </a>
   </div>
-
-  <p class="copyright">&copy; 2026 SRENE. All rights reserved. This material may be shared in full with attribution. <a href="https://srene.io">srene.io</a></p>
-
 </div>
+
+<p class="copyright">&copy; 2026 SRENE. All rights reserved. This material may be shared in full with attribution. <a href="https://srene.io">srene.io</a></p>
+
 </body>
 </html>
