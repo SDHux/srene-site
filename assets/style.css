@@ -545,16 +545,25 @@ footer{
 .more-verticals p{ font-size:16px; color:var(--text-muted); margin-bottom:14px; }
 
 /* ---------- People grid (Company) ---------- */
-.people-grid{ display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:920px; margin:0 auto; }
-@media (max-width:760px){ .people-grid{ grid-template-columns:1fr; } }
-.person-card{ display:flex; gap:18px; border:1px solid var(--line); border-radius:16px; padding:26px; background:var(--white); box-shadow:var(--shadow-card); }
-.person-photo{ width:72px; height:72px; border-radius:50%; object-fit:cover; flex-shrink:0; border:1px solid var(--line); }
-.person-role{ font-family:'JetBrains Mono'; font-size:12px; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; color:var(--rope-deep); margin-bottom:4px; display:block; }
-.person-card h3{ font-size:21px; margin-bottom:8px; }
-.person-card p{ font-size:15.5px; color:var(--text-muted); line-height:1.55; }
-.person-card p + p{ margin-top:10px; }
-.person-links{ display:flex; gap:14px; margin-top:12px; }
-.person-links a{ font-size:13.5px; font-weight:600; color:var(--rope-deep); }
+.team-label{ display:flex; align-items:center; gap:14px; margin:0 0 20px; font-family:'JetBrains Mono', monospace; font-size:13px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink); }
+.team-label::after{ content:''; flex:1; height:1px; background:var(--line); }
+.people2{ display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:24px; }
+.people3{ display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:24px; }
+@media (max-width:760px){ .people2, .people3{ grid-template-columns:1fr; } }
+.profile{ border:1px solid var(--line); border-radius:18px; padding:28px; background:var(--white); box-shadow:var(--shadow-card); display:flex; flex-direction:column; gap:14px; }
+.profile-top{ display:flex; gap:16px; align-items:center; }
+.profile .avatar{ width:80px; height:80px; border-radius:50%; background:var(--chalk); border:1px solid var(--line); flex-shrink:0; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.profile .avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
+.profile .role{ font-family:'JetBrains Mono'; font-size:12.5px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--rope-deep); }
+.profile .role.sub{ color:var(--text-muted); margin-top:2px; display:block; }
+.profile h3{ font-size:26px; line-height:1.05; margin-top:4px; }
+.profile .bio{ font-size:16.5px; color:var(--text-muted); }
+.exp-label{ font-family:'JetBrains Mono', monospace; font-size:11.5px; font-weight:600; letter-spacing:0.08em; text-transform:uppercase; color:var(--text-muted); margin-bottom:8px; }
+.exp{ display:flex; flex-wrap:wrap; gap:8px; }
+.exp span{ font-size:13.5px; font-weight:600; padding:5px 10px; border-radius:100px; background:var(--rope-pale); color:var(--rope-deep); }
+.profile .links{ margin-top:auto; padding-top:14px; border-top:1px solid var(--line); display:flex; gap:10px; }
+.chip-link{ display:flex; align-items:center; gap:7px; font-size:14px; font-weight:600; color:var(--ink); border:1px solid var(--line); border-radius:8px; padding:7px 12px; background:var(--white); }
+.chip-link svg{ width:15px; height:15px; }
 .advisors-row{ max-width:460px; margin:40px auto 0; }
 
 /* ---------- Recreated product panel (mBfB) ---------- */
