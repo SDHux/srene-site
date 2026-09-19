@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>myBivy for Sales — deal execution built to hold</title>
+<meta property="og:title" content="myBivy for Sales — deal execution built to hold" />
+<meta property="og:description" content="myBivy turns every sales cycle into a shared, buyer-facing workspace. Structured, mutual, and built to hold." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://srene.io/mybivy-for-sales.html" />
+<meta property="og:image" content="https://srene.io/assets/images/og-image.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="myBivy for Sales — deal execution built to hold" />
+<meta name="twitter:description" content="myBivy turns every sales cycle into a shared, buyer-facing workspace. Structured, mutual, and built to hold." />
+<meta name="twitter:image" content="https://srene.io/assets/images/og-image.jpg" />
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/favicon/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/assets/favicon/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" href="/assets/favicon/android-chrome-192x192.png" type="image/png" sizes="192x192">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="brand" style="text-decoration:none;">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M2 15 Q7 13 11 14 Q15 15 22 11" stroke="#B94B2C" stroke-width="1.8" stroke-linecap="round"/><path d="M4 10.5 Q8 8.5 11 9.5 Q14 10.5 19 7" stroke="#F4F2ED" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </div>
+      <div class="brand-textstack">
+        <span class="brand-word">SRENE</span>
+        <span class="brand-tag">Solid &middot; Reinforced &middot; Equalized</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <div class="nav-dd">
+        <button type="button" class="nav-dd-trigger">myBivy<svg class="nav-caret" viewBox="0 0 12 8" fill="none"><path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="nav-dd-panel">
+          <a href="mybivy-for-sales.html" class="nav-dd-item">
+            <span class="nav-dd-item-top"><span class="nav-dd-item-title">myBivy for Sales</span><span class="nav-dd-item-tag live">Live</span></span>
+            <span class="nav-dd-item-desc">Buyer-facing deal rooms for sales teams</span>
+          </a>
+          <a href="mybivy-for-builders.html" class="nav-dd-item">
+            <span class="nav-dd-item-top"><span class="nav-dd-item-title">myBivy for Builders</span><span class="nav-dd-item-tag">Early access</span></span>
+            <span class="nav-dd-item-desc">Projects, crews and a homeowner portal</span>
+          </a>
+        </div>
+      </div>
+      <a href="#pricing">Pricing</a>
+      <div class="nav-dd">
+        <button type="button" class="nav-dd-trigger">Resources<svg class="nav-caret" viewBox="0 0 12 8" fill="none"><path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="nav-dd-panel">
+          <a href="resources.html" class="nav-dd-item">
+            <span class="nav-dd-item-top"><span class="nav-dd-item-title">Playbooks</span></span>
+            <span class="nav-dd-item-desc">Prospecting, Enterprise Motions, Aspiring Leaders</span>
+          </a>
+        </div>
+      </div>
+      <a href="company.html">Company</a>
+    </div>
+    <div class="nav-cta">
+      <div class="nav-dd nav-dd-login">
+        <button type="button" class="nav-dd-trigger link-quiet">Log in<svg class="nav-caret" viewBox="0 0 12 8" fill="none"><path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="nav-dd-panel">
+          <a href="https://mybivy.com" class="nav-dd-item"><span class="nav-dd-item-title">myBivy for Sales</span></a>
+          <a href="https://mybivy-builders.netlify.app" class="nav-dd-item"><span class="nav-dd-item-title">myBivy for Builders</span></a>
+        </div>
+      </div>
+      <a href="#pricing" class="btn btn-primary">Start free trial</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<header class="hero">
+  <svg class="hero-grain" width="100%" height="100%">
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.02 0"/></filter>
+    <rect width="100%" height="100%" filter="url(#grain)"/>
+  </svg>
+  <canvas id="topoHero" class="hero-canvas"></canvas>
+  <div class="wrap hero-top">
+    <span class="hero-badge"><span class="dot"></span>Introducing myBivy, by SRENE</span>
+    <h1>Anchor <em>every deal.</em></h1>
+    <p class="lede">myBivy turns every sales cycle into a shared, buyer-facing workspace, structured mutual close plan, always current, and built to run every deal like you've got an ops department behind it.</p>
+    <div class="hero-proof">
+      <div class="hero-proof-item"><span class="hero-proof-accent"></span><b>Day 1</b>deal rooms live, no implementation project</div>
+      <div class="hero-proof-item"><span class="hero-proof-accent"></span><b>2.4x</b>higher close rate with 3+ engaged stakeholders</div>
+      <div class="hero-proof-item"><span class="hero-proof-accent"></span><b>14 days</b>free trial, no card required</div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <div class="hero-video">
+      <video src="assets/videos/hero-demo.mp4" controls playsinline></video>
+      <div class="video-caption">Not a CRM</div>
+    </div>
+  </div>
+  <div class="integrations-strip">
+    <div class="wrap integrations-strip-row">
+      <span class="int-label">WORKS WITH</span>
+      <div class="int-icons">
+        <span class="int-icon">
+          <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.5 12.23c0-.82-.07-1.6-.2-2.36H12v4.47h5.9a5.05 5.05 0 0 1-2.19 3.31v2.75h3.54c2.08-1.92 3.25-4.74 3.25-8.17z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.55-2.75c-.98.66-2.24 1.05-3.73 1.05-2.87 0-5.3-1.94-6.17-4.54H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.83 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1a11 11 0 0 0-9.82 6.06l3.65 2.84C6.7 7.32 9.13 5.38 12 5.38z"/></svg>
+          Google Workspace
+        </span>
+        <span class="int-icon">
+          <svg viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#006BFF"/><path d="M12 6a6 6 0 1 0 0 12 6 6 0 0 0 0-12zm2.7 8.4-3-1.8V8.6h1.2v3.3l2.4 1.5-.6 1z" fill="#fff"/></svg>
+          Calendly
+        </span>
+        <span class="int-icon">
+          <svg viewBox="0 0 24 24"><rect width="24" height="24" rx="4" fill="#2D8CFF"/><path d="M5 9.5A1.5 1.5 0 0 1 6.5 8h6A1.5 1.5 0 0 1 14 9.5v5A1.5 1.5 0 0 1 12.5 16h-6A1.5 1.5 0 0 1 5 14.5v-5zM15.2 10l3.3-2v8l-3.3-2v-4z" fill="#fff"/></svg>
+          Zoom
+        </span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="philosophy">
+  <canvas id="topoPhilosophy" class="section-canvas"></canvas>
+  <div class="wrap">
+    <div class="philosophy reveal">
+      <span class="eyebrow">Our philosophy</span>
+      <h2>Manage relationships. Not transactions.</h2>
+      <p class="lede">We believe selling forms lasting partnerships when the process is thoughtful, personalized, and transparent. Successful companies know the winning formula:</p>
+      <div class="chain">
+        <span class="chain-step c1">Transparency</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-step c2">Trust</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-step c3">Relationships</span>
+        <span class="chain-arrow">→</span>
+        <span class="chain-step c4">Currency</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="problem">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">The problem</span>
+      <h2>Deal complexity outpaces process long before the infrastructure catches up.</h2>
+      <p>You don't have an ops team, a forecasting tool, or a champion who knows how to sell internally on your behalf. The deal has to survive on its own between calls, and mostly, it doesn't.</p>
+    </div>
+    <div class="problem-grid reveal">
+      <div class="problem-card">
+        <div class="problem-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h9M4 12h6M4 18h11M16 15l4 4-4 4" transform="translate(0,-4)"/></svg></div>
+        <h3>Every deal lives in a different inbox</h3>
+        <p>Notes in one thread, the pricing doc in another, the contract somewhere in Drive. By the time a prospect asks "where were we?", nobody has a clean answer.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-4 3.2-6.5 7-6.5s7 2.5 7 6.5"/></svg></div>
+        <h3>Your champion is on their own once the call ends</h3>
+        <p>The real buying decision happens in a room you're not in. Your champion walks in without the business case, the numbers, or the talking points to make it stick.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M3 12h4l2-7 4 14 2-7h6"/></svg></div>
+        <h3>You find out a deal's dead after it's dead</h3>
+        <p>No CRM field tells you a stakeholder went quiet three weeks ago. It just shows up as closed-lost, and by then there's nothing left to do about it.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5l3.2 2"/></svg></div>
+        <h3>New reps take months to sound like your best one</h3>
+        <p>Your top rep has a system in their head. Everyone else is improvising. There's no shared playbook that travels with the deal, not the person.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <canvas id="topoStats" class="section-canvas"></canvas>
+  <div class="wrap">
+    <div class="section-head center reveal" style="margin-left:auto;margin-right:auto;">
+      <span class="eyebrow">The data</span>
+      <h2>This isn't a small-team problem. It's the industry.</h2>
+    </div>
+    <div class="stats-grid reveal">
+      <div class="stat lead">
+        <div class="stat-accent"></div>
+        <b>61%</b>
+        <span>of lost deals are attributed to buyer indecision, not competitors or budget</span>
+        <span class="src">Gartner</span>
+      </div>
+      <div class="stat">
+        <div class="stat-accent"></div>
+        <b>21%</b>
+        <span>average win rate across B2B sales orgs today</span>
+        <span class="src">HubSpot / Winning by Design</span>
+      </div>
+      <div class="stat">
+        <div class="stat-accent"></div>
+        <b>2.4x</b>
+        <span>higher close rate when 3+ stakeholders are actively engaged</span>
+        <span class="src">Champify, 2025</span>
+      </div>
+      <div class="stat">
+        <div class="stat-accent"></div>
+        <b>$4.50</b>
+        <span>returned for every $1 invested in structured sales execution</span>
+        <span class="src">Sales Training Industry Report</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="product">
+  <div class="wrap statement">
+    <span class="eyebrow">What myBivy actually is</span>
+    <h2 class="reveal" style="margin-top:16px;">Your CRM records what happened.<br><span class="accent">myBivy is where the deal happens.</span></h2>
+    <p class="lede reveal">Built by sales people for sales people.</p>
+    <p class="lines reveal">Not another place to log activity after the fact. A buyer-facing workspace that's built the moment a call ends, and stays current as the deal moves.</p>
+    <div class="tags reveal">
+      <span class="tag">AI-POWERED</span>
+      <span class="tag">BUYER-FACING</span>
+      <span class="tag">BUILT TO HOLD</span>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="product-shot reveal">
+      <div class="product-shot-chrome">
+        <span class="dot" style="background:#E2E0DA;"></span>
+        <span class="dot" style="background:#E2E0DA;"></span>
+        <span class="dot" style="background:#E2E0DA;"></span>
+      </div>
+      <video class="product-shot-video" src="assets/videos/demo.mp4" controls playsinline></video>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Five things, done well</span>
+      <h2>Everything a deal needs, nothing it doesn't.</h2>
+    </div>
+    <div class="pillars reveal">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div>
+          <h3>Deal rooms, built automatically</h3>
+          <p>After every call, myBivy turns your notes into a shareable, buyer-facing room, summary, open action items, and content, organized and ready to send in minutes.</p>
+        </div>
+        <div class="pillar-visual"><div class="mini-icon" style="background:var(--rope-pale)"><svg viewBox="0 0 24 24" fill="none"><path d="M4 4h16v12H8l-4 4V4z" stroke="#D65F3C" stroke-width="1.8" stroke-linejoin="round"/></svg></div></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div>
+          <h3>Know your buying committee</h3>
+          <p>myBivy maps who's actually involved in the decision, surfaces the people you haven't met yet, and tells you who's gone quiet before it costs you the deal.</p>
+        </div>
+        <div class="pillar-visual"><div class="mini-icon" style="background:#E1EEEC"><svg viewBox="0 0 24 24" fill="none"><circle cx="8" cy="8" r="3" stroke="#2C6E63" stroke-width="1.8"/><circle cx="17" cy="8" r="3" stroke="#2C6E63" stroke-width="1.8"/><path d="M3 20c0-3 2.5-5 5-5s5 2 5 5M12 20c0-3 2.5-5 5-5s5 2 5 5" stroke="#2C6E63" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div>
+          <h3>Shared next steps, not a static PDF</h3>
+          <p>A mutual action plan both sides can see, with named owners and dates. It updates as the deal moves, so nobody's guessing what happens next or who owns it.</p>
+        </div>
+        <div class="pillar-visual"><div class="mini-icon" style="background:var(--chalk)"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="#1B1F23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">04</div>
+        <div>
+          <h3>See risk before it's too late</h3>
+          <p>Real engagement signals: who opened what, when, and for how long. A deal going cold shows up as a flag weeks before it shows up as a loss.</p>
+        </div>
+        <div class="pillar-visual"><div class="mini-icon" style="background:var(--rope-pale)"><svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4M12 17h.01M10.3 3.9L2.7 17a2 2 0 001.7 3h15.2a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z" stroke="#B94B2C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">05</div>
+        <div>
+          <h3>Give your buyer their own AI</h3>
+          <p>Buyers get an assistant inside the room, to ask questions, get a quick summary, or move things forward on their own time, without waiting on you to reply.</p>
+        </div>
+        <div class="pillar-visual"><div class="mini-icon" style="background:var(--rope-pale)"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 100 18 9 9 0 000-18z" stroke="#D65F3C" stroke-width="1.8"/><path d="M9 10h.01M15 10h.01M8 15c1 1.2 2.3 1.8 4 1.8s3-.6 4-1.8" stroke="#D65F3C" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="adopt">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Built for adoption</span>
+      <h2>The best sales tool is the one your team actually opens.</h2>
+      <p>Nobody has time to babysit new software. myBivy is built around that, not against it.</p>
+    </div>
+    <div class="adoption-grid reveal">
+      <div class="adopt-card">
+        <div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" stroke="#D65F3C" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+        <h4>You can't save time, but you can waste it.</h4>
+        <p>The room builds itself from your call notes. No manual setup, no data entry, no second system to maintain.</p>
+      </div>
+      <div class="adopt-card">
+        <div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M4 4h16v16H4z" stroke="#2C6E63" stroke-width="1.8"/><path d="M4 9h16" stroke="#2C6E63" stroke-width="1.8"/></svg></div>
+        <h4>Suits and ties may be old school, but you don't want to look like an amateur</h4>
+        <p>Buyers see a polished, organized workspace, not a forwarded email chain. It's a real edge in a competitive evaluation.</p>
+      </div>
+      <div class="adopt-card">
+        <div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M3 3v18h18" stroke="#1B1F23" stroke-width="1.8" stroke-linecap="round"/><path d="M7 15l4-4 3 3 5-6" stroke="#1B1F23" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Get guidance on high value activities requiring attention</h4>
+        <p>Instead of guessing which of twelve deals need your touch today, myBivy surfaces the ones that actually do, and why.</p>
+      </div>
+      <div class="adopt-card">
+        <div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2a5 5 0 015 5v3a5 5 0 01-10 0V7a5 5 0 015-5z" stroke="#B94B2C" stroke-width="1.8"/><path d="M5 11a7 7 0 0014 0M12 18v4" stroke="#B94B2C" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h4>It works with what you've already got</h4>
+        <p>Lives alongside Google Workspace and your inbox. No new login, no new system for your team to learn from scratch.</p>
+      </div>
+      <div class="adopt-card">
+        <div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#D65F3C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>Let your work show for you</h4>
+        <p>Activity that used to be invisible, follow-ups, shares, updates, now shows up automatically. Less to explain in your 1:1.</p>
+      </div>
+      <div class="adopt-card">
+        <div class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 8v4l3 3M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke="#2C6E63" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h4>It's ready in one call, not one quarter</h4>
+        <p>No implementation project. Connect your inbox, run your next call, and the first room builds itself.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Pricing</span>
+      <h2>Straightforward pricing. No negotiation required.</h2>
+      <p>Start solo today with a 14-day free trial. Building out a team? Let's talk.</p>
+    </div>
+    <div class="pricing-grid-2 reveal">
+
+      <div class="price-card-v2">
+        <div class="card-top">
+          <h3>Solo</h3>
+          <p class="desc">Everything you need to run deals with structure, from first call to close.</p>
+          <div class="price-amt"><b>$48</b><span>/ month</span></div>
+          <div class="trial-note">14-day free trial · no card required to start</div>
+        </div>
+        <a href="https://mybivy.com" class="btn btn-primary btn-lg" style="width:100%;">Start free trial</a>
+        <ul class="price-list">
+          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>AI workspace builder, 10 active deal rooms</li>
+          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Stakeholder intelligence & mapping</li>
+          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Mutual action plans, live sync</li>
+          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Full engagement tracking + risk alerts</li>
+          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Instant activation</li>
+        </ul>
+      </div>
+
+      <div class="price-card-v2 team">
+        <div class="card-top">
+          <span class="team-tag">FOR GROWING TEAMS</span>
+          <div class="tier-icon">
+            <svg viewBox="0 0 40 40" fill="none">
+              <circle cx="15" cy="16" r="8.5" stroke="#F4F2ED" stroke-width="2.1"/>
+              <circle cx="26" cy="16" r="8.5" stroke="#D65F3C" stroke-width="2.1"/>
+            </svg>
+          </div>
+          <h3>Team</h3>
+          <p class="desc">Unlimited reps, shared visibility across your whole pipeline, and admin controls built for a sales org, not just one rep.</p>
+        </div>
+        <button type="button" class="btn btn-dark btn-lg" style="width:100%;" onclick="openTeamModal()">Talk to a person</button>
+        <ul class="price-list">
+          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Everything in Solo, for every rep on your team</li>
+          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Roles, permissions & admin console</li>
+          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Team-wide pipeline visibility</li>
+          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Priority support</li>
+          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Early access to new features</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <div class="wrap">
+    <div class="srene-block reveal">
+      <canvas id="topoName" class="section-canvas"></canvas>
+      <div class="wrap">
+        <div class="srene-head">
+          <span class="eyebrow">Where the name comes from</span>
+          <h2>Solid. Reinforced. Equalized. No Extension.</h2>
+          <p>Climbers use this checklist to judge whether an anchor is actually safe to trust with a life. We build myBivy against the same four principles, just applied to a deal instead of a rope.</p>
+        </div>
+        <div class="srene-grid">
+          <div class="srene-card">
+            <div class="srene-letter">S</div>
+            <h4>Solid</h4>
+            <p>A foundation that actually holds. Real persistence, real security, nothing built on a hope that the data's still there tomorrow.</p>
+          </div>
+          <div class="srene-card">
+            <div class="srene-letter">R</div>
+            <h4>Reinforced</h4>
+            <p>Nothing depends on one person remembering. If a rep is out, the deal room still tells the whole story on its own.</p>
+          </div>
+          <div class="srene-card">
+            <div class="srene-letter">E</div>
+            <h4>Equalized</h4>
+            <p>Buyer and seller see the same shared picture. No one stakeholder is quietly carrying more weight than they should.</p>
+          </div>
+          <div class="srene-card">
+            <div class="srene-letter">NE</div>
+            <h4>No Extension</h4>
+            <p>A deal never moves further than it's actually ready to. No shock-loading a buyer who isn't there yet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="final-cta reveal" style="margin-top:64px;">
+      <canvas id="topoCta" class="section-canvas"></canvas>
+      <svg class="summit-icon" viewBox="0 0 88 88" fill="none">
+        <path d="M44 16L74 66H14L44 16Z" stroke="#F4F2ED" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M44 16L58 40H30L44 16Z" fill="#F4F2ED"/>
+        <circle cx="44" cy="16" r="4" fill="#D65F3C"/>
+      </svg>
+      <h2>Stop losing deals to silence.</h2>
+      <p>Solid, redundant, equalized. Built the same way you'd trust your life to an anchor.</p>
+      <div class="final-actions">
+        <a href="https://mybivy.com" class="btn btn-primary btn-lg">Start free trial</a>
+        <a href="#" class="btn btn-ghost btn-lg" onclick="openTeamModal();return false;">Talk to us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand">
+          <div class="brand-mark">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M2 15 Q7 13 11 14 Q15 15 22 11" stroke="#B94B2C" stroke-width="1.8" stroke-linecap="round"/><path d="M4 10.5 Q8 8.5 11 9.5 Q14 10.5 19 7" stroke="#F4F2ED" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <span class="brand-word">SRENE</span>
+        </div>
+        <p>SRENE builds plug-and-play software for founders, early-stage and SMB companies, designed by veterans of the industries we serve.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h5>Product</h5>
+          <a href="mybivy-for-sales.html">myBivy for Sales</a>
+          <a href="mybivy-for-builders.html">myBivy for Builders</a>
+          <a href="mybivy-for-sales.html#pricing">Pricing</a>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="company.html">About</a>
+          <a href="#" onclick="openCareersModal();return false;">Careers</a>
+          <a href="#" onclick="openContactModal();return false;">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h5>Resources</h5>
+          <a href="resources.html">Playbooks</a>
+          <a href="#">Help center</a>
+          <a href="#">Security</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 SRENE, Inc. All rights reserved. &middot; <a href="https://app.termly.io/policy-viewer/policy.html?policyUUID=284c3efe-adea-4fd5-831d-9e0b60da569d" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Privacy Policy</a></span>
+      <span>myBivy by SRENE</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Netlify Forms detection: this static form (referenced nowhere else) lets Netlify's
+     build-time scanner register the form even though the real one below is inside a JS-toggled modal. -->
+<form name="team-interest" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input type="text" name="name" />
+  <input type="email" name="email" />
+</form>
+
+<div class="modal-overlay" id="careersModalOverlay">
+  <div class="modal-box">
+    <button type="button" class="modal-close" onclick="closeCareersModal()" aria-label="Close">&times;</button>
+    <h3>Careers</h3>
+    <p>No open positions right now &mdash; check back soon, or reach out at <a href="mailto:info@srene.io">info@srene.io</a> if you'd like to get on our radar.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="contactModalOverlay">
+  <div class="modal-box">
+    <button type="button" class="modal-close" onclick="closeContactModal()" aria-label="Close">&times;</button>
+    <h3>Contact us</h3>
+    <p>Reach out any time.</p>
+    <p style="margin-top:18px;"><a href="mailto:info@srene.io">info@srene.io</a><br /><a href="tel:+16193355643">619.335.5643</a></p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="teamModalOverlay">
+  <div class="modal-box">
+    <button type="button" class="modal-close" onclick="closeTeamModal()" aria-label="Close">&times;</button>
+    <div id="teamModalForm">
+      <h3>Let's talk about Team</h3>
+      <p>Leave your name and email and we'll reach out to talk through what a Team plan should look like for you.</p>
+      <form name="team-interest" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="teamForm">
+        <input type="hidden" name="form-name" value="team-interest" />
+        <p class="hp-field"><label>Don't fill this out: <input name="bot-field" /></label></p>
+        <input type="text" name="name" placeholder="Name" required class="modal-input" />
+        <input type="email" name="email" placeholder="Email" required class="modal-input" />
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%; margin-top:6px;">Send</button>
+      </form>
+    </div>
+    <div id="teamModalSuccess" style="display:none;">
+      <h3>Thanks, that's in.</h3>
+      <p>We'll reach out soon to talk through what a Team plan should look like for you.</p>
+    </div>
+  </div>
+</div>
+
+
+<script src="assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>myBivy for Builders — run the job, not the paperwork</title>
+<meta property="og:title" content="myBivy for Builders — run the job, not the paperwork" />
+<meta property="og:description" content="Daily reports, crews, documents and photos in one place, plus a homeowner portal. Built for small private builders and GCs." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://srene.io/mybivy-for-builders.html" />
+<meta property="og:image" content="https://srene.io/assets/images/og-image.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="myBivy for Builders — run the job, not the paperwork" />
+<meta name="twitter:description" content="Daily reports, crews, documents and photos in one place, plus a homeowner portal. Built for small private builders and GCs." />
+<meta name="twitter:image" content="https://srene.io/assets/images/og-image.jpg" />
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/favicon/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/assets/favicon/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="/assets/favicon/apple-touch-icon.png">
+<link rel="icon" href="/assets/favicon/android-chrome-192x192.png" type="image/png" sizes="192x192">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="brand" style="text-decoration:none;">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M2 15 Q7 13 11 14 Q15 15 22 11" stroke="#B94B2C" stroke-width="1.8" stroke-linecap="round"/><path d="M4 10.5 Q8 8.5 11 9.5 Q14 10.5 19 7" stroke="#F4F2ED" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </div>
+      <div class="brand-textstack">
+        <span class="brand-word">SRENE</span>
+        <span class="brand-tag">Solid &middot; Reinforced &middot; Equalized</span>
+      </div>
+    </a>
+    <div class="nav-links">
+      <div class="nav-dd">
+        <button type="button" class="nav-dd-trigger">myBivy<svg class="nav-caret" viewBox="0 0 12 8" fill="none"><path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="nav-dd-panel">
+          <a href="mybivy-for-sales.html" class="nav-dd-item">
+            <span class="nav-dd-item-top"><span class="nav-dd-item-title">myBivy for Sales</span><span class="nav-dd-item-tag live">Live</span></span>
+            <span class="nav-dd-item-desc">Buyer-facing deal rooms for sales teams</span>
+          </a>
+          <a href="mybivy-for-builders.html" class="nav-dd-item">
+            <span class="nav-dd-item-top"><span class="nav-dd-item-title">myBivy for Builders</span><span class="nav-dd-item-tag">Early access</span></span>
+            <span class="nav-dd-item-desc">Projects, crews and a homeowner portal</span>
+          </a>
+        </div>
+      </div>
+      <a href="index.html#pricing">Pricing</a>
+      <div class="nav-dd">
+        <button type="button" class="nav-dd-trigger">Resources<svg class="nav-caret" viewBox="0 0 12 8" fill="none"><path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="nav-dd-panel">
+          <a href="resources.html" class="nav-dd-item">
+            <span class="nav-dd-item-top"><span class="nav-dd-item-title">Playbooks</span></span>
+            <span class="nav-dd-item-desc">Prospecting, Enterprise Motions, Aspiring Leaders</span>
+          </a>
+        </div>
+      </div>
+      <a href="company.html">Company</a>
+    </div>
+    <div class="nav-cta">
+      <div class="nav-dd nav-dd-login">
+        <button type="button" class="nav-dd-trigger link-quiet">Log in<svg class="nav-caret" viewBox="0 0 12 8" fill="none"><path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="nav-dd-panel">
+          <a href="https://mybivy.com" class="nav-dd-item"><span class="nav-dd-item-title">myBivy for Sales</span></a>
+          <a href="https://mybivy-builders.netlify.app" class="nav-dd-item"><span class="nav-dd-item-title">myBivy for Builders</span></a>
+        </div>
+      </div>
+      <a href="mailto:info@srene.io?subject=myBivy%20for%20Builders%20early%20access" class="btn btn-primary">Join early access</a>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<header class="hero">
+  <svg class="hero-grain" width="100%" height="100%">
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.02 0"/></filter>
+    <rect width="100%" height="100%" filter="url(#grain)"/>
+  </svg>
+  <canvas id="topoHero" class="hero-canvas"></canvas>
+  <div class="wrap hero-top">
+    <span class="hero-badge"><span class="dot"></span>myBivy for Builders &middot; early access</span>
+    <h1>Run the job. <em>Not the paperwork.</em></h1>
+    <p class="lede">Daily reports, crews, documents and photos in one place, plus a portal that keeps your homeowner in the loop. Built for small private builders and GCs, by people who've run jobs.</p>
+    <div class="hero-actions">
+      <a href="mailto:info@srene.io?subject=myBivy%20for%20Builders%20early%20access" class="btn btn-primary btn-lg">Join early access</a>
+      <a href="#" class="btn btn-ghost btn-lg" onclick="openContactModal();return false;">Talk to us</a>
+    </div>
+    <div class="hero-proof">
+      <div class="hero-proof-item"><span class="hero-proof-accent"></span><b>Day 1</b>live, no implementation project</div>
+      <div class="hero-proof-item"><span class="hero-proof-accent"></span><b>Crew-ready</b>access codes, no email needed</div>
+      <div class="hero-proof-item"><span class="hero-proof-accent"></span><b>Client portal</b>homeowners see progress without calling you</div>
+    </div>
+  </div>
+</header>
+
+<section id="problem">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">The problem</span>
+      <h2>Small builders run on texts, spreadsheets and memory.</h2>
+      <p>Construction platforms built for large GCs assume a project coordinator and a big software budget. Most private builders have a truck, a phone, and a client who wants an update.</p>
+    </div>
+    <div class="problem-grid reveal">
+      <div class="problem-card">
+        <div class="problem-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg></div>
+        <h3>The daily report lives in somebody's truck</h3>
+        <p>Who was on site, what got done and what held things up ends up in a notebook, a text thread or nowhere at all.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.98.36 1.94.68 2.86a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.22-1.25a2 2 0 0 1 2.11-.45c.92.32 1.88.55 2.86.68A2 2 0 0 1 22 16.92z"/></svg></div>
+        <h3>Your homeowner calls because they can't see progress</h3>
+        <p>Every "how's it going?" call is time off the job, and a sign the client feels out of the loop.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></div>
+        <h3>Plans and docs are always the wrong revision</h3>
+        <p>Drawings, specs and submittals scattered across email attachments and phones on site.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="8" cy="8" r="3"/><circle cx="17" cy="8" r="3"/><path d="M3 20c0-3 2.5-5 5-5s5 2 5 5M12 20c0-3 2.5-5 5-5s5 2 5 5"/></svg></div>
+        <h3>Crews and subs aren't on the same page</h3>
+        <p>Tomorrow's schedule, safety reminders and rain-day plans get lost, or never reach the crew in their own language.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Five things, done well</span>
+      <h2>Everything a job needs, nothing it doesn't.</h2>
+    </div>
+    <div class="pillars reveal">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div>
+          <h3>Daily reports in minutes</h3>
+          <p>Weather, subs on site, crew counts, work completed and photos, filed from the job site before you leave.</p>
+        </div>
+        <div class="pillar-visual"><div class="mini-icon" style="background:var(--alpine-pale)"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="#2C6E63" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div>
+          <h3>Projects and milestones</h3>
+          <p>Every job on one screen, with milestones from site work to punch list and a clear view of what's next.</p>
+        </div>
+        <div class="pillar-visual"><div class="mini-icon" style="background:var(--rope-pale)"><svg viewBox="0 0 24 24" fill="none"><path d="M9 11l3 3L22 4" stroke="#D65F3C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" stroke="#D65F3C" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div>
+          <h3>Documents, plans and photo markup</h3>
+          <p>The current revision, always. Mark up drawings and site photos and share them with the people who need them.</p>
+        </div>
+        <div class="pillar-visual"><div class="mini-icon" style="background:var(--chalk)"><svg viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="#1B1F23" stroke-width="1.8"/></svg></div></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">04</div>
+        <div>
+          <h3>Crew announcements in their language</h3>
+          <p>Schedules, safety reminders and rain-day plans sent to the whole crew, translated for the people reading them.</p>
+        </div>
+        <div class="pillar-visual"><div class="mini-icon" style="background:var(--alpine-pale)"><svg viewBox="0 0 24 24" fill="none"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="#2C6E63" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">05</div>
+        <div>
+          <h3>A homeowner portal</h3>
+          <p>Your client sees progress, photos and next steps on their own time, without calling you to ask.</p>
+        </div>
+        <div class="pillar-visual"><div class="mini-icon" style="background:var(--rope-pale)"><svg viewBox="0 0 24 24" fill="none"><path d="M3 12l9-9 9 9M5 10v10a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1V10" stroke="#D65F3C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="portal">
+  <canvas id="topoPhilosophy" class="section-canvas"></canvas>
+  <div class="wrap">
+    <div class="philosophy reveal">
+      <span class="eyebrow">The homeowner portal</span>
+      <h2>Your client sees what you see.</h2>
+      <p class="lede">The same shared-workspace idea behind myBivy for Sales, built for the people paying for the build. Fewer calls, fewer surprises, and a client who refers you to their neighbors.</p>
+      <div class="chain">
+        <span class="chain-step c1">Progress</span>
+        <span class="chain-arrow">&rarr;</span>
+        <span class="chain-step c2">Selections</span>
+        <span class="chain-arrow">&rarr;</span>
+        <span class="chain-step c3">Change orders</span>
+        <span class="chain-arrow">&rarr;</span>
+        <span class="chain-step c4">Sign-off</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Pricing</span>
+      <h2>Straightforward pricing. No negotiation required.</h2>
+      <p>Opening to a small group of builders first.</p>
+    </div>
+    <div class="pricing-grid-2 reveal" style="max-width:460px;">
+      <div class="price-card-v2 team" style="grid-column:1/-1;">
+        <div class="card-top">
+          <span class="team-tag">EARLY ACCESS</span>
+          <h3>myBivy for Builders</h3>
+          <p class="desc">Everything a small builder needs to run the job and keep the client in the loop.</p>
+          <div class="price-amt"><b style="font-size:28px;">Early access pricing</b></div>
+          <div class="trial-note" style="color:#B7BCC1;">Set per company as we onboard the first builders</div>
+        </div>
+        <a href="mailto:info@srene.io?subject=myBivy%20for%20Builders%20early%20access" class="btn btn-dark btn-lg" style="width:100%;">Join early access</a>
+        <ul class="price-list">
+          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Projects, milestones and daily reports</li>
+          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Documents, plans and photo markup</li>
+          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Crew announcements and access codes</li>
+          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Homeowner portal</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <div class="wrap">
+    <div class="final-cta reveal">
+      <canvas id="topoCta" class="section-canvas"></canvas>
+      <svg class="summit-icon" viewBox="0 0 88 88" fill="none">
+        <path d="M44 16L74 66H14L44 16Z" stroke="#F4F2ED" stroke-width="2.5" stroke-linejoin="round"/>
+        <path d="M44 16L58 40H30L44 16Z" fill="#F4F2ED"/>
+        <circle cx="44" cy="16" r="4" fill="#D65F3C"/>
+      </svg>
+      <h2>Build it right. Keep them in the loop.</h2>
+      <p>myBivy for Builders is opening to a small group of private builders and GCs first.</p>
+      <div class="final-actions">
+        <a href="mailto:info@srene.io?subject=myBivy%20for%20Builders%20early%20access" class="btn btn-primary btn-lg">Join early access</a>
+        <a href="#" class="btn btn-ghost btn-lg" onclick="openContactModal();return false;">Talk to us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand">
+          <div class="brand-mark">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M2 15 Q7 13 11 14 Q15 15 22 11" stroke="#B94B2C" stroke-width="1.8" stroke-linecap="round"/><path d="M4 10.5 Q8 8.5 11 9.5 Q14 10.5 19 7" stroke="#F4F2ED" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <span class="brand-word">SRENE</span>
+        </div>
+        <p>SRENE builds plug-and-play software for founders, early-stage and SMB companies, designed by veterans of the industries we serve.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h5>Product</h5>
+          <a href="mybivy-for-sales.html">myBivy for Sales</a>
+          <a href="mybivy-for-builders.html">myBivy for Builders</a>
+          <a href="mybivy-for-sales.html#pricing">Pricing</a>
+        </div>
+        <div class="footer-col">
+          <h5>Company</h5>
+          <a href="company.html">About</a>
+          <a href="#" onclick="openCareersModal();return false;">Careers</a>
+          <a href="#" onclick="openContactModal();return false;">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h5>Resources</h5>
+          <a href="resources.html">Playbooks</a>
+          <a href="#">Help center</a>
+          <a href="#">Security</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 SRENE, Inc. All rights reserved. &middot; <a href="https://app.termly.io/policy-viewer/policy.html?policyUUID=284c3efe-adea-4fd5-831d-9e0b60da569d" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Privacy Policy</a></span>
+      <span>myBivy by SRENE</span>
+    </div>
+  </div>
+</footer>
+
+<div class="modal-overlay" id="careersModalOverlay">
+  <div class="modal-box">
+    <button type="button" class="modal-close" onclick="closeCareersModal()" aria-label="Close">&times;</button>
+    <h3>Careers</h3>
+    <p>No open positions right now &mdash; check back soon, or reach out at <a href="mailto:info@srene.io">info@srene.io</a> if you'd like to get on our radar.</p>
+  </div>
+</div>
+
+<div class="modal-overlay" id="contactModalOverlay">
+  <div class="modal-box">
+    <button type="button" class="modal-close" onclick="closeContactModal()" aria-label="Close">&times;</button>
+    <h3>Contact us</h3>
+    <p>Reach out any time.</p>
+    <p style="margin-top:18px;"><a href="mailto:info@srene.io">info@srene.io</a><br /><a href="tel:+16193355643">619.335.5643</a></p>
+  </div>
+</div>
+
+<script src="assets/site.js"></script>
+</body>
+</html>

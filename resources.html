@@ -18,27 +18,50 @@
 
 <nav class="nav" id="nav">
   <div class="wrap nav-inner">
-    <div class="brand">
-      <a href="index.html" style="display:flex; align-items:center; gap:14px;">
-        <div class="brand-mark">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M2 15 Q7 13 11 14 Q15 15 22 11" stroke="#B94B2C" stroke-width="1.8" stroke-linecap="round"/><path d="M4 10.5 Q8 8.5 11 9.5 Q14 10.5 19 7" stroke="#F4F2ED" stroke-width="1.8" stroke-linecap="round"/></svg>
-        </div>
-        <div class="brand-textstack">
-          <span class="brand-word">SRENE</span>
-          <span class="brand-tag">Solid · Reinforced · Equalized</span>
-        </div>
-      </a>
-    </div>
+    <a href="index.html" class="brand" style="text-decoration:none;">
+      <div class="brand-mark">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M2 15 Q7 13 11 14 Q15 15 22 11" stroke="#B94B2C" stroke-width="1.8" stroke-linecap="round"/><path d="M4 10.5 Q8 8.5 11 9.5 Q14 10.5 19 7" stroke="#F4F2ED" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </div>
+      <div class="brand-textstack">
+        <span class="brand-word">SRENE</span>
+        <span class="brand-tag">Solid &middot; Reinforced &middot; Equalized</span>
+      </div>
+    </a>
     <div class="nav-links">
-      <a href="index.html#product">myBivy</a>
-      <a href="index.html#how">How it works</a>
-      <a href="index.html#pricing">Pricing</a>
-      <a href="resources.html" style="color:var(--indigo);">Resources</a>
-      <a href="index.html#company">Company</a>
+      <div class="nav-dd">
+        <button type="button" class="nav-dd-trigger">myBivy<svg class="nav-caret" viewBox="0 0 12 8" fill="none"><path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="nav-dd-panel">
+          <a href="mybivy-for-sales.html" class="nav-dd-item">
+            <span class="nav-dd-item-top"><span class="nav-dd-item-title">myBivy for Sales</span><span class="nav-dd-item-tag live">Live</span></span>
+            <span class="nav-dd-item-desc">Buyer-facing deal rooms for sales teams</span>
+          </a>
+          <a href="mybivy-for-builders.html" class="nav-dd-item">
+            <span class="nav-dd-item-top"><span class="nav-dd-item-title">myBivy for Builders</span><span class="nav-dd-item-tag">Early access</span></span>
+            <span class="nav-dd-item-desc">Projects, crews and a homeowner portal</span>
+          </a>
+        </div>
+      </div>
+      <a href="mybivy-for-sales.html#pricing">Pricing</a>
+      <div class="nav-dd">
+        <button type="button" class="nav-dd-trigger">Resources<svg class="nav-caret" viewBox="0 0 12 8" fill="none"><path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="nav-dd-panel">
+          <a href="resources.html" class="nav-dd-item">
+            <span class="nav-dd-item-top"><span class="nav-dd-item-title">Playbooks</span></span>
+            <span class="nav-dd-item-desc">Prospecting, Enterprise Motions, Aspiring Leaders</span>
+          </a>
+        </div>
+      </div>
+      <a href="company.html">Company</a>
     </div>
     <div class="nav-cta">
-      <a href="#" class="link-quiet">Log in</a>
-      <a href="index.html#pricing" class="btn btn-primary">Start free trial</a>
+      <div class="nav-dd nav-dd-login">
+        <button type="button" class="nav-dd-trigger link-quiet">Log in<svg class="nav-caret" viewBox="0 0 12 8" fill="none"><path d="M1 1.5 6 6.5 11 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <div class="nav-dd-panel">
+          <a href="https://mybivy.com" class="nav-dd-item"><span class="nav-dd-item-title">myBivy for Sales</span></a>
+          <a href="https://mybivy-builders.netlify.app" class="nav-dd-item"><span class="nav-dd-item-title">myBivy for Builders</span></a>
+        </div>
+      </div>
+      <a href="mybivy-for-sales.html#pricing" class="btn btn-primary">Start free trial</a>
     </div>
     <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
@@ -188,18 +211,18 @@
           </div>
           <span class="brand-word">SRENE</span>
         </div>
-        <p>SRENE builds AI-powered execution tools for sales teams who want more structure, without more overhead.</p>
+        <p>SRENE builds plug-and-play software for founders, early-stage and SMB companies, designed by veterans of the industries we serve.</p>
       </div>
       <div class="footer-cols">
         <div class="footer-col">
           <h5>Product</h5>
-          <a href="index.html#product">myBivy</a>
-          <a href="index.html#how">How it works</a>
-          <a href="index.html#pricing">Pricing</a>
+          <a href="mybivy-for-sales.html">myBivy for Sales</a>
+          <a href="mybivy-for-builders.html">myBivy for Builders</a>
+          <a href="mybivy-for-sales.html#pricing">Pricing</a>
         </div>
         <div class="footer-col">
           <h5>Company</h5>
-          <a href="index.html#company">About</a>
+          <a href="company.html">About</a>
           <a href="#" onclick="openCareersModal();return false;">Careers</a>
           <a href="#" onclick="openContactModal();return false;">Contact</a>
         </div>
@@ -212,7 +235,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 SRENE, Inc. All rights reserved. &middot; <a href="https://app.termly.io/policy-viewer/policy.html?policyUUID=284c3efe-adea-4fd5-831d-9e0b60da569d" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Privacy Policy</a></span>
+      <span>&copy; 2026 SRENE, Inc. All rights reserved. &middot; <a href="https://app.termly.io/policy-viewer/policy.html?policyUUID=284c3efe-adea-4fd5-831d-9e0b60da569d" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Privacy Policy</a></span>
       <span>myBivy by SRENE</span>
     </div>
   </div>

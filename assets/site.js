@@ -13,6 +13,21 @@ const nav = document.getElementById('nav');
     }
   });
 
+  // Nav dropdowns (myBivy / Resources / Log in) -- click-toggle so it works
+  // the same on touch and mouse, instead of a hover-only panel.
+  document.querySelectorAll('.nav-dd-trigger').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const dd = btn.closest('.nav-dd');
+      const wasOpen = dd.classList.contains('open');
+      document.querySelectorAll('.nav-dd.open').forEach((o) => o.classList.remove('open'));
+      if(!wasOpen) dd.classList.add('open');
+    });
+  });
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.nav-dd.open').forEach((o) => o.classList.remove('open'));
+  });
+
   const revealEls = document.querySelectorAll('.reveal');
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
