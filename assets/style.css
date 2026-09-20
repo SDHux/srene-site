@@ -291,6 +291,10 @@ section{ padding:104px 0; }
   display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:920px; margin:0 auto;
 }
 @media (max-width:760px){ .pricing-grid-2{ grid-template-columns:1fr; } }
+.pricing-grid-3{
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; max-width:1180px; margin:0 auto;
+}
+@media (max-width:900px){ .pricing-grid-3{ grid-template-columns:1fr; } }
 .price-card-v2{
   border:1px solid var(--line); border-radius:18px; padding:36px;
   background:var(--white); box-shadow:var(--shadow-card);
