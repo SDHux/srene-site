@@ -165,7 +165,11 @@ button{font-family:inherit; cursor:pointer;}
 @keyframes shineMove{ 0%{background-position:0% 0;} 50%{background-position:100% 0;} 100%{background-position:0% 0;} }
 @media (max-width:640px){ .hero h1{ font-size:48px; } }
 
-.hero p.lede{ font-size:21px; color:var(--text-muted); max-width:610px; margin:0 auto 32px; }
+.bivy-def{ font-size:14px; color:var(--text-muted); max-width:560px; margin:14px auto 0; }
+.bivy-def em{ font-style:italic; font-weight:700; color:var(--ink); background:none; -webkit-text-fill-color:currentColor; }
+.bivy-def .pos{ font-style:italic; }
+.bivy-def .ipa{ font-family:'JetBrains Mono'; }
+.hero p.lede{ font-size:21px; color:var(--text-muted); max-width:610px; margin:18px auto 32px; }
 .hero-actions{ display:flex; align-items:center; justify-content:center; gap:22px; flex-wrap:wrap; margin-bottom:36px;}
 .btn-lg{ padding:14px 26px; font-size:15.5px; }
 
