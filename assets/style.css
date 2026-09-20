@@ -291,23 +291,30 @@ section{ padding:104px 0; }
   display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:920px; margin:0 auto;
 }
 @media (max-width:760px){ .pricing-grid-2{ grid-template-columns:1fr; } }
-.pricing-grid-3{
-  display:grid; grid-template-columns:repeat(3, 1fr); gap:24px; max-width:1180px; margin:0 auto;
-}
-@media (max-width:900px){ .pricing-grid-3{ grid-template-columns:1fr; } }
 .price-card-v2{
   border:1px solid var(--line); border-radius:18px; padding:36px;
   background:var(--white); box-shadow:var(--shadow-card);
   display:flex; flex-direction:column;
 }
-.card-top{ flex:1 0 auto; }
-.price-card-v2 h3{ font-size:28px; margin-bottom:8px; }
+/* card-top is intentionally NOT a flex-grow item: growing it to fill
+   leftover row space ties its size to that card's OWN button+list height,
+   so a card with a shorter feature list (or fewer bullets) silently grows
+   taller above the button than its neighbor -- exactly the "unaligned
+   buttons" bug this replaces. Every card's card-top is now a fixed natural
+   height instead, so the button that follows it lands at the same Y in
+   every card regardless of what's below. The feature list is pinned to
+   the card's bottom edge instead (see .price-list margin-top:auto), so
+   shorter lists don't leave the button floating awkwardly high either. */
+.price-card-v2 h3{ font-size:28px; margin-bottom:2px; }
+.tier-label{ font-family:'JetBrains Mono'; font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing:0.05em; color:var(--rope-deep); margin-bottom:14px; }
+.price-card-v2.team .tier-label{ color:var(--rope-bright); }
 .tier-icon{ width:40px; height:40px; margin-bottom:16px; }
 .tier-icon svg{ width:100%; height:100%; }
-.price-card-v2 .desc{ font-size:18px; color:var(--text-muted); margin-bottom:22px; min-height:64px; }
+.price-card-v2 .desc{ font-size:18px; color:var(--text-muted); margin-bottom:22px; height:96px; overflow:hidden; }
+.price-slot{ height:80px; margin-bottom:22px; }
 .price-card-v2 .price-amt{ margin-bottom:4px; }
-.price-card-v2 .trial-note{ font-size:16px; color:var(--text-muted); margin-bottom:22px; }
-.price-card-v2 .price-list{ margin-top:26px; padding-top:24px; border-top:1px solid var(--line); }
+.price-card-v2 .trial-note{ font-size:16px; color:var(--text-muted); }
+.price-card-v2 .price-list{ margin-top:auto; padding-top:24px; border-top:1px solid var(--line); }
 .price-card-v2.team{
   background:var(--ink); border-color:var(--ink); color:#fff;
 }
