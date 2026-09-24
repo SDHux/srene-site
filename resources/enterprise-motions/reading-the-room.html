@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Reading the Room</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c2330;
+    --paper: #f6f3ea;
+    --paper-2: #ffffff;
+    --line: #ddd6c4;
+    --muted: #665f4d;
+    --accent: #a9791f;
+    --accent-ink: #4a3a12;
+    --squeeze: #a33c2b;
+    --squeeze-bg: #f5e4de;
+    --capex: #2a5a7a;
+    --capex-bg: #dfeaf1;
+    --guide: #3d6b4f;
+    --guide-bg: #e2ecdf;
+    --mandate: #6b4fa0;
+    --mandate-bg: #ebe3f5;
+    color-scheme: light dark;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #eae6da;
+      --paper: #14171e;
+      --paper-2: #1b1f28;
+      --line: #343a46;
+      --muted: #a8a290;
+      --accent: #d9b455;
+      --accent-ink: #f1dfa8;
+      --squeeze: #e2836d;
+      --squeeze-bg: #2e211d;
+      --capex: #7fb4d6;
+      --capex-bg: #1c2b35;
+      --guide: #8fc79f;
+      --guide-bg: #1c2b21;
+      --mandate: #b7a0e0;
+      --mandate-bg: #271f35;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #eae6da;
+    --paper: #14171e;
+    --paper-2: #1b1f28;
+    --line: #343a46;
+    --muted: #a8a290;
+    --accent: #d9b455;
+    --accent-ink: #f1dfa8;
+    --squeeze: #e2836d;
+    --squeeze-bg: #2e211d;
+    --capex: #7fb4d6;
+    --capex-bg: #1c2b35;
+    --guide: #8fc79f;
+    --guide-bg: #1c2b21;
+    --mandate: #b7a0e0;
+    --mandate-bg: #271f35;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    padding-inline: 16px;
+  }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+
+  .wrap {
+    max-width: 920px;
+    margin: 0 auto;
+    padding-block: 48px 80px;
+  }
+
+  h1, h2, h3 {
+    font-family: "Source Serif 4", Georgia, serif;
+    font-weight: 700;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+
+  /* Masthead */
+  header.masthead {
+    border-bottom: 2px solid var(--ink);
+    padding-bottom: 28px;
+    margin-bottom: 40px;
+  }
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  h1.title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    line-height: 1.05;
+    margin-bottom: 14px;
+  }
+  .deck {
+    max-width: 62ch;
+    font-size: 1.05rem;
+    color: var(--muted);
+  }
+  .thesis {
+    margin-top: 22px;
+    padding: 16px 20px;
+    background: var(--paper-2);
+    border-left: 3px solid var(--accent);
+    font-family: "Source Serif 4", serif;
+    font-size: 1.05rem;
+    font-style: italic;
+    color: var(--ink);
+  }
+  .thesis b { font-style: normal; color: var(--accent-ink); }
+
+  section { margin-top: 56px; }
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 10px;
+  }
+  .section-num {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .section-head h2 { font-size: 1.5rem; }
+  .section-note { margin: 0 0 20px; color: var(--muted); font-size: 0.95rem; max-width: 65ch; }
+
+  /* Three-document grid */
+  .doc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 720px) {
+    .doc-grid { grid-template-columns: 1fr; }
+  }
+  .doc-card {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .doc-card h3 { font-size: 1.1rem; }
+  .doc-card .sub { font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+  .doc-card ul { margin: 0; padding-left: 18px; font-size: 0.9rem; color: var(--ink); }
+  .doc-card li { margin-bottom: 6px; }
+  .doc-card li:last-child { margin-bottom: 0; }
+  .doc-card li b { color: var(--accent-ink); }
+
+  /* Signal panels */
+  .signal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 720px) {
+    .signal-grid { grid-template-columns: 1fr; }
+  }
+  .signal-card {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .signal-head {
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .signal-card.squeeze .signal-head { background: var(--squeeze-bg); }
+  .signal-card.capex .signal-head { background: var(--capex-bg); }
+  .signal-head h3 { font-size: 1.15rem; margin: 0; }
+  .signal-card.squeeze .signal-head h3 { color: var(--squeeze); }
+  .signal-card.capex .signal-head h3 { color: var(--capex); }
+  .signal-body { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 14px; }
+  .field { display: flex; flex-direction: column; gap: 4px; }
+  .field-label {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .field-value { font-size: 0.92rem; }
+  .field-value.quote { font-family: "Source Serif 4", serif; font-style: italic; color: var(--ink); }
+  .badge {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .signal-card.squeeze .badge { background: var(--squeeze); color: var(--paper-2); }
+  .signal-card.capex .badge { background: var(--capex); color: var(--paper-2); }
+
+  /* Mapping table */
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; }
+  table.mapping { width: 100%; border-collapse: collapse; background: var(--paper-2); font-size: 0.88rem; min-width: 760px; }
+  table.mapping th {
+    text-align: left;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    font-weight: 600;
+    padding: 12px 14px;
+    border-bottom: 2px solid var(--ink);
+    background: var(--paper);
+  }
+  table.mapping td { padding: 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  table.mapping tr:last-child td { border-bottom: none; }
+  table.mapping td.signal-cell { font-weight: 600; }
+  .pill {
+    display: inline-block;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10.5px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-bottom: 4px;
+  }
+  .pill.mandate { background: var(--mandate-bg); color: var(--mandate); }
+  .pill.capability { background: var(--guide-bg); color: var(--guide); }
+  td.talk { font-family: "Source Serif 4", serif; font-style: italic; color: var(--muted); }
+
+  /* Checklist */
+  .checklist {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 22px 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 28px;
+  }
+  @media (max-width: 720px) {
+    .checklist { grid-template-columns: 1fr; }
+  }
+  .check-item { display: flex; gap: 10px; align-items: flex-start; font-size: 0.92rem; padding: 6px 0; border-bottom: 1px dashed var(--line); }
+  .check-item:last-child, .check-item:nth-last-child(2) { border-bottom: none; }
+  .check-item .num { font-family: "IBM Plex Mono", monospace; font-size: 11px; color: var(--accent); font-weight: 600; min-width: 18px; }
+
+  footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-size: 0.82rem;
+    color: var(--muted);
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">Field Guide · Enterprise AE Sales Resources</div>
+    <h1 class="title">Reading the Room</h1>
+    <p class="deck">Most reps show up ready to explain how the product works. The AEs who win at the executive level show up able to explain how the business works, and where the product moves the numbers the CFO is already staring at.</p>
+    <div class="thesis">Technical depth answers <b>"how it works."</b> Financial fluency answers <b>"how it impacts the P&amp;L."</b> Only one of those gets you back in the room.</div>
+  </header>
+
+  <section>
+    <div class="section-head"><span class="section-num">01</span><h2>The three documents</h2></div>
+    <p class="section-note">Before a call with a VP or above, skim these in order. Fifteen minutes total. You are not building a model. You are finding the one or two numbers worth asking about.</p>
+    <div class="doc-grid">
+      <div class="doc-card">
+        <span class="sub">Income Statement</span>
+        <h3>The P&amp;L</h3>
+        <ul>
+          <li><b>Revenue growth</b>: accelerating or decelerating YoY?</li>
+          <li><b>Gross margin %</b>: the first place cost pressure shows up</li>
+          <li><b>Opex (SG&amp;A, R&amp;D)</b> as a % of revenue: spending discipline or investment mode?</li>
+          <li><b>Operating margin</b>: the bottom line the CFO is paid to defend</li>
+        </ul>
+      </div>
+      <div class="doc-card">
+        <span class="sub">Annual Filing</span>
+        <h3>The 10-K</h3>
+        <ul>
+          <li><b>MD&amp;A section</b>: management's own narrative on what moved and why</li>
+          <li><b>Risk Factors</b>: read the ones that are new this year, not boilerplate</li>
+          <li><b>Segment reporting</b>: which business line is carrying or dragging the rest</li>
+          <li><b>Cash Flow → Investing</b>: where CapEx actually lives</li>
+        </ul>
+      </div>
+      <div class="doc-card">
+        <span class="sub">Quarterly Ritual</span>
+        <h3>Earnings Call</h3>
+        <ul>
+          <li><b>Prepared remarks</b>: the official story, written by IR and legal</li>
+          <li><b>Q&amp;A</b>: where analysts push and the real anxiety leaks out</li>
+          <li>Listen for <b>"headwinds," "discipline," "reinvestment"</b>: each signals a different mandate</li>
+          <li><b>Guidance change</b>: raised, lowered, or reiterated tells you their confidence</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-num">02</span><h2>Two signals worth knowing cold</h2></div>
+    <p class="section-note">You don't need to read like an analyst. You need to recognize these two patterns on sight, because each one points straight at a mandate someone in the building already owns.</p>
+    <div class="signal-grid">
+      <div class="signal-card squeeze">
+        <div class="signal-head"><h3>Margin Squeeze</h3><span class="badge">Cost pressure</span></div>
+        <div class="signal-body">
+          <div class="field">
+            <span class="field-label">What it looks like</span>
+            <span class="field-value">Gross or operating margin falling quarter over quarter while revenue holds flat or grows. Costs are outrunning sales.</span>
+          </div>
+          <div class="field">
+            <span class="field-label">Where to spot it</span>
+            <span class="field-value">Compare gross margin % across the last 3-4 quarters in the P&amp;L. A steady downward slope is the tell, not one bad quarter.</span>
+          </div>
+          <div class="field">
+            <span class="field-label">What it signals</span>
+            <span class="field-value">Pricing power is eroding, input or labor costs are rising, or the business is discounting to hold volume. Someone owns fixing this.</span>
+          </div>
+          <div class="field">
+            <span class="field-label">The question it earns you</span>
+            <span class="field-value quote">"I noticed gross margin has come down three quarters running. Is that mix, cost, or pricing?"</span>
+          </div>
+        </div>
+      </div>
+      <div class="signal-card capex">
+        <div class="signal-head"><h3>CapEx Spike</h3><span class="badge">Investment cycle</span></div>
+        <div class="signal-body">
+          <div class="field">
+            <span class="field-label">What it looks like</span>
+            <span class="field-value">A sharp YoY jump in capital expenditures or capitalized software, visible in the investing section of the cash flow statement.</span>
+          </div>
+          <div class="field">
+            <span class="field-label">Where to spot it</span>
+            <span class="field-value">Cash Flow from Investing Activities in the 10-K, or CFO commentary on "elevated capital investment" on the earnings call.</span>
+          </div>
+          <div class="field">
+            <span class="field-label">What it signals</span>
+            <span class="field-value">Budget has already been approved for a modernization or infrastructure cycle. The money exists, the question is what it buys.</span>
+          </div>
+          <div class="field">
+            <span class="field-label">The question it earns you</span>
+            <span class="field-value quote">"You've stepped up capital investment this year. Where does systems and infrastructure sit in that plan?"</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-num">03</span><h2>Signal to story: the myBivy mapping</h2></div>
+    <p class="section-note">A signal is only useful once it's tied to a mandate someone owns, and to the part of myBivy that speaks directly to it. This is the translation layer: memorize the middle two columns, not the whole table.</p>
+    <div class="table-wrap">
+      <table class="mapping">
+        <thead>
+          <tr>
+            <th>Financial signal</th>
+            <th>Executive mandate</th>
+            <th>myBivy capability</th>
+            <th>Talk track</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="signal-cell">Margin squeeze</td>
+            <td><span class="pill mandate">CFO: protect margin</span><br>Restore gross margin without cutting revenue</td>
+            <td><span class="pill capability">Stakeholder Map</span><br>Multi-thread into Finance and Procurement early, not just the champion</td>
+            <td class="talk">"This isn't an efficiency purchase. It's a margin-protection purchase. Let's build the case that way."</td>
+          </tr>
+          <tr>
+            <td class="signal-cell">CapEx spike</td>
+            <td><span class="pill mandate">CIO/COO: justify the spend</span><br>Prove the infrastructure investment is paying off</td>
+            <td><span class="pill capability">Deal Room</span><br>Centralize the business case inside the capital cycle already underway</td>
+            <td class="talk">"You've already committed the budget to modernization. Here's exactly where we sit inside that plan."</td>
+          </tr>
+          <tr>
+            <td class="signal-cell">Opex flat, revenue growing (efficiency mandate)</td>
+            <td><span class="pill mandate">CEO: do more with the same headcount</span><br>Scale output without scaling cost</td>
+            <td><span class="pill capability">Path-to-Close Timeline</span><br>Compress the sales cycle itself and prove ROI on a dated, mutual plan</td>
+            <td class="talk">"Every week this drags is a week your team is doing this manually. Here's the 8-phase plan to close fast."</td>
+          </tr>
+          <tr>
+            <td class="signal-cell">Guidance lowered or growth decelerating</td>
+            <td><span class="pill mandate">IR/Board: restore confidence</span><br>Rebuild the growth narrative for the next call</td>
+            <td><span class="pill capability">Account Turnaround Narrative</span><br>Frame the deal as a proof point management can point to</td>
+            <td class="talk">"If this becomes a visible win, it's a story your team can tell on the next call, not just a deployment."</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="section-num">04</span><h2>Before the executive call</h2></div>
+    <div class="checklist">
+      <div class="check-item"><span class="num">01</span><span>Pull the last 3 quarters of gross and operating margin. Flag the direction, not just the number.</span></div>
+      <div class="check-item"><span class="num">02</span><span>Skim the MD&amp;A for the sentence where management explains the quarter in their own words.</span></div>
+      <div class="check-item"><span class="num">03</span><span>Check the Investing section of Cash Flow for a CapEx jump. That's committed budget, not a wish.</span></div>
+      <div class="check-item"><span class="num">04</span><span>Read the risk factors that are new this year. They tell you what's keeping the board up at night.</span></div>
+      <div class="check-item"><span class="num">05</span><span>Listen to (or skim the transcript of) the Q&amp;A section, not just prepared remarks. That's where the real concern shows.</span></div>
+      <div class="check-item"><span class="num">06</span><span>Pick one signal and one question. Don't walk in with five. Walk in with the one that lands.</span></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Sales Resources · Financial Fluency Series</span>
+    <span class="mono">v1</span>
+  </footer>
+
+</div>
+</body>
+</html>

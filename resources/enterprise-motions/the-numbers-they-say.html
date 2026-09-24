@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The Numbers They Say</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c2330;
+    --paper: #f6f3ea;
+    --paper-2: #ffffff;
+    --line: #ddd6c4;
+    --muted: #665f4d;
+    --accent: #a9791f;
+    --accent-ink: #4a3a12;
+    --why-bg: #ebe3f5;
+    --why-ink: #6b4fa0;
+    --use-bg: #e2ecdf;
+    --use-ink: #3d6b4f;
+    color-scheme: light dark;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #eae6da;
+      --paper: #14171e;
+      --paper-2: #1b1f28;
+      --line: #343a46;
+      --muted: #a8a290;
+      --accent: #d9b455;
+      --accent-ink: #f1dfa8;
+      --why-bg: #271f35;
+      --why-ink: #b7a0e0;
+      --use-bg: #1c2b21;
+      --use-ink: #8fc79f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #eae6da;
+    --paper: #14171e;
+    --paper-2: #1b1f28;
+    --line: #343a46;
+    --muted: #a8a290;
+    --accent: #d9b455;
+    --accent-ink: #f1dfa8;
+    --why-bg: #271f35;
+    --why-ink: #b7a0e0;
+    --use-bg: #1c2b21;
+    --use-ink: #8fc79f;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    padding-inline: 16px;
+  }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+
+  .wrap { max-width: 880px; margin: 0 auto; padding-block: 48px 80px; }
+
+  h1, h2, h3 { font-family: "Source Serif 4", Georgia, serif; font-weight: 700; text-wrap: balance; margin: 0; }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+
+  header.masthead { border-bottom: 2px solid var(--ink); padding-bottom: 28px; margin-bottom: 40px; }
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 10px;
+  }
+  h1.title { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.05; margin-bottom: 14px; }
+  .deck { max-width: 62ch; font-size: 1.05rem; color: var(--muted); }
+
+  .how-to-read {
+    margin-top: 22px;
+    padding: 14px 18px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    font-size: 0.88rem;
+    color: var(--muted);
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+  .how-to-read .key { display: flex; align-items: center; gap: 8px; }
+  .key-swatch { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+  .key-swatch.why { background: var(--why-ink); }
+  .key-swatch.use { background: var(--use-ink); }
+
+  section.category { margin-top: 52px; }
+  .cat-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 4px; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+  .cat-num { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--accent); font-weight: 600; }
+  .cat-head h2 { font-size: 1.4rem; }
+  .cat-note { margin: 10px 0 22px; color: var(--muted); font-size: 0.92rem; max-width: 65ch; }
+
+  .term-list { display: flex; flex-direction: column; gap: 16px; }
+  .term {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 18px 20px;
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 4px 20px;
+  }
+  @media (max-width: 640px) {
+    .term { grid-template-columns: 1fr; }
+  }
+  .term-name-wrap { display: flex; flex-direction: column; gap: 4px; }
+  .term-name { font-family: "Source Serif 4", serif; font-weight: 700; font-size: 1.05rem; color: var(--accent-ink); }
+  .term-alt { font-family: "IBM Plex Mono", monospace; font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  .term-body { display: flex; flex-direction: column; gap: 10px; }
+  .def { font-size: 0.94rem; }
+  .row-label {
+    display: inline-block;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    font-weight: 600;
+    padding: 1px 7px;
+    border-radius: 4px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .row-label.why { background: var(--why-bg); color: var(--why-ink); }
+  .row-label.use { background: var(--use-bg); color: var(--use-ink); }
+  .row-text { font-size: 0.9rem; color: var(--muted); }
+  .row-text.quote { font-family: "Source Serif 4", serif; font-style: italic; color: var(--ink); }
+  .row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 0; }
+
+  footer {
+    margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--line);
+    font-size: 0.82rem; color: var(--muted);
+    display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">Companion Glossary · Enterprise AE Sales Resources</div>
+    <h1 class="title">The Numbers They Say</h1>
+    <p class="deck">The terms you will actually hear on an earnings call, in a 10-K, or from a CFO across the table, in plain language. Every entry answers two questions: why does this matter to a sale, and what do you actually say when you hear it.</p>
+    <div class="how-to-read">
+      <span class="key"><span class="key-swatch why"></span>Why it matters to you</span>
+      <span class="key"><span class="key-swatch use"></span>What to say in the room</span>
+    </div>
+  </header>
+
+  <section class="category">
+    <div class="cat-head"><span class="cat-num">01</span><h2>The Financial Statements</h2></div>
+    <p class="cat-note">The core P&amp;L vocabulary. These are the lines a CFO watches every single quarter.</p>
+    <div class="term-list">
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Revenue</span><span class="term-alt">Top line</span></div>
+        <div class="term-body">
+          <p class="def">Total sales before any costs are subtracted. The starting number everything else is measured against.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Tells you if the business is growing, and how fast, which sets the tone for how much appetite there is to spend.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"Your revenue growth has held steady even as the market's slowed. What's driving that resilience?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Gross Margin</span><span class="term-alt">% of revenue</span></div>
+        <div class="term-body">
+          <p class="def">Revenue minus the direct cost of delivering the product or service, shown as a percentage. What's left before overhead and sales costs.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">The first place cost pressure or pricing weakness shows up. A slipping gross margin is an early warning sign, not a late one.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"I noticed gross margin has come down a few quarters running. Is that mix, input cost, or pricing pressure?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Operating Margin</span><span class="term-alt">EBIT</span></div>
+        <div class="term-body">
+          <p class="def">What's left of revenue after gross costs and all operating expenses, like sales, marketing, and R&amp;D. The profit from running the core business, before interest and taxes.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">This is the number the CFO is personally judged on. A shrinking operating margin means someone above your buyer is asking hard questions.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"How does this initiative need to show up in operating margin for it to get funded?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">SG&amp;A</span><span class="term-alt">Opex line</span></div>
+        <div class="term-body">
+          <p class="def">Selling, General &amp; Administrative expenses. Sales teams, marketing, HR, legal, and other overhead that isn't tied directly to making the product.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Your deal is a line item inside this bucket. When SG&amp;A is under a cost-cutting mandate, every new tool has to prove it reduces headcount need, not just adds capability.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"With SG&amp;A under pressure, this needs to pay for itself in headcount avoided, not just productivity gained."</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">CapEx</span><span class="term-alt">Capital spend</span></div>
+        <div class="term-body">
+          <p class="def">Capital Expenditures. Money spent on long-term assets like equipment, facilities, or capitalized software, rather than day-to-day operating costs.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">A CapEx jump means budget has already been approved for a modernization or infrastructure cycle. The money exists before you even showed up.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"You've stepped up capital investment this year. Where does systems and infrastructure sit inside that plan?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">EBITDA</span><span class="term-alt">Cash-like profit</span></div>
+        <div class="term-body">
+          <p class="def">Earnings Before Interest, Taxes, Depreciation, and Amortization. A rough proxy for the cash the core business generates, stripped of accounting and financing noise.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Private equity owned and highly leveraged companies live and die by this number. If your buyer's owner is a PE firm, this is likely the number that matters most to them.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"How does a purchase like this need to be framed for your board, on the P&amp;L or against EBITDA?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Free Cash Flow</span><span class="term-alt">FCF</span></div>
+        <div class="term-body">
+          <p class="def">Cash generated by the business after operating costs and CapEx. The money actually left over to reinvest, pay down debt, or return to shareholders.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Companies tightening free cash flow are usually slowing new spend across the board, even if revenue still looks healthy on paper.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"Given where cash flow priorities sit right now, is this the kind of investment that competes for capital, or sits outside that conversation?"</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="category">
+    <div class="cat-head"><span class="cat-num">02</span><h2>The Filings</h2></div>
+    <p class="cat-note">Where these numbers actually live, and where management explains them in their own words.</p>
+    <div class="term-list">
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">10-K</span><span class="term-alt">Annual filing</span></div>
+        <div class="term-body">
+          <p class="def">The full annual report a public company files with the SEC. The most complete picture available of the business, audited and legally reviewed.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Free, public, and released every year. Fifteen minutes with the 10-K before a big call tells you more than most discovery questions will.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"I saw in your 10-K that segment X grew faster than the rest of the business. Is that where the priority is right now?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">10-Q</span><span class="term-alt">Quarterly filing</span></div>
+        <div class="term-body">
+          <p class="def">The shorter, unaudited version of the 10-K, filed three times a year between annual reports.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">The freshest official picture you can get between annual reports. Useful right before a deal review with a public company customer.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"Your last quarterly filing called out cost discipline. Does that reach initiatives like this one?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">MD&amp;A</span><span class="term-alt">Management's own words</span></div>
+        <div class="term-body">
+          <p class="def">Management's Discussion and Analysis. The section of the 10-K or 10-Q where leadership explains, in plain language, why the numbers moved the way they did.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">This is the closest thing to hearing the CFO talk before you're actually in the room. It's the language they're likely to reuse out loud.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"Your MD&amp;A mentioned reinvestment in the platform. How does that connect to what we're discussing?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Risk Factors</span><span class="term-alt">What keeps them up</span></div>
+        <div class="term-body">
+          <p class="def">A section of the 10-K listing the things that could hurt the business. Mostly boilerplate and legal caution, but new entries each year are meaningful.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">A newly added risk factor is one of the only places a company admits a genuine, current concern in writing.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"You added a new risk factor around talent retention this year. Is that shaping how you're thinking about this?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Segment Reporting</span><span class="term-alt">Business by division</span></div>
+        <div class="term-body">
+          <p class="def">Revenue and profit broken out by business line or division, instead of one blended company-wide number.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Shows you which part of the business is carrying the rest, and which part is under the most pressure to improve, which is usually where budget gets prioritized.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"Your enterprise segment is outgrowing the rest of the business. Is that where you'd want us focused first?"</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="category">
+    <div class="cat-head"><span class="cat-num">03</span><h2>Earnings Call Language</h2></div>
+    <p class="cat-note">The words management chooses out loud, once a quarter, in front of analysts who are paid to catch every hedge.</p>
+    <div class="term-list">
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Guidance</span><span class="term-alt">Their own forecast</span></div>
+        <div class="term-body">
+          <p class="def">A company's own public forecast for future revenue or earnings. Raised, lowered, or reiterated each quarter.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Lowered guidance means belts tighten across the org almost immediately. Raised guidance often means new budget frees up.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"With guidance raised last quarter, is there room to move faster on this than we originally planned?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Beat / Miss</span><span class="term-alt">Vs. expectations</span></div>
+        <div class="term-body">
+          <p class="def">Whether actual results came in above ("beat") or below ("miss") what Wall Street analysts expected, not against the company's own internal goals.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">A miss, even a small one, can trigger a cost review the same week. Timing matters. Read the room before pushing a big ask right after a miss.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">Rarely said directly. Mostly informs when you push, not what you say.</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Consensus</span><span class="term-alt">Street expectations</span></div>
+        <div class="term-body">
+          <p class="def">The average forecast across all the analysts who cover the stock. The bar a company is measured against each quarter.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Tells you what the market expects before the company even reports, which helps you predict whether the next call is likely to be tense or relaxed.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">Background knowledge more than a talk track. Useful for timing sensitive conversations.</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Headwind / Tailwind</span><span class="term-alt">Working against / for</span></div>
+        <div class="term-body">
+          <p class="def">A factor hurting results (headwind) or helping them (tailwind), usually something outside management's direct control, like currency, weather, or a slow industry.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Tells you whether a soft number reflects a real problem or an external factor. Don't mistake a headwind for a red flag in the deal.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"You called out FX as a headwind last quarter. On a constant currency basis, how does the underlying business actually look?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">FX / Constant Currency</span><span class="term-alt">Currency effect</span></div>
+        <div class="term-body">
+          <p class="def">FX means foreign exchange, the effect of currency swings on reported results. "Constant currency" strips that effect out, showing growth as if exchange rates hadn't moved.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">A company can look like it's slowing down when really the dollar just got stronger. Don't read an FX headwind as a business problem.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"Stripping out FX, growth actually looks strong. Is international expansion still a priority given the currency noise?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">YoY / QoQ</span><span class="term-alt">Comparison basis</span></div>
+        <div class="term-body">
+          <p class="def">Year-over-year compares this period to the same period last year. Quarter-over-quarter compares this period to the one right before it.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Always check which one you're looking at. A business can look great YoY and be quietly decelerating QoQ, or the reverse.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">Mostly a self-check before you speak. Make sure the comparison you're citing is the one that actually supports your point.</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <span>Sales Resources · Financial Fluency Series · Companion to Reading the Room</span>
+    <span class="mono">v1</span>
+  </footer>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Metrics That Matter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1c2330;
+    --paper: #f6f3ea;
+    --paper-2: #ffffff;
+    --line: #ddd6c4;
+    --muted: #665f4d;
+    --accent: #a9791f;
+    --accent-ink: #4a3a12;
+    --why-bg: #ebe3f5;
+    --why-ink: #6b4fa0;
+    --use-bg: #e2ecdf;
+    --use-ink: #3d6b4f;
+    color-scheme: light dark;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #eae6da;
+      --paper: #14171e;
+      --paper-2: #1b1f28;
+      --line: #343a46;
+      --muted: #a8a290;
+      --accent: #d9b455;
+      --accent-ink: #f1dfa8;
+      --why-bg: #271f35;
+      --why-ink: #b7a0e0;
+      --use-bg: #1c2b21;
+      --use-ink: #8fc79f;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ink: #eae6da;
+    --paper: #14171e;
+    --paper-2: #1b1f28;
+    --line: #343a46;
+    --muted: #a8a290;
+    --accent: #d9b455;
+    --accent-ink: #f1dfa8;
+    --why-bg: #271f35;
+    --why-ink: #b7a0e0;
+    --use-bg: #1c2b21;
+    --use-ink: #8fc79f;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+    line-height: 1.5;
+    padding-inline: 16px;
+  }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+
+  .wrap { max-width: 880px; margin: 0 auto; padding-block: 48px 80px; }
+
+  h1, h2, h3 { font-family: "Source Serif 4", Georgia, serif; font-weight: 700; text-wrap: balance; margin: 0; }
+  .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; font-variant-numeric: tabular-nums; }
+
+  header.masthead { border-bottom: 2px solid var(--ink); padding-bottom: 28px; margin-bottom: 32px; }
+  .eyebrow {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 10px;
+  }
+  h1.title { font-size: clamp(2rem, 5vw, 3rem); line-height: 1.05; margin-bottom: 14px; }
+  .deck { max-width: 62ch; font-size: 1.05rem; color: var(--muted); }
+
+  .how-to-read {
+    margin-top: 22px;
+    padding: 14px 18px;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    font-size: 0.88rem;
+    color: var(--muted);
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+  }
+  .how-to-read .key { display: flex; align-items: center; gap: 8px; }
+  .key-swatch { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+  .key-swatch.why { background: var(--why-ink); }
+  .key-swatch.use { background: var(--use-ink); }
+
+  /* Vertical jump nav */
+  nav.jump {
+    margin-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  nav.jump a {
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 11.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    text-decoration: none;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 6px 12px;
+  }
+  nav.jump a:hover { border-color: var(--accent); color: var(--accent-ink); }
+
+  section.vertical { margin-top: 52px; scroll-margin-top: 16px; }
+  .cat-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 4px; border-bottom: 1px solid var(--line); padding-bottom: 10px; }
+  .cat-num { font-family: "IBM Plex Mono", monospace; font-size: 13px; color: var(--accent); font-weight: 600; }
+  .cat-head h2 { font-size: 1.4rem; }
+  .cat-note { margin: 10px 0 22px; color: var(--muted); font-size: 0.92rem; max-width: 65ch; }
+
+  .term-list { display: flex; flex-direction: column; gap: 16px; }
+  .term {
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 18px 20px;
+    display: grid;
+    grid-template-columns: 190px 1fr;
+    gap: 4px 20px;
+  }
+  @media (max-width: 640px) {
+    .term { grid-template-columns: 1fr; }
+  }
+  .term-name-wrap { display: flex; flex-direction: column; gap: 4px; }
+  .term-name { font-family: "Source Serif 4", serif; font-weight: 700; font-size: 1.05rem; color: var(--accent-ink); }
+  .term-alt { font-family: "IBM Plex Mono", monospace; font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; }
+  .term-body { display: flex; flex-direction: column; gap: 10px; }
+  .def { font-size: 0.94rem; }
+  .row-label {
+    display: inline-block;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    font-weight: 600;
+    padding: 1px 7px;
+    border-radius: 4px;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .row-label.why { background: var(--why-bg); color: var(--why-ink); }
+  .row-label.use { background: var(--use-bg); color: var(--use-ink); }
+  .row-text { font-size: 0.9rem; color: var(--muted); }
+  .row-text.quote { font-family: "Source Serif 4", serif; font-style: italic; color: var(--ink); }
+  .row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 0; }
+
+  footer {
+    margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--line);
+    font-size: 0.82rem; color: var(--muted);
+    display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">Vertical Reference · Enterprise AE Sales Resources</div>
+    <h1 class="title">Metrics That Matter</h1>
+    <p class="deck">The numbers a buyer actually watches shift by industry. A grocery buyer worries about shrink. An apparel buyer worries about markdowns. Know which one you're across the table from, and speak to the metric they already report on, not a generic one.</p>
+    <div class="how-to-read">
+      <span class="key"><span class="key-swatch why"></span>Why it matters to you</span>
+      <span class="key"><span class="key-swatch use"></span>What to say in the room</span>
+    </div>
+    <nav class="jump">
+      <a href="#fmcg">FMCG</a>
+      <a href="#cpg">CPG</a>
+      <a href="#grocery">Grocery / F&amp;B</a>
+      <a href="#electronics">Electronics</a>
+      <a href="#apparel">Apparel</a>
+      <a href="#hardgoods">Hardgoods</a>
+      <a href="#softgoods">Softgoods</a>
+    </nav>
+  </header>
+
+  <section class="vertical" id="fmcg">
+    <div class="cat-head"><span class="cat-num">01</span><h2>FMCG</h2></div>
+    <p class="cat-note">Fast-Moving Consumer Goods. High volume, thin margin, and won or lost on speed and availability.</p>
+    <div class="term-list">
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Inventory Turns</span><span class="term-alt">Turnover</span></div>
+        <div class="term-body">
+          <p class="def">How many times inventory is sold and replaced over a period. High turns mean efficient movement, low turns mean overstock or slow sellers.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Merchandising teams are judged directly on this number. Anything that slows replenishment or accuracy gets cut fast.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"If turns are the metric your merchandising team is judged on, how does faster, more accurate product data show up in that number?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Trade Spend</span><span class="term-alt">Trade promotion</span></div>
+        <div class="term-body">
+          <p class="def">Money paid to retailers for promotions, slotting, and shelf placement. Often 15 to 20 percent or more of gross revenue.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Usually the single biggest cost line finance is trying to control. A tool that improves promotion accuracy speaks directly to it.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"How much of trade spend is currently lost to deduction disputes or promotion execution errors?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Fill Rate</span><span class="term-alt">Order accuracy</span></div>
+        <div class="term-body">
+          <p class="def">The percentage of an order delivered on time and in full.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Retailers penalize poor fill rates with chargebacks and reduced allocation. Forecasting and data accuracy drive this number directly.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"Where does fill rate sit today, and what's costing you more, the chargebacks or the lost shelf space?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">On-Shelf Availability</span><span class="term-alt">OSA</span></div>
+        <div class="term-body">
+          <p class="def">The percentage of time a product is actually available for purchase when a shopper looks for it.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Every point of OSA lost walks straight to a competitor's product. Vendor scorecards increasingly tie back to it.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"If OSA is part of your vendor scorecard, this is exactly the kind of gap that shows up there."</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="vertical" id="cpg">
+    <div class="cat-head"><span class="cat-num">02</span><h2>CPG</h2></div>
+    <p class="cat-note">Consumer Packaged Goods. Brand-led, retailer-dependent, and won on data accuracy and shelf presence as much as product quality.</p>
+    <div class="term-list">
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">GDSN Sync Rate</span><span class="term-alt">Data accuracy</span></div>
+        <div class="term-body">
+          <p class="def">The percentage of product data, dimensions, attributes, and images, successfully synchronized across the Global Data Synchronization Network to retailer systems.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Poor sync rates cause chargebacks, delayed listings, and failed e-commerce launches. It's often an invisible cost until someone measures it.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"What's your current sync rate, and how much of your chargeback total traces back to data errors?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Chargebacks</span><span class="term-alt">Deductions</span></div>
+        <div class="term-body">
+          <p class="def">Fees retailers deduct from payment for compliance failures, like bad data, mislabeled cases, or late shipments.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">This is real cash leaving the business every week. A CFO can usually quote this number from memory.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"If we cut chargebacks tied to product data errors, what's that worth annually?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Share of Shelf</span><span class="term-alt">Category presence</span></div>
+        <div class="term-body">
+          <p class="def">The percentage of physical or digital shelf space a brand occupies relative to competitors in its category.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Category managers are evaluated on this directly, and it's the clearest proxy for negotiating leverage with retailers.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"Where do you sit on share of shelf today, and is that trending up or down?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Speed to Shelf</span><span class="term-alt">Time to market</span></div>
+        <div class="term-body">
+          <p class="def">How long it takes a new product to go from creation to being live and purchasable at retail.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Every week of delay is a week of lost sales and a week a competitor can move first. Executives track launch velocity closely.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"How many weeks does it take today to get a new SKU live across your top retailers?"</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="vertical" id="grocery">
+    <div class="cat-head"><span class="cat-num">03</span><h2>Grocery / Food &amp; Beverage</h2></div>
+    <p class="cat-note">Thin margins, perishability, and a constant balancing act between overstock and stockout.</p>
+    <div class="term-list">
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Shrink</span><span class="term-alt">Inventory loss</span></div>
+        <div class="term-body">
+          <p class="def">Inventory lost to spoilage, theft, damage, or error, measured as a percentage of sales.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Shrink eats directly into already-thin grocery margins. Anything touching freshness, forecasting, or inventory accuracy speaks to it.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"How much of shrink is tied to expiration versus damage or theft?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Days of Supply</span><span class="term-alt">Inventory coverage</span></div>
+        <div class="term-body">
+          <p class="def">How many days current inventory will last at the current sales rate, especially critical for perishables.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Too much on perishables means write-offs. Too little means stockouts. This is the balance every grocery buyer manages daily.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"Where's the sweet spot for days of supply on your top-moving perishable categories?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Basket Size</span><span class="term-alt">Units per transaction</span></div>
+        <div class="term-body">
+          <p class="def">The average number of items or dollar value per customer transaction.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Growing basket size without adding new customers is one of the cheapest ways to grow revenue, which makes anything that improves discovery relevant.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"Is growing basket size a priority this year, and if so, what's driving it today?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Case Fill Rate</span><span class="term-alt">DC delivery accuracy</span></div>
+        <div class="term-body">
+          <p class="def">The percentage of ordered cases delivered complete and on time to a grocery distribution center.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Distribution centers run on tight scheduling. A poor case fill rate disrupts their whole operation and invites penalties.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"What's case fill rate costing you in penalties or lost allocation right now?"</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="vertical" id="electronics">
+    <div class="cat-head"><span class="cat-num">04</span><h2>Electronics</h2></div>
+    <p class="cat-note">Fast product cycles, steep price erosion, and a channel that can hide a slowdown for a quarter or two.</p>
+    <div class="term-list">
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Sell-Through vs. Sell-In</span><span class="term-alt">Channel health</span></div>
+        <div class="term-body">
+          <p class="def">Sell-in is what a manufacturer ships to a retailer. Sell-through is what actually sells to the end consumer.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">A gap between the two means inventory is piling up somewhere in the channel, which eventually forces markdowns.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"How closely are sell-in and sell-through tracking right now? A widening gap usually shows up as margin pressure a quarter or two later."</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Channel Inventory</span><span class="term-alt">Days of inventory</span></div>
+        <div class="term-body">
+          <p class="def">How much unsold product sits in the distribution channel, measured in days of supply.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Rising channel inventory is one of the earliest warning signs of softening demand, well before it shows up in reported revenue.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"Is channel inventory trending up? That's often the first place a slowdown becomes visible internally."</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Price Erosion</span><span class="term-alt">ASP decline</span></div>
+        <div class="term-body">
+          <p class="def">The rate at which average selling price falls over a product's lifecycle, common in fast-moving electronics categories.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Faster, more accurate go-to-market reduces the time a product sits at full price before erosion sets in.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"If speed to market compresses your price erosion window even by a few weeks, what's that worth per launch?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Warranty / Return Rate</span><span class="term-alt">Post-sale cost</span></div>
+        <div class="term-body">
+          <p class="def">The percentage of units returned or claimed under warranty.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">High return rates often trace back to inaccurate product information, not just defects, which makes this a data problem as much as a quality one.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"How much of your return rate is attributable to the product not matching what was described online?"</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="vertical" id="apparel">
+    <div class="cat-head"><span class="cat-num">05</span><h2>Apparel</h2></div>
+    <p class="cat-note">Seasonal, fashion-driven, and margin is won or lost by how much ends up on the clearance rack.</p>
+    <div class="term-list">
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Sell-Through Rate</span><span class="term-alt">Season performance</span></div>
+        <div class="term-body">
+          <p class="def">The percentage of stocked inventory actually sold within a given period, usually a season.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">A low sell-through rate is the direct trigger for markdowns, which is where margin actually gets destroyed in apparel.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"Where does sell-through sit on your last collection, and what's driving the gap to plan?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Markdown Rate</span><span class="term-alt">Margin leak</span></div>
+        <div class="term-body">
+          <p class="def">The percentage of revenue lost to price reductions on unsold inventory.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Often the single largest margin leak in an apparel business. Anything that improves forecasting or demand accuracy attacks this directly.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"If we reduced markdown rate by even a few points, how does that flow through to the bottom line?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Open-to-Buy</span><span class="term-alt">Purchase budget</span></div>
+        <div class="term-body">
+          <p class="def">The amount of inventory budget still available to purchase in a given period, based on planned versus actual sales.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Buyers live inside this number daily. A pitch that helps them plan or forecast more accurately speaks their language.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"How is open-to-buy planning handled today, and where does it break down most often?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Size Curve Accuracy</span><span class="term-alt">Assortment fit</span></div>
+        <div class="term-body">
+          <p class="def">How closely the mix of sizes ordered matches actual demand by size.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Getting the size curve wrong means stocking out of best-selling sizes while sitting on excess in others, a hidden but constant tax on revenue.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"Is size curve accuracy something your planning team tracks? It's usually a bigger number than people expect."</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="vertical" id="hardgoods">
+    <div class="cat-head"><span class="cat-num">06</span><h2>Hardgoods</h2></div>
+    <p class="cat-note">Furniture, tools, appliances, sporting equipment. Higher unit cost, slower turns, and a lot of capital tied up on the floor.</p>
+    <div class="term-list">
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Days Sales of Inventory</span><span class="term-alt">DSI</span></div>
+        <div class="term-body">
+          <p class="def">The average number of days it takes to sell through current inventory.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Hardgoods carry higher unit costs and slower turns than consumables, so working capital tied up in inventory is a constant finance concern.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"How is DSI trending, and is that tying up more working capital than you'd like?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Warranty Claim Rate</span><span class="term-alt">Post-sale cost</span></div>
+        <div class="term-body">
+          <p class="def">The percentage of sold units that generate a warranty claim.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">High claim rates hit both cost and reputation. Accurate specs and fit data upstream reduce the mismatched expectations that drive claims.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"How much of your warranty claim volume traces back to product information being unclear at the point of sale?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Freight Cost</span><span class="term-alt">% of COGS</span></div>
+        <div class="term-body">
+          <p class="def">The share of cost of goods sold consumed by shipping and handling, often significant for bulky hardgoods.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Rising freight costs squeeze margin fast in categories with a high shipping weight-to-value ratio.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"With freight running a larger share of COGS, where's the pressure to offset that coming from?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Channel Inventory Aging</span><span class="term-alt">Write-down risk</span></div>
+        <div class="term-body">
+          <p class="def">How long products have sat unsold across distributor and retail channels.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Aging inventory in hardgoods often ends in a write-down. Early visibility prevents a bigger problem later.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"Is aged channel inventory something you get visibility into today, or does it surface late?"</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="vertical" id="softgoods">
+    <div class="cat-head"><span class="cat-num">07</span><h2>Softgoods</h2></div>
+    <p class="cat-note">Home textiles, linens, and soft home goods. Seasonal like apparel, with fit and feel expectations that punish online sellers.</p>
+    <div class="term-list">
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Seasonal Obsolescence</span><span class="term-alt">End-of-season loss</span></div>
+        <div class="term-body">
+          <p class="def">The percentage of a season's inventory that goes unsold and loses most of its value once the season ends.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Softgoods are highly seasonal and fashion-influenced, so obsolescence is a direct, recurring margin hit.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"How much of last season's inventory ended up written down, and what would moving faster have been worth?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Sell-Through Rate</span><span class="term-alt">Season performance</span></div>
+        <div class="term-body">
+          <p class="def">The percentage of stocked inventory sold within the planned window.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">The metric that determines whether a season was profitable or became a clearance problem.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"What's your target sell-through by this point in the season, and where are you tracking against it?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Return Rate</span><span class="term-alt">E-commerce</span></div>
+        <div class="term-body">
+          <p class="def">The percentage of online purchases sent back, often elevated in softgoods because fit, feel, and color don't translate well online.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Returns are one of the most expensive parts of e-commerce softgoods, eating margin through both logistics and restocking losses.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"How much of your return volume comes down to the product not matching its online description or imagery?"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-name-wrap"><span class="term-name">Private Label Penetration</span><span class="term-alt">Category threat</span></div>
+        <div class="term-body">
+          <p class="def">The share of a retailer's softgoods category made up of their own private label versus branded product.</p>
+          <div class="row"><span class="row-label why">Why</span><span class="row-text">Rising private label penetration is a direct threat to branded suppliers, and it often drives urgency around differentiation and shelf presence.</span></div>
+          <div class="row"><span class="row-label use">Use it</span><span class="row-text quote">"Is private label share growing in this category? That usually raises the stakes on how well your brand's story comes through."</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <span>Sales Resources · Financial Fluency Series · Companion to Reading the Room</span>
+    <span class="mono">v1</span>
+  </footer>
+
+</div>
+</body>
+</html>
