@@ -31,18 +31,6 @@
   .howto p:last-child{margin:0}
   .howto strong{color:var(--ink)}
 
-  /* Email gate */
-  .gate{border:1px solid var(--rule);border-radius:14px;padding:28px 26px;margin:0 0 40px;background:var(--surface)}
-  .gate-eyebrow{font-family:'JetBrains Mono',monospace;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 8px}
-  .gate h2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:24px;margin:0 0 8px;letter-spacing:-.005em}
-  .gate-copy{font-size:14.5px;color:var(--ink-soft);margin:0 0 18px;max-width:60ch}
-  .gate-copy a{color:var(--accent);text-decoration:underline}
-  .gate-form{display:flex;gap:10px;flex-wrap:wrap}
-  .hp-field{position:absolute;left:-9999px}
-  .gate-form input[type=email]{flex:1 1 220px;min-width:0;background:var(--bg);border:1px solid var(--rule);
-    color:var(--ink);font-size:15px;font-family:inherit;padding:11px 14px;border-radius:9px}
-  .gate-form input[type=email]:focus{outline:2px solid var(--accent);outline-offset:-1px}
-  .gate-err{color:var(--no);font-size:13.5px;margin:10px 0 0}
 
   h2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin:44px 0 14px}
 
@@ -103,19 +91,7 @@
   <h1>The Orchestration Log</h1>
   <p class="standfirst">You have been directing people who do not report to you for years. Nobody ever called it management, including you. This is where you write it down.</p>
 
-  <div class="gate" id="toolkitGate">
-    <p class="gate-eyebrow">One email unlocks both tools</p>
-    <h2>Get access</h2>
-    <p class="gate-copy">Unlocks the Orchestration Log and the Deal Inspection Rubric, once, on this device. We'll only use this to occasionally share sales-leadership resources &mdash; see our <a href="https://app.termly.io/policy-viewer/policy.html?policyUUID=284c3efe-adea-4fd5-831d-9e0b60da569d" target="_blank" rel="noopener">Privacy Policy</a>.</p>
-    <form class="gate-form" id="gateForm">
-      <p class="hp-field"><label>Don't fill this out: <input type="text" id="hp" name="company" autocomplete="off" tabindex="-1"></label></p>
-      <input type="email" id="gateEmail" placeholder="you@company.com" required autocomplete="email">
-      <button type="submit" class="btn-primary" id="gateBtn">Unlock</button>
-    </form>
-    <p class="gate-err" id="gateErr"></p>
-  </div>
-
-  <div id="toolkitContent" hidden>
+  <div id="toolkitContent">
 
   <div class="howto">
     <p><strong>Why this exists.</strong> Internal orchestration is fifteen percent of the Enterprise AE job and thirteen percent of the manager job. It is the only skill on the IC ladder that survives the jump, and the only one you cannot prove with a quota attainment number.</p>
@@ -243,41 +219,6 @@
 })();
 </script>
 <script>
-(function(){
-  var KEY = "srene_toolkit_unlocked";
-  var unlocked = false;
-  try { unlocked = localStorage.getItem(KEY) === "1"; } catch(e){}
-  var gate = document.getElementById("toolkitGate");
-  var content = document.getElementById("toolkitContent");
-  if(unlocked){ gate.hidden = true; content.hidden = false; }
-
-  document.getElementById("gateForm").addEventListener("submit", function(ev){
-    ev.preventDefault();
-    var email = document.getElementById("gateEmail").value.trim();
-    var hp = document.getElementById("hp").value;
-    var btn = document.getElementById("gateBtn");
-    var err = document.getElementById("gateErr");
-    err.textContent = "";
-    btn.disabled = true; btn.textContent = "Please wait…";
-    fetch("https://hjumgvnuqvmxdusldeba.supabase.co/rest/v1/rpc/submit_toolkit_lead", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "apikey": "sb_publishable_gRA_qf4uQVX9BKhJHuV6hQ_oMRTypV3",
-        "Authorization": "Bearer sb_publishable_gRA_qf4uQVX9BKhJHuV6hQ_oMRTypV3"
-      },
-      body: JSON.stringify({p_email: email, p_source: "orchestration-log", p_referrer: document.referrer || null, p_honeypot: hp || null})
-    }).then(function(res){
-      if(!res.ok){ throw new Error("bad"); }
-      try { localStorage.setItem(KEY, "1"); } catch(e){}
-      gate.hidden = true; content.hidden = false;
-    }).catch(function(){
-      err.textContent = "Something went wrong — try again in a moment.";
-      btn.disabled = false; btn.textContent = "Unlock";
-    });
-  });
-})();
-
 var KEY = "orchlog:v1";
 var ROLES = ["Solutions Engineer","Security / InfoSec","Legal","Finance / Deal Desk",
              "Executive sponsor","Product","Customer Success","Partner / Channel","Support","Marketing"];
