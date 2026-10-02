@@ -344,3 +344,30 @@ body.ag .footer-brand .brand-mark{ background:#22262B; }
 /* Trades hero: follow the left-aligned text */
 body.ag .trade-tags{ justify-content:flex-start; margin-left:0; }
 body.ag .hero-top .trades-phone{ justify-content:flex-start; margin:8px 0 32px; }
+
+/* ==========================================================================
+   Phones: a stacked menu, mountains under the hero text, quieter topo lines
+   ========================================================================== */
+@media (max-width:900px){
+  body.ag .nav-links[style]{ align-items:stretch !important; gap:0 !important; padding:8px 20px 20px !important; max-height:calc(100vh - 72px); overflow-y:auto; }
+  body.ag .nav-links[style] > a, body.ag .nav-links[style] .nav-dd-trigger{ font-size:17px; padding:14px 0; border-bottom:1px solid var(--ag-line); width:100%; }
+  body.ag .nav-links[style] > a:last-child{ border-bottom:0; }
+  body.ag .nav-dd-panel{ background:transparent; border:0; box-shadow:none; padding:4px 0 10px; min-width:0; }
+  body.ag .nav-dd.open .nav-dd-panel{ transform:none; }
+  body.ag .nav-dd-item{ padding:10px 0 10px 14px; border-left:1px solid var(--ag-line); border-radius:0; }
+  body.ag .nav-dd-item:hover{ background:transparent; }
+}
+@media (max-width:760px){
+  /* Home hero: text, then the ridgeline in the flow, then the three points */
+  .ag-hero{ min-height:0; }
+  .ag-hero-inner{ order:1; padding-bottom:12px; }
+  .ag-hero .ag-ridges{ position:relative; order:2; height:200px; min-height:0; margin-top:-10px; }
+  .ag-proof{ position:relative; order:3; background:var(--ag-ink); }
+  .ag-proof-row{ gap:14px; padding-top:20px; padding-bottom:24px; }
+  /* Fainter topo lines in the hero on small screens */
+  .ag-hero-topo, body.ag .hero::before, body.ag .res-hero::before{ opacity:0.35; background-size:2400px auto; }
+  /* Only the first two sections were busy on a phone: the hero (fainter, above) and the
+     philosophy section right after it, which drops its topo on small screens. */
+  body.ag #philosophy.ag-philosophy, body.ag #philosophy{ background-image:none !important; }
+  .ag-shot.solo-phone{ background-size:2200px auto; }
+}

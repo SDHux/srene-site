@@ -548,7 +548,7 @@ footer{
 .nav-dd-item-tag.live{ background:var(--alpine-pale); color:var(--alpine); }
 @media (max-width:900px){
   .nav-dd-panel{ position:static; opacity:1; visibility:visible; transform:none; box-shadow:none; border:none; padding:4px 0 4px 14px; min-width:0; display:none; }
-  .nav-dd.open .nav-dd-panel{ display:block; }
+  .nav-dd.open .nav-dd-panel{ display:block; transform:none; } /* the desktop -50% shift pushed it off-screen */
   .nav-dd-trigger{ width:100%; justify-content:space-between; padding:6px 0; }
 }
 
