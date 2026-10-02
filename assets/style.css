@@ -616,3 +616,5 @@ footer{
 .trade-tags{ display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:0 auto 36px; max-width:640px; }
 .trade-tags .tag{ font-size:12px; padding:5px 11px; }
 .adopt-card .nl-list{ margin-top:4px; }
+.trades-phone{ position:relative; z-index:1; display:flex; justify-content:center; margin:-20px auto 40px; }
+.trades-phone img{ width:380px; max-width:86%; height:auto; }
