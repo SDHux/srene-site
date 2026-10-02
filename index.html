@@ -20,10 +20,11 @@
 <link rel="icon" href="/assets/favicon/android-chrome-192x192.png" type="image/png" sizes="192x192">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="assets/alpenglow.css">
 </head>
-<body>
+<body class="ag">
 <nav class="nav" id="nav">
   <div class="wrap nav-inner">
     <a href="index.html" class="brand" style="text-decoration:none;">
@@ -83,30 +84,54 @@
     <button class="nav-toggle" id="navToggle" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
-<header class="hero">
-  <svg class="hero-grain" width="100%" height="100%">
-    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.02 0"/></filter>
-    <rect width="100%" height="100%" filter="url(#grain)"/>
+
+<header class="ag-hero">
+  <div class="ag-hero-topo"></div>
+  <svg class="ag-ridges" viewBox="0 0 1600 380" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="agHeroShine" gradientUnits="userSpaceOnUse" x1="-700" y1="0" x2="0" y2="-120">
+        <stop offset="0" stop-color="#D65F3C" stop-opacity="0"/>
+        <stop offset="0.42" stop-color="#D65F3C" stop-opacity="0.85"/>
+        <stop offset="0.5" stop-color="#FFD7C4" stop-opacity="1"/>
+        <stop offset="0.58" stop-color="#D65F3C" stop-opacity="0.85"/>
+        <stop offset="1" stop-color="#D65F3C" stop-opacity="0"/>
+        <animateTransform attributeName="gradientTransform" type="translate" values="0 0; 2300 0; 0 0" dur="14s" repeatCount="indefinite" calcMode="spline" keyTimes="0; 0.5; 1" keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"/>
+      </linearGradient>
+      <filter id="agHeroBlur" x="-10%" y="-50%" width="120%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
+    </defs>
+    <path d="M0 380L0 87L38 77L62 83L91 73L128 76L147 32L175 43L193 69L229 90L269 91L288 105L319 63L346 112L374 134L398 139L428 156L451 163L480 165L499 138L530 162L552 170L591 218L617 223L652 202L680 193L714 231L746 232L785 250L817 248L841 211L869 232L900 205L934 224L963 220L999 195L1027 173L1045 188L1080 133L1112 159L1135 155L1176 122L1207 83L1231 88L1272 87L1301 96L1332 88L1350 75L1388 36L1423 35L1454 64L1482 82L1521 81L1544 75L1573 77L1600 73L1600 380Z" fill="#2C3035"/>
+    <path d="M0 87L38 77L62 83L91 73L128 76L147 32L175 43L193 69L229 90L269 91L288 105L319 63L346 112L374 134L398 139L428 156L451 163L480 165L499 138L530 162L552 170L591 218L617 223L652 202L680 193L714 231L746 232L785 250L817 248L841 211L869 232L900 205L934 224L963 220L999 195L1027 173L1045 188L1080 133L1112 159L1135 155L1176 122L1207 83L1231 88L1272 87L1301 96L1332 88L1350 75L1388 36L1423 35L1454 64L1482 82L1521 81L1544 75L1573 77L1600 73" fill="none" stroke="#D65F3C" stroke-opacity="0.28" stroke-width="1.4"/>
+    <path d="M0 380L0 87L38 77L62 83L91 73L128 76L147 32L175 43L193 69L229 90L269 91L288 105L319 63L346 112L374 134L398 139L428 156L451 163L480 165L499 138L530 162L552 170L591 218L617 223L652 202L680 193L714 231L746 232L785 250L817 248L841 211L869 232L900 205L934 224L963 220L999 195L1027 173L1045 188L1080 133L1112 159L1135 155L1176 122L1207 83L1231 88L1272 87L1301 96L1332 88L1350 75L1388 36L1423 35L1454 64L1482 82L1521 81L1544 75L1573 77L1600 73L1600 380Z" fill="url(#agHeroShine)" opacity="0.14"/>
+    <path d="M0 87L38 77L62 83L91 73L128 76L147 32L175 43L193 69L229 90L269 91L288 105L319 63L346 112L374 134L398 139L428 156L451 163L480 165L499 138L530 162L552 170L591 218L617 223L652 202L680 193L714 231L746 232L785 250L817 248L841 211L869 232L900 205L934 224L963 220L999 195L1027 173L1045 188L1080 133L1112 159L1135 155L1176 122L1207 83L1231 88L1272 87L1301 96L1332 88L1350 75L1388 36L1423 35L1454 64L1482 82L1521 81L1544 75L1573 77L1600 73" fill="none" stroke="url(#agHeroShine)" stroke-width="10" filter="url(#agHeroBlur)" opacity="0.55"/>
+    <path d="M0 87L38 77L62 83L91 73L128 76L147 32L175 43L193 69L229 90L269 91L288 105L319 63L346 112L374 134L398 139L428 156L451 163L480 165L499 138L530 162L552 170L591 218L617 223L652 202L680 193L714 231L746 232L785 250L817 248L841 211L869 232L900 205L934 224L963 220L999 195L1027 173L1045 188L1080 133L1112 159L1135 155L1176 122L1207 83L1231 88L1272 87L1301 96L1332 88L1350 75L1388 36L1423 35L1454 64L1482 82L1521 81L1544 75L1573 77L1600 73" fill="none" stroke="url(#agHeroShine)" stroke-width="2.2"/>
+    <path d="M0 380L0 266L20 266L42 281L70 284L107 283L130 277L155 283L176 281L216 270L253 282L276 279L309 256L347 228L367 237L402 244L424 244L444 240L483 218L508 189L540 177L578 194L606 195L634 189L660 170L679 180L712 165L743 160L769 161L791 170L814 168L839 164L875 160L906 142L927 178L950 177L983 189L1009 193L1038 201L1073 174L1114 209L1155 234L1180 235L1216 238L1257 237L1294 265L1317 273L1338 279L1379 278L1398 285L1420 256L1446 279L1467 268L1495 289L1514 289L1536 283L1558 284L1600 271L1600 380Z" fill="#24272B"/>
+    <path d="M0 266L20 266L42 281L70 284L107 283L130 277L155 283L176 281L216 270L253 282L276 279L309 256L347 228L367 237L402 244L424 244L444 240L483 218L508 189L540 177L578 194L606 195L634 189L660 170L679 180L712 165L743 160L769 161L791 170L814 168L839 164L875 160L906 142L927 178L950 177L983 189L1009 193L1038 201L1073 174L1114 209L1155 234L1180 235L1216 238L1257 237L1294 265L1317 273L1338 279L1379 278L1398 285L1420 256L1446 279L1467 268L1495 289L1514 289L1536 283L1558 284L1600 271" fill="none" stroke="#C9BCAC" stroke-opacity="0.08" stroke-width="1.2"/>
+    <path d="M0 380L0 266L27 278L66 286L96 278L116 282L149 300L176 294L205 308L226 314L247 316L287 310L324 315L360 327L385 327L420 329L440 327L463 324L501 321L540 311L559 319L589 318L617 306L638 300L659 292L698 295L716 295L747 290L767 286L808 274L835 258L855 254L877 253L918 261L950 257L971 253L1013 227L1034 231L1075 246L1108 250L1134 251L1167 243L1187 247L1225 244L1254 257L1296 269L1314 272L1340 272L1363 272L1389 284L1422 290L1459 299L1496 305L1526 301L1550 297L1600 313L1600 380Z" fill="#1D2024"/>
+    <path d="M0 380L0 334L34 324L73 329L96 329L120 328L141 327L164 325L192 316L225 325L250 324L289 324L326 326L362 320L399 327L437 329L473 336L502 338L530 339L551 334L588 334L622 346L658 353L693 355L715 356L745 357L775 354L802 362L832 364L855 365L882 365L916 353L943 355L984 363L1005 361L1043 360L1065 357L1104 344L1141 351L1180 349L1215 346L1256 337L1291 336L1324 330L1356 333L1392 331L1417 329L1451 326L1475 326L1508 320L1539 325L1568 325L1600 325L1600 380Z" fill="#16191C"/>
   </svg>
-  <canvas id="topoHero" class="hero-canvas"></canvas>
-  <div class="wrap hero-top">
-    <span class="hero-badge"><span class="dot"></span>myBivy, by SRENE &middot; now for sales teams and builders</span>
+  <div class="ag-wrap ag-hero-inner">
+    <span class="ag-eyebrow">myBivy, by SRENE &middot; Sales &middot; Builders &middot; Trades</span>
     <h1>Built to help your business reach <em>the summit.</em></h1>
-    <p class="bivy-def"><em>bivy</em> <span class="pos">noun</span> <span class="ipa">&#39;bi-v&#275;</span>: a temporary base camp where an expedition readies before the final push to the summit.</p>
-    <p class="lede">myBivy is purpose-built software, designed by veterans of the industries it serves, sized for the team you actually have instead of the one you'd need to justify buying it.</p>
-    <div class="hero-actions">
-      <a href="#product" class="btn btn-primary btn-lg">Find your product</a>
-    </div>
-    <div class="hero-proof">
-      <div class="hero-proof-item"><span class="hero-proof-accent"></span><b>Day 1</b>live, no implementation project</div>
-      <div class="hero-proof-item"><span class="hero-proof-accent"></span><b>Operator-built</b>by veterans of each industry we serve</div>
-      <div class="hero-proof-item"><span class="hero-proof-accent"></span><b>Purpose-built</b>no consultants, no seat minimums</div>
+    <p class="ag-def"><b>bivy</b> <i>noun</i> <span class="ipa">&#39;bi-v&#275;</span>: a temporary base camp where an expedition readies before the final push to the summit.</p>
+    <p class="ag-lede">myBivy is purpose-built software, designed by veterans of the industries it serves, sized for the team you actually have instead of the one you'd need to justify buying it.</p>
+    <div class="ag-actions">
+      <a href="#product" class="ag-btn ag-btn-primary">Find your product</a>
+      <a href="#" class="ag-btn ag-btn-ghost" onclick="openContactModal();return false;">Talk to us &rarr;</a>
     </div>
   </div>
-  <div class="integrations-strip">
-    <div class="wrap integrations-strip-row">
-      <span class="int-label">WORKS WITH</span>
-      <div class="int-icons">
+  <div class="ag-proof">
+    <div class="ag-wrap ag-proof-row">
+      <div><b>Day 1</b>Live, no implementation project</div>
+      <div><b>Operator-built</b>By veterans of each industry we serve</div>
+      <div><b>Purpose-built</b>No consultants, no seat minimums</div>
+    </div>
+  </div>
+</header>
+
+<div class="ag-strip">
+  <div class="ag-wrap">
+    <span class="ag-label">Works with</span>
+    <div class="int-icons">
         <span class="int-icon">
           <svg viewBox="0 0 24 24"><path fill="#4285F4" d="M22.5 12.23c0-.82-.07-1.6-.2-2.36H12v4.47h5.9a5.05 5.05 0 0 1-2.19 3.31v2.75h3.54c2.08-1.92 3.25-4.74 3.25-8.17z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.55-2.75c-.98.66-2.24 1.05-3.73 1.05-2.87 0-5.3-1.94-6.17-4.54H2.18v2.84A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.83 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1a11 11 0 0 0-9.82 6.06l3.65 2.84C6.7 7.32 9.13 5.38 12 5.38z"/></svg>
           Google Workspace
@@ -120,291 +145,226 @@
           Zoom
         </span>
       </div>
+  </div>
+</div>
+
+<section class="ag-section ag-philosophy" id="philosophy">
+  <div class="ag-wrap">
+    <span class="ag-eyebrow">Our philosophy</span>
+    <h2 class="ag-h2" style="margin:16px 0 18px;">Manage relationships.<br>Not transactions.</h2>
+    <p class="ag-lede">We believe business thrives on lasting partnerships, built through a thoughtful, personalized and transparent process. Successful companies of every size know the winning formula:</p>
+    <div class="ag-route reveal" role="img" aria-label="Transparency, then Trust, then Relationships, then Currency">
+        <svg viewBox="0 0 100 150" preserveAspectRatio="none" aria-hidden="true"><polyline points="6,118 35,88 64,58 93,26" fill="none" stroke="#D6D1C8" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+        <div class="ag-route-stop done" style="left:6%; top:107px;"><span class="ag-route-dot"></span><span>Transparency</span></div><div class="ag-route-stop done" style="left:35%; top:77px;"><span class="ag-route-dot"></span><span>Trust</span></div><div class="ag-route-stop done" style="left:64%; top:47px;"><span class="ag-route-dot"></span><span>Relationships</span></div><div class="ag-route-stop summit" style="left:93%; top:15px;"><svg width="18" height="22" viewBox="0 0 18 22" style="position:absolute; left:50%; top:-26px;" aria-hidden="true"><path d="M1 21V1l14 5-14 5" fill="#D65F3C"/></svg><span class="ag-route-dot"></span><span>Currency</span></div>
+      </div>
+  </div>
+</section>
+
+<section class="ag-section" id="problem">
+  <div class="ag-wrap">
+    <span class="ag-eyebrow">The problem</span>
+    <h2 class="ag-h2" style="margin:16px 0 18px; max-width:1000px;">Enterprise platforms are built for enterprises. Everyone else gets the leftovers.</h2>
+    <p class="ag-lede">The big platforms assume an ops team, an admin, a months-long implementation and a budget to match. Small businesses get priced out, or buy in and never finish setting up.</p>
+    <div class="ag-problem-grid reveal">
+      <div class="ag-problem"><span class="n">01</span><h3>Priced for a company ten times your size</h3><p>Seat minimums, annual contracts and paid onboarding, all before you see any value from the tool.</p></div>
+      <div class="ag-problem"><span class="n">02</span><h3>Built to be configured, complexity at a cost</h3><p>Implementation times may vary, but configuration always comes at a cost of both time and money, slowing time to value and stalling adoption.</p></div>
+      <div class="ag-problem"><span class="n">03</span><h3>Designed with money in mind</h3><p>Large software companies operating a land-and-expand model guarantee added expense year over year for you as an enterprise customer.</p></div>
+      <div class="ag-problem"><span class="n">04</span><h3>Your customer feels the gaps</h3><p>Updates scattered across inboxes, texts and spreadsheets. The experience depends on whoever remembers.</p></div>
     </div>
   </div>
-</header>
+</section>
 
-<section id="philosophy">
-  <canvas id="topoPhilosophy" class="section-canvas"></canvas>
-  <div class="wrap">
-    <div class="philosophy reveal">
-      <span class="eyebrow">Our philosophy</span>
-      <h2>Manage relationships. Not transactions.</h2>
-      <p class="lede">We believe business thrives on lasting partnerships, built through a thoughtful, personalized and transparent process. Successful companies of every size know the winning formula:</p>
-      <div class="chain">
-        <span class="chain-step c1">Transparency</span>
-        <span class="chain-arrow">&rarr;</span>
-        <span class="chain-step c2">Trust</span>
-        <span class="chain-arrow">&rarr;</span>
-        <span class="chain-step c3">Relationships</span>
-        <span class="chain-arrow">&rarr;</span>
-        <span class="chain-step c4">Currency</span>
+<section class="ag-section ag-statement" id="product">
+  <div class="ag-wrap">
+    <span class="ag-eyebrow">What myBivy actually is</span>
+    <h2 class="reveal"><span class="quiet">Your system of record tracks what happened.</span>myBivy is where the work happens.</h2>
+    <div class="ag-statement-foot reveal">
+      <p><strong>One platform, built by vertical, by people who've done the job.</strong></p>
+      <p>Each myBivy product is designed with veterans of its industry, so the workflow fits on day one instead of needing months of configuration.</p>
+    </div>
+  </div>
+</section>
+
+<section class="ag-section" id="products" style="padding-top:90px;">
+  <div class="ag-wrap">
+    <div class="ag-products-head">
+      <div>
+        <span class="ag-eyebrow">Choose your route</span>
+        <h2 class="ag-h2" style="margin-top:16px;">One base camp.<br>Three routes up.</h2>
+      </div>
+    </div>
+    <div class="ag-row reveal">
+      <div class="ag-row-text">
+        <span class="ag-label">01 · Available now</span>
+        <h3>myBivy for Sales</h3>
+        <p>Buyer-facing deal rooms and mutual close plans for sales reps and teams.</p>
+        <ul><li>Deal rooms built from your call notes</li><li>Shared next steps with named owners and dates</li><li>Engagement signals before a deal goes cold</li></ul>
+        <div class="ag-actions" style="margin-top:6px;">
+          <a class="ag-btn ag-btn-primary" href="mybivy-for-sales.html">Explore myBivy for Sales</a>
+          <a class="ag-tour" href="mybivy-for-sales.html"><i>▶</i>Watch the tour</a>
+        </div>
+      </div>
+      <figure class="ag-shot">
+        <img class="desk" src="assets/images/alpenglow/sales-dealroom.jpg" width="1800" height="1125" loading="lazy" alt="A myBivy for Sales deal room: the deal's stages drawn as a route climbing to a summit flag, with the mutual action plan below">
+        <figcaption>Desktop · the deal, climbing to close</figcaption>
+      </figure>
+    </div>
+    <div class="ag-row flip reveal">
+      <div class="ag-row-text">
+        <span class="ag-label">02 · Early access</span>
+        <h3>myBivy for Builders</h3>
+        <p>Projects, daily reports, crews and trades for small private builders and GCs.</p>
+        <ul><li>Daily reports, documents and site photos in one place</li><li>Crew announcements and access codes, no email needed</li><li>Every trade on every job, one tap to reach them</li></ul>
+        <div class="ag-actions" style="margin-top:6px;">
+          <a class="ag-btn ag-btn-primary" href="mybivy-for-builders.html">Explore myBivy for Builders</a>
+          <a class="ag-tour" href="mybivy-for-builders.html"><i>▶</i>Watch the tour</a>
+        </div>
+      </div>
+      <figure class="ag-shot combo">
+        <img class="desk" src="assets/images/alpenglow/builders-dashboard.jpg" width="1518" height="1080" loading="lazy" alt="The myBivy for Builders dashboard: active projects, red flags and job site weather">
+        <img class="phone" src="assets/images/alpenglow/builders-phone.png" width="1040" height="1960" loading="lazy" alt="The myBivy for Builders home screen on a phone">
+        <figcaption>Office on desktop · crew on the phone</figcaption>
+      </figure>
+    </div>
+    <div class="ag-row reveal">
+      <div class="ag-row-text">
+        <span class="ag-label">03 · Free</span>
+        <h3>myBivy for Trades</h3>
+        <p>The free app for trade contractors: checklists, extra work signed on site, daily logs.</p>
+        <ul><li>Pass the first inspection with trade checklists</li><li>Extra work tickets signed on your phone</li><li>Clean PDFs to the GC in one tap</li></ul>
+        <div class="ag-actions" style="margin-top:6px;">
+          <a class="ag-btn ag-btn-primary" href="mybivy-for-trades.html">Explore myBivy for Trades</a>
+          
+        </div>
+      </div>
+      <figure class="ag-shot solo-phone">
+        <img src="assets/images/alpenglow/trades-phone.png" width="1040" height="1960" loading="lazy" alt="The myBivy for Trades home screen on a phone">
+        <figcaption>Phone-first · built for the crew</figcaption>
+      </figure>
+    </div>
+    <div class="ag-more reveal">
+      <div><h4>More verticals on the way</h4><p>Run a business in an industry enterprise software ignores? Tell us what it needs.</p></div>
+      <a class="ag-btn ag-btn-outline" href="mailto:patrick@srene.io?subject=A%20vertical%20myBivy%20should%20build">Suggest a vertical &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section class="ag-section ag-five" id="how">
+  <div class="ag-wrap">
+    <span class="ag-eyebrow">Five things, done well</span>
+    <h2 class="ag-h2" style="margin-top:16px;">Everything the business needs, nothing it doesn't.</h2>
+    <div class="ag-five-list reveal">
+      <div class="ag-five-item"><span class="n">01</span><h3>Live on day one</h3><p>No implementation project, no consultants, no seat minimums. Sign up, invite your team, and the first workspace is ready.</p></div>
+      <div class="ag-five-item"><span class="n">02</span><h3>One shared space with your customer</h3><p>Your customer sees the same current picture you do: progress, next steps and documents. Fewer "just checking in" calls.</p></div>
+      <div class="ag-five-item"><span class="n">03</span><h3>Designed by people who've done the job</h3><p>Every vertical is built with veterans of that industry, so the workflow already fits instead of needing to be configured.</p></div>
+      <div class="ag-five-item"><span class="n">04</span><h3>Simple roles for small teams</h3><p>Owners, managers and team members, with access codes for the people who don't live in their inbox.</p></div>
+      <div class="ag-five-item"><span class="n">05</span><h3>AI that handles the busywork</h3><p>Summaries, updates and first drafts generated from the work you're already doing.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="ag-section" id="pricing">
+  <div class="ag-wrap">
+    <span class="ag-eyebrow">Pricing</span>
+    <h2 class="ag-h2" style="margin:16px 0 18px;">Straightforward pricing. No negotiation required.</h2>
+    <p class="ag-lede">Priced for the size of business you actually are. Pick your product.</p>
+    <div class="ag-pricing-grid reveal">
+      <div class="ag-price">
+        <span class="tag">AVAILABLE NOW</span>
+        <h3>myBivy for Sales</h3>
+        <div class="tier">Solo</div>
+        <p class="desc">Run every deal with structure, from first call to close.</p>
+        <div class="amt">$48<small> / month</small></div>
+        <a class="ag-btn ag-btn-primary" href="https://mybivy.com">Start free trial</a>
+        <ul><li>AI workspace builder, 5 active deal rooms</li><li>Stakeholder intelligence and mapping</li><li>Mutual action plans</li><li>Engagement tracking and risk alerts</li></ul>
+      </div>
+      <div class="ag-price featured">
+        <span class="tag">FOR GROWING TEAMS</span>
+        <h3>myBivy for Sales</h3>
+        <div class="tier">Team</div>
+        <p class="desc">Unlimited reps, shared visibility across your whole pipeline, and admin controls built for a sales org, not just one rep.</p>
+        <div class="amt">&nbsp;</div>
+        <a class="ag-btn ag-btn-outline" href="mybivy-for-sales.html#pricing">Talk to a person</a>
+        <ul><li>Everything in Solo, with 10 active deal rooms per rep</li><li>Roles, permissions &amp; admin console</li><li>Team-wide pipeline visibility</li><li>Priority support</li></ul>
+      </div>
+      <div class="ag-price featured">
+        <span class="tag">EARLY ACCESS</span>
+        <h3>myBivy for Builders</h3>
+        <div class="tier">Project Pro</div>
+        <p class="desc">Everything a small builder needs to run the job and keep every trade on schedule.</p>
+        <div class="amt">$89<small> / month</small></div>
+        <a class="ag-btn ag-btn-primary" href="mailto:info@srene.io?subject=myBivy%20for%20Builders%20early%20access">Join early access</a>
+        <ul><li>Projects, milestones and daily reports</li><li>Documents, plans and photo markup</li><li>Crew announcements and access codes</li><li>Trades on every job, one tap to call or text</li></ul>
+      </div>
+      <div class="ag-price">
+        <span class="tag">EARLY ACCESS</span>
+        <h3>myBivy for Builders</h3>
+        <div class="tier">Developer</div>
+        <p class="desc">For builders running multiple active jobs who need the full crew and timesheet picture.</p>
+        <div class="amt">&nbsp;</div>
+        <a class="ag-btn ag-btn-outline" href="mailto:info@srene.io?subject=myBivy%20for%20Builders%20Developer%20tier">Talk to a person</a>
+        <ul><li>Projects, milestones and daily reports</li><li>Multiple jobs at a time</li><li>Time sheets</li></ul>
       </div>
     </div>
   </div>
 </section>
 
-<section id="problem">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">The problem</span>
-      <h2>Enterprise platforms are built for enterprises. Everyone else gets the leftovers.</h2>
-      <p>The big platforms assume an ops team, an admin, a months-long implementation and a budget to match. Small businesses get priced out, or buy in and never finish setting up.</p>
+<section class="ag-section ag-anchors" id="company">
+  <div class="ag-wrap ag-anchors-grid">
+    <div style="display:flex; flex-direction:column; gap:20px; align-self:start;">
+      <span class="ag-eyebrow">Where the name comes from</span>
+      <h2 class="ag-h2">Solid. Reinforced. Equalized. No Extension.</h2>
+      <p class="ag-lede">Climbers use this checklist to judge whether an anchor is actually safe to trust with a life. We build every myBivy product against the same four principles, just applied to a business instead of a rope.</p>
     </div>
-    <div class="problem-grid reveal">
-      <div class="problem-card">
-        <div class="problem-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
-        <h3>Priced for a company ten times your size</h3>
-        <p>Seat minimums, annual contracts and paid onboarding, all before you see any value from the tool.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h10M4 18h16"/></svg></div>
-        <h3>Built to be configured, complexity at a cost</h3>
-        <p>Implementation times may vary, but configuration always comes at a cost of both time and money, slowing time to value and stalling adoption.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6M9 13h6M9 17h3"/></svg></div>
-        <h3>Designed with money in mind</h3>
-        <p>Large software companies operating a land-and-expand model guarantee added expense year over year for you as an enterprise customer.</p>
-      </div>
-      <div class="problem-card">
-        <div class="problem-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-4 3.2-6.5 7-6.5s7 2.5 7 6.5"/></svg></div>
-        <h3>Your customer feels the gaps</h3>
-        <p>Updates scattered across inboxes, texts and spreadsheets. The experience depends on whoever remembers.</p>
-      </div>
+    <ol class="ag-pitches reveal">
+      <li><span class="lbl">PITCH 1 · S</span><h3>Solid</h3><p>A foundation that actually holds. Real persistence, real security, nothing built on a hope that the data's still there tomorrow.</p></li>
+      <li><span class="lbl">PITCH 2 · R</span><h3>Reinforced</h3><p>Nothing depends on one person remembering. If someone is out, the work still tells the whole story on its own.</p></li>
+      <li><span class="lbl">PITCH 3 · E</span><h3>Equalized</h3><p>You and your customer see the same shared picture. No one is quietly carrying more weight than they should.</p></li>
+      <li><span class="lbl">PITCH 4 · NE</span><h3>No Extension</h3><p>Nothing moves further than it's actually ready to. No shock-loading a customer who isn't there yet.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="ag-final">
+  <svg class="ag-ridges" viewBox="0 0 1600 380" preserveAspectRatio="xMidYMax slice" aria-hidden="true" focusable="false">
+    <defs>
+      <linearGradient id="agFinalShine" gradientUnits="userSpaceOnUse" x1="-700" y1="0" x2="0" y2="-120">
+        <stop offset="0" stop-color="#D65F3C" stop-opacity="0"/>
+        <stop offset="0.42" stop-color="#D65F3C" stop-opacity="0.85"/>
+        <stop offset="0.5" stop-color="#FFD7C4" stop-opacity="1"/>
+        <stop offset="0.58" stop-color="#D65F3C" stop-opacity="0.85"/>
+        <stop offset="1" stop-color="#D65F3C" stop-opacity="0"/>
+        <animateTransform attributeName="gradientTransform" type="translate" values="0 0; 2300 0; 0 0" dur="14s" repeatCount="indefinite" calcMode="spline" keyTimes="0; 0.5; 1" keySplines="0.45 0 0.55 1; 0.45 0 0.55 1"/>
+      </linearGradient>
+      <filter id="agFinalBlur" x="-10%" y="-50%" width="120%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
+    </defs>
+    <path d="M0 380L0 87L38 77L62 83L91 73L128 76L147 32L175 43L193 69L229 90L269 91L288 105L319 63L346 112L374 134L398 139L428 156L451 163L480 165L499 138L530 162L552 170L591 218L617 223L652 202L680 193L714 231L746 232L785 250L817 248L841 211L869 232L900 205L934 224L963 220L999 195L1027 173L1045 188L1080 133L1112 159L1135 155L1176 122L1207 83L1231 88L1272 87L1301 96L1332 88L1350 75L1388 36L1423 35L1454 64L1482 82L1521 81L1544 75L1573 77L1600 73L1600 380Z" fill="#2C3035"/>
+    <path d="M0 87L38 77L62 83L91 73L128 76L147 32L175 43L193 69L229 90L269 91L288 105L319 63L346 112L374 134L398 139L428 156L451 163L480 165L499 138L530 162L552 170L591 218L617 223L652 202L680 193L714 231L746 232L785 250L817 248L841 211L869 232L900 205L934 224L963 220L999 195L1027 173L1045 188L1080 133L1112 159L1135 155L1176 122L1207 83L1231 88L1272 87L1301 96L1332 88L1350 75L1388 36L1423 35L1454 64L1482 82L1521 81L1544 75L1573 77L1600 73" fill="none" stroke="#D65F3C" stroke-opacity="0.28" stroke-width="1.4"/>
+    <path d="M0 380L0 87L38 77L62 83L91 73L128 76L147 32L175 43L193 69L229 90L269 91L288 105L319 63L346 112L374 134L398 139L428 156L451 163L480 165L499 138L530 162L552 170L591 218L617 223L652 202L680 193L714 231L746 232L785 250L817 248L841 211L869 232L900 205L934 224L963 220L999 195L1027 173L1045 188L1080 133L1112 159L1135 155L1176 122L1207 83L1231 88L1272 87L1301 96L1332 88L1350 75L1388 36L1423 35L1454 64L1482 82L1521 81L1544 75L1573 77L1600 73L1600 380Z" fill="url(#agFinalShine)" opacity="0.14"/>
+    <path d="M0 87L38 77L62 83L91 73L128 76L147 32L175 43L193 69L229 90L269 91L288 105L319 63L346 112L374 134L398 139L428 156L451 163L480 165L499 138L530 162L552 170L591 218L617 223L652 202L680 193L714 231L746 232L785 250L817 248L841 211L869 232L900 205L934 224L963 220L999 195L1027 173L1045 188L1080 133L1112 159L1135 155L1176 122L1207 83L1231 88L1272 87L1301 96L1332 88L1350 75L1388 36L1423 35L1454 64L1482 82L1521 81L1544 75L1573 77L1600 73" fill="none" stroke="url(#agFinalShine)" stroke-width="10" filter="url(#agFinalBlur)" opacity="0.55"/>
+    <path d="M0 87L38 77L62 83L91 73L128 76L147 32L175 43L193 69L229 90L269 91L288 105L319 63L346 112L374 134L398 139L428 156L451 163L480 165L499 138L530 162L552 170L591 218L617 223L652 202L680 193L714 231L746 232L785 250L817 248L841 211L869 232L900 205L934 224L963 220L999 195L1027 173L1045 188L1080 133L1112 159L1135 155L1176 122L1207 83L1231 88L1272 87L1301 96L1332 88L1350 75L1388 36L1423 35L1454 64L1482 82L1521 81L1544 75L1573 77L1600 73" fill="none" stroke="url(#agFinalShine)" stroke-width="2.2"/>
+    <path d="M0 380L0 266L20 266L42 281L70 284L107 283L130 277L155 283L176 281L216 270L253 282L276 279L309 256L347 228L367 237L402 244L424 244L444 240L483 218L508 189L540 177L578 194L606 195L634 189L660 170L679 180L712 165L743 160L769 161L791 170L814 168L839 164L875 160L906 142L927 178L950 177L983 189L1009 193L1038 201L1073 174L1114 209L1155 234L1180 235L1216 238L1257 237L1294 265L1317 273L1338 279L1379 278L1398 285L1420 256L1446 279L1467 268L1495 289L1514 289L1536 283L1558 284L1600 271L1600 380Z" fill="#24272B"/>
+    <path d="M0 266L20 266L42 281L70 284L107 283L130 277L155 283L176 281L216 270L253 282L276 279L309 256L347 228L367 237L402 244L424 244L444 240L483 218L508 189L540 177L578 194L606 195L634 189L660 170L679 180L712 165L743 160L769 161L791 170L814 168L839 164L875 160L906 142L927 178L950 177L983 189L1009 193L1038 201L1073 174L1114 209L1155 234L1180 235L1216 238L1257 237L1294 265L1317 273L1338 279L1379 278L1398 285L1420 256L1446 279L1467 268L1495 289L1514 289L1536 283L1558 284L1600 271" fill="none" stroke="#C9BCAC" stroke-opacity="0.08" stroke-width="1.2"/>
+    <path d="M0 380L0 266L27 278L66 286L96 278L116 282L149 300L176 294L205 308L226 314L247 316L287 310L324 315L360 327L385 327L420 329L440 327L463 324L501 321L540 311L559 319L589 318L617 306L638 300L659 292L698 295L716 295L747 290L767 286L808 274L835 258L855 254L877 253L918 261L950 257L971 253L1013 227L1034 231L1075 246L1108 250L1134 251L1167 243L1187 247L1225 244L1254 257L1296 269L1314 272L1340 272L1363 272L1389 284L1422 290L1459 299L1496 305L1526 301L1550 297L1600 313L1600 380Z" fill="#1D2024"/>
+    <path d="M0 380L0 334L34 324L73 329L96 329L120 328L141 327L164 325L192 316L225 325L250 324L289 324L326 326L362 320L399 327L437 329L473 336L502 338L530 339L551 334L588 334L622 346L658 353L693 355L715 356L745 357L775 354L802 362L832 364L855 365L882 365L916 353L943 355L984 363L1005 361L1043 360L1065 357L1104 344L1141 351L1180 349L1215 346L1256 337L1291 336L1324 330L1356 333L1392 331L1417 329L1451 326L1475 326L1508 320L1539 325L1568 325L1600 325L1600 380Z" fill="#16191C"/>
+  </svg>
+  <div class="ag-wrap">
+    <span class="ag-eyebrow">Base camp is ready</span>
+    <h2>Built to hold.<br>Sized to fit.</h2>
+    <p>Solid, reinforced, equalized. Software you can trust like an anchor, without the enterprise price tag.</p>
+    <div class="ag-actions" style="justify-content:center;">
+      <a href="#product" class="ag-btn ag-btn-primary">Find your product</a>
+      <a href="#" class="ag-btn ag-btn-ghost" onclick="openContactModal();return false;">Talk to us &rarr;</a>
     </div>
   </div>
 </section>
 
-<section id="product">
-  <div class="wrap statement">
-    <span class="eyebrow">What myBivy actually is</span>
-    <h2 class="reveal" style="margin-top:16px;">Your system of record tracks what happened.<br><span class="accent">myBivy is where the work happens.</span></h2>
-    <p class="lede reveal">One platform, built by vertical, by people who've done the job.</p>
-    <p class="lines reveal">Each myBivy product is designed with veterans of its industry, so the workflow fits on day one instead of needing months of configuration.</p>
-  </div>
-  <div class="wrap">
-    <div class="product-grid reveal">
-      <div class="nl-card">
-        <div class="nl-card-top rope">
-          <span class="mono nl-card-kicker">Available now</span>
-        </div>
-        <div class="nl-card-body">
-          <h3>myBivy for Sales</h3>
-          <p>Buyer-facing deal rooms and mutual close plans for sales reps and teams.</p>
-          <ul class="nl-list">
-            <li>Deal rooms built from your call notes</li>
-            <li>Shared next steps with named owners and dates</li>
-            <li>Engagement signals before a deal goes cold</li>
-          </ul>
-          <div class="nl-card-foot">
-            <a href="mybivy-for-sales.html" class="nl-card-link rope-text">Explore myBivy for Sales &rarr;</a>
-          </div>
-        </div>
-      </div>
-      <div class="nl-card">
-        <div class="nl-card-top alpine">
-          <span class="mono nl-card-kicker">Early access</span>
-        </div>
-        <div class="nl-card-body">
-          <h3>myBivy for Builders</h3>
-          <p>Projects, daily reports, crews and trades for small private builders and GCs.</p>
-          <ul class="nl-list">
-            <li>Daily reports, documents and site photos in one place</li>
-            <li>Crew announcements and access codes, no email needed</li>
-            <li>Every trade on every job, one tap to reach them</li>
-          </ul>
-          <div class="nl-card-foot">
-            <a href="mybivy-for-builders.html" class="nl-card-link alpine-text">Explore myBivy for Builders &rarr;</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="more-verticals reveal">
-      <h4>More verticals on the way</h4>
-      <p>Run a business in an industry enterprise software ignores? Tell us what it needs.</p>
-      <a href="mailto:patrick@srene.io?subject=A%20vertical%20myBivy%20should%20build" class="link-quiet" style="font-weight:600;">Suggest a vertical &rarr;</a>
-    </div>
-  </div>
-</section>
-
-<section id="how">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Five things, done well</span>
-      <h2>Everything the business needs, nothing it doesn't.</h2>
-    </div>
-    <div class="pillars reveal">
-      <div class="pillar">
-        <div class="pillar-num">01</div>
-        <div>
-          <h3>Live on day one</h3>
-          <p>No implementation project, no consultants, no seat minimums. Sign up, invite your team, and the first workspace is ready.</p>
-        </div>
-        <div class="pillar-visual"><div class="mini-icon" style="background:var(--rope-pale)"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z" stroke="#D65F3C" stroke-width="1.8" stroke-linejoin="round"/></svg></div></div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">02</div>
-        <div>
-          <h3>One shared space with your customer</h3>
-          <p>Your customer sees the same current picture you do: progress, next steps and documents. Fewer "just checking in" calls.</p>
-        </div>
-        <div class="pillar-visual"><div class="mini-icon" style="background:#E1EEEC"><svg viewBox="0 0 24 24" fill="none"><circle cx="8" cy="8" r="3" stroke="#2C6E63" stroke-width="1.8"/><circle cx="17" cy="8" r="3" stroke="#2C6E63" stroke-width="1.8"/><path d="M3 20c0-3 2.5-5 5-5s5 2 5 5M12 20c0-3 2.5-5 5-5s5 2 5 5" stroke="#2C6E63" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">03</div>
-        <div>
-          <h3>Designed by people who've done the job</h3>
-          <p>Every vertical is built with veterans of that industry, so the workflow already fits instead of needing to be configured.</p>
-        </div>
-        <div class="pillar-visual"><div class="mini-icon" style="background:var(--chalk)"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="#1B1F23" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">04</div>
-        <div>
-          <h3>Simple roles for small teams</h3>
-          <p>Owners, managers and team members, with access codes for the people who don't live in their inbox.</p>
-        </div>
-        <div class="pillar-visual"><div class="mini-icon" style="background:var(--rope-pale)"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.4" stroke="#B94B2C" stroke-width="1.8"/><path d="M5 20c0-4 3.2-6.5 7-6.5s7 2.5 7 6.5" stroke="#B94B2C" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
-      </div>
-      <div class="pillar">
-        <div class="pillar-num">05</div>
-        <div>
-          <h3>AI that handles the busywork</h3>
-          <p>Summaries, updates and first drafts generated from the work you're already doing.</p>
-        </div>
-        <div class="pillar-visual"><div class="mini-icon" style="background:var(--rope-pale)"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3a9 9 0 100 18 9 9 0 000-18z" stroke="#D65F3C" stroke-width="1.8"/><path d="M9 10h.01M15 10h.01M8 15c1 1.2 2.3 1.8 4 1.8s3-.6 4-1.8" stroke="#D65F3C" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="pricing">
-  <div class="wrap">
-    <div class="section-head center reveal">
-      <span class="eyebrow">Pricing</span>
-      <h2>Straightforward pricing. No negotiation required.</h2>
-      <p>Priced for the size of business you actually are. Pick your product.</p>
-    </div>
-    <div class="pricing-grid-2 reveal">
-      <div class="price-card-v2">
-        <div class="card-top">
-          <span class="team-tag">AVAILABLE NOW</span>
-          <h3>myBivy for Sales</h3>
-          <div class="tier-label">Solo</div>
-          <p class="desc">Run every deal with structure, from first call to close.</p>
-          <div class="price-slot"><div class="price-amt"><b>$48</b><span>/ month</span></div></div>
-        </div>
-        <a href="https://mybivy.com" class="btn btn-primary btn-lg" style="width:100%;">Start free trial</a>
-        <ul class="price-list">
-          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>AI workspace builder, 5 active deal rooms</li>
-          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Stakeholder intelligence and mapping</li>
-          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Mutual action plans</li>
-          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Engagement tracking and risk alerts</li>
-        </ul>
-      </div>
-      <div class="price-card-v2 team">
-        <div class="card-top">
-          <span class="team-tag">FOR GROWING TEAMS</span>
-          <h3>myBivy for Sales</h3>
-          <div class="tier-label">Team</div>
-          <p class="desc">Unlimited reps, shared visibility across your whole pipeline, and admin controls built for a sales org, not just one rep.</p>
-          <div class="price-slot"></div>
-        </div>
-        <a href="mybivy-for-sales.html#pricing" class="btn btn-dark btn-lg" style="width:100%;">Talk to a person</a>
-        <ul class="price-list">
-          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Everything in Solo, with 10 active deal rooms per rep</li>
-          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Roles, permissions &amp; admin console</li>
-          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Team-wide pipeline visibility</li>
-          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Priority support</li>
-        </ul>
-      </div>
-      <div class="price-card-v2 team">
-        <div class="card-top">
-          <span class="team-tag">EARLY ACCESS</span>
-          <h3>myBivy for Builders</h3>
-          <div class="tier-label">Project Pro</div>
-          <p class="desc">Everything a small builder needs to run the job and keep every trade on schedule.</p>
-          <div class="price-slot"><div class="price-amt"><b>$89</b><span style="color:#B7BCC1;">/ month</span></div></div>
-        </div>
-        <a href="mailto:info@srene.io?subject=myBivy%20for%20Builders%20early%20access" class="btn btn-dark btn-lg" style="width:100%;">Join early access</a>
-        <ul class="price-list">
-          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Projects, milestones and daily reports</li>
-          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Documents, plans and photo markup</li>
-          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Crew announcements and access codes</li>
-          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Trades on every job, one tap to call or text</li>
-        </ul>
-      </div>
-      <div class="price-card-v2">
-        <div class="card-top">
-          <span class="team-tag">EARLY ACCESS</span>
-          <h3>myBivy for Builders</h3>
-          <div class="tier-label">Developer</div>
-          <p class="desc">For builders running multiple active jobs who need the full crew and timesheet picture.</p>
-          <div class="price-slot"></div>
-        </div>
-        <a href="mailto:info@srene.io?subject=myBivy%20for%20Builders%20Developer%20tier" class="btn btn-primary btn-lg" style="width:100%;">Talk to a person</a>
-        <ul class="price-list">
-          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Projects, milestones and daily reports</li>
-          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Multiple jobs at a time</li>
-          <li><span class="check"><svg viewBox="0 0 10 10" fill="none"><path d="M1.5 5l2.3 2.3L8.5 2.5" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></span>Time sheets</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="company">
-  <div class="wrap">
-    <div class="srene-block reveal">
-      <canvas id="topoName" class="section-canvas"></canvas>
-      <div class="wrap">
-        <div class="srene-head">
-          <span class="eyebrow">Where the name comes from</span>
-          <h2>Solid. Reinforced. Equalized. No Extension.</h2>
-          <p>Climbers use this checklist to judge whether an anchor is actually safe to trust with a life. We build every myBivy product against the same four principles, just applied to a business instead of a rope.</p>
-        </div>
-        <div class="srene-grid">
-          <div class="srene-card">
-            <div class="srene-letter">S</div>
-            <h4>Solid</h4>
-            <p>A foundation that actually holds. Real persistence, real security, nothing built on a hope that the data's still there tomorrow.</p>
-          </div>
-          <div class="srene-card">
-            <div class="srene-letter">R</div>
-            <h4>Reinforced</h4>
-            <p>Nothing depends on one person remembering. If someone is out, the work still tells the whole story on its own.</p>
-          </div>
-          <div class="srene-card">
-            <div class="srene-letter">E</div>
-            <h4>Equalized</h4>
-            <p>You and your customer see the same shared picture. No one is quietly carrying more weight than they should.</p>
-          </div>
-          <div class="srene-card">
-            <div class="srene-letter">NE</div>
-            <h4>No Extension</h4>
-            <p>Nothing moves further than it's actually ready to. No shock-loading a customer who isn't there yet.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="final-cta reveal" style="margin-top:64px;">
-      <canvas id="topoCta" class="section-canvas"></canvas>
-      <svg class="summit-icon" viewBox="0 0 88 88" fill="none">
-        <path d="M44 16L74 66H14L44 16Z" stroke="#F4F2ED" stroke-width="2.5" stroke-linejoin="round"/>
-        <path d="M44 16L58 40H30L44 16Z" fill="#F4F2ED"/>
-        <circle cx="44" cy="16" r="4" fill="#D65F3C"/>
-      </svg>
-      <h2>Built to hold. Sized to fit.</h2>
-      <p>Solid, reinforced, equalized. Software you can trust like an anchor, without the enterprise price tag.</p>
-      <div class="final-actions">
-        <a href="#product" class="btn btn-primary btn-lg">Find your product</a>
-        <a href="#" class="btn btn-ghost btn-lg" onclick="openContactModal();return false;">Talk to us</a>
-      </div>
-    </div>
-  </div>
-</section>
+<script>
+  // Respect reduced-motion: stop the alpenglow sweep on the ridgelines.
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.querySelectorAll('.ag-ridges animateTransform').forEach(function (a) { a.remove(); });
+  }
+</script>
 
 <footer>
   <div class="wrap">
