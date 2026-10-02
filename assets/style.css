@@ -618,3 +618,12 @@ footer{
 .adopt-card .nl-list{ margin-top:4px; }
 .trades-phone{ position:relative; z-index:1; display:flex; justify-content:center; margin:-20px auto 40px; }
 .trades-phone img{ width:380px; max-width:86%; height:auto; }
+
+/* ---------- Builders field forms ---------- */
+.dl-row{ display:inline-flex; gap:16px; }
+.forms-app-card{ background:var(--ink); border-color:var(--ink); }
+.forms-app-card .eyebrow{ color:var(--rope-shine); margin-bottom:12px; display:block; }
+.forms-app-card h3{ color:#fff; font-size:25px; }
+.forms-app-card p{ color:#C9CDD1; }
+.forms-app-card .dl-btn{ color:var(--rope-shine); }
+.forms-note{ font-size:15px; color:var(--text-muted); margin-top:22px; text-align:center; }
