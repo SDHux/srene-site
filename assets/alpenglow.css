@@ -371,3 +371,13 @@ body.ag .hero-top .trades-phone{ justify-content:flex-start; margin:8px 0 32px; 
   body.ag #philosophy.ag-philosophy, body.ag #philosophy{ background-image:none !important; }
   .ag-shot.solo-phone{ background-size:2200px auto; }
 }
+
+/* Trades: translation section -- copy beside a phone-shaped demo video */
+.translate-split{ display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:64px; align-items:center; }
+.translate-copy .section-head{ margin-bottom:28px; }
+.phone-video{ border-radius:34px; overflow:hidden; background:var(--ag-ink, #16191C); border:8px solid #2C3035; box-shadow:0 40px 80px -36px rgba(0,0,0,0.6); aspect-ratio:9 / 16; }
+.phone-video video{ display:block; width:100%; height:100%; object-fit:cover; background:#14171B; }
+@media (max-width:860px){
+  .translate-split{ grid-template-columns:1fr; gap:36px; }
+  .phone-video{ max-width:320px; width:100%; margin:0 auto; }
+}
