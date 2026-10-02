@@ -194,3 +194,153 @@ body.ag #philosophy.ag-philosophy{ background:var(--ag-surface) url(images/alpen
 /* Small screens: keep the route's end labels inside the screen. */
 .ag-philosophy{ overflow:hidden; }
 @media (max-width:760px){ .ag-route{ margin-left:40px; margin-right:44px; } }
+
+/* ==========================================================================
+   Alpenglow skin for the existing page parts (product, company and resources
+   pages). Flipping style.css's own tokens turns most cards, text and lines
+   dark at once; the rules below fix the parts that used --ink as a
+   background or hard-coded light colors.
+   ========================================================================== */
+body.ag{
+  --ink:#F4F2ED;            /* headings and strong text */
+  --ink-soft:#D6D1C8;
+  --text:#D6D1C8;
+  --text-muted:#ADA89F;
+  --white:#1D2024;          /* cards */
+  --paper:#16191C;
+  --chalk:#23272C;
+  --line:rgba(201,188,172,0.16);
+  --rope-pale:rgba(214,95,60,0.12);
+  --alpine-pale:rgba(74,156,142,0.14);
+  --shadow-card:0 1px 2px rgba(0,0,0,0.3), 0 18px 40px -20px rgba(0,0,0,0.6);
+  --shadow-lift:0 2px 4px rgba(0,0,0,0.35), 0 30px 60px -24px rgba(0,0,0,0.7);
+  --shadow-glow:0 0 0 transparent;
+}
+body.ag .hero-canvas, body.ag .hero-grain, body.ag .section-canvas{ display:none; }
+body.ag .eyebrow{ font-family:'JetBrains Mono', monospace; color:var(--ag-signal); }
+body.ag .lede, body.ag .section-head p{ color:var(--ag-muted); }
+body.ag .btn-primary{ background:var(--rope-deep); color:#fff; }
+body.ag .btn-primary:hover{ background:var(--rope); }
+body.ag .btn-ghost{ background:transparent; border:1px solid var(--ag-line-strong); color:var(--ag-text); }
+body.ag .btn-ghost:hover{ border-color:var(--ag-text-2); color:#fff; }
+body.ag .btn-dark{ background:transparent; border:1px solid var(--ag-line-strong); color:var(--ag-text); }
+body.ag .btn-dark:hover{ background:var(--ag-surface-2); }
+body.ag .brand-mark{ background:#22262B; }
+body.ag .nav-toggle span{ background:var(--ag-text); }
+
+/* Product-page hero: night sky, topo, left-aligned type, ridgeline band */
+body.ag .hero{ background:linear-gradient(180deg, var(--ag-night) 0%, #1A1D21 70%, #1D2024 100%); border-bottom:0; padding-top:72px; }
+body.ag .hero::before{ content:""; position:absolute; inset:0; background:url(images/alpenglow/topo.svg) 80% 15%/1600px auto no-repeat; opacity:0.9; pointer-events:none; }
+body.ag .hero-top{ text-align:left; max-width:1280px; padding:clamp(48px, 8vh, 96px) 40px 0; margin:0 auto 24px; }
+@media (max-width:640px){ body.ag .hero-top{ padding-left:20px; padding-right:20px; } }
+body.ag .hero h1{ font-size:clamp(52px, 7vw, 104px); line-height:0.92; text-transform:uppercase; max-width:1080px; }
+body.ag .hero p.lede{ margin:18px 0 30px; color:var(--ag-text-2); }
+body.ag .hero-actions{ justify-content:flex-start; }
+body.ag .hero-badge{ background:none; padding:0; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ag-signal); }
+body.ag .hero-badge .dot{ display:none; }
+body.ag .hero-proof{ justify-content:flex-start; }
+body.ag .hero-proof-item{ color:var(--ag-muted); }
+body.ag .hero-proof-item b{ color:var(--ag-text); }
+body.ag .hero-proof-accent{ background:var(--ag-faint); }
+.ag-ridge-band{ position:relative; height:clamp(170px, 22vw, 300px); margin-top:8px; pointer-events:none; }
+.ag-ridge-band .ag-ridges{ min-height:0; height:100%; }
+.ag-ridge-band + .wrap, .ag-ridge-band + .wrap.trades-phone{ position:relative; z-index:2; margin-top:calc(-1 * clamp(110px, 14vw, 200px)); }
+body.ag .hero-video{ background:var(--ag-surface); border-color:var(--ag-line); box-shadow:0 40px 80px -36px rgba(0,0,0,0.85); }
+body.ag .integrations-strip{ background:var(--ag-ink); border-top:1px solid var(--ag-line); }
+body.ag .int-label{ color:var(--ag-faint); }
+body.ag .int-icon{ color:var(--ag-text-2); }
+body.ag .trade-tags .tag{ background:none; border:1px solid var(--ag-line-strong); color:var(--ag-text-2); }
+body.ag .trades-phone{ margin:0 auto 40px; }
+
+/* Cards, lists and grids */
+body.ag .problem-grid{ background:var(--ag-line); border-color:var(--ag-line); }
+body.ag .problem-card{ background:var(--ag-surface); }
+body.ag .problem-icon, body.ag .mini-icon, body.ag .adopt-card .ico{ background:var(--ag-surface-2) !important; border-color:var(--ag-line); }
+body.ag .problem-icon svg{ stroke:var(--ag-text-2); }
+body.ag .pillars{ background:var(--ag-line); border-color:var(--ag-line); }
+body.ag .pillar{ background:var(--ag-surface); }
+body.ag .pillar-num{ color:var(--ag-faint); }
+body.ag .adopt-card{ background:var(--ag-surface); border-color:var(--ag-line); }
+body.ag .tag{ background:none; border:1px solid var(--ag-line-strong); color:var(--ag-text-2); }
+body.ag .statement h2 .accent{ color:var(--rope); }
+body.ag .statement .lede{ color:var(--ag-text); }
+body.ag .product-shot{ background:var(--ag-surface); border-color:var(--ag-line); box-shadow:0 40px 80px -36px rgba(0,0,0,0.85); }
+body.ag .product-shot-chrome{ background:var(--ag-surface-2); border-color:var(--ag-line); }
+body.ag .product-shot-chrome .dot{ background:#3A3F45 !important; }
+
+/* Dark sections that used --ink as their background */
+body.ag #philosophy, body.ag #trades, body.ag #steps{ background:var(--ag-surface) url(images/alpenglow/topo.svg) 20% 70%/1500px auto no-repeat; border-top:1px solid var(--ag-line); border-bottom:1px solid var(--ag-line); }
+body.ag .philosophy .eyebrow{ color:var(--ag-signal); }
+body.ag .philosophy h2{ color:var(--ag-text); text-transform:uppercase; font-size:clamp(36px, 4.4vw, 56px); line-height:1; }
+body.ag .philosophy .lede{ color:var(--ag-muted); }
+body.ag .chain-step, body.ag .chain-step.c1, body.ag .chain-step.c2, body.ag .chain-step.c3{ background:transparent; border:1px solid var(--ag-line-strong); color:var(--ag-text-2); box-shadow:none; }
+body.ag .chain-step.c4{ background:transparent; border:2px solid var(--rope); color:var(--ag-text); box-shadow:none; }
+body.ag .chain-arrow{ color:var(--ag-faint); }
+body.ag .stats{ background:var(--ag-night) url(images/alpenglow/topo.svg) 15% 20%/1500px auto no-repeat; color:var(--ag-text); }
+body.ag .stats .section-head h2{ color:var(--ag-text); }
+body.ag .stats-grid{ background:var(--ag-line); }
+body.ag .stat, body.ag .stat.lead{ background:var(--ag-surface); }
+body.ag .stat b{ color:var(--ag-text); }
+body.ag .stat-accent{ background:var(--ag-faint); }
+body.ag .stat.lead .stat-accent{ background:var(--rope); }
+body.ag .srene-block{ background:var(--ag-night) url(images/alpenglow/topo.svg) 85% 30%/1500px auto no-repeat; border:1px solid var(--ag-line); }
+body.ag .srene-head h2{ color:var(--ag-text); text-transform:uppercase; }
+body.ag .srene-head p, body.ag .srene-card p{ color:var(--ag-muted); }
+body.ag .srene-card{ background:var(--ag-surface); border-color:var(--ag-line); }
+body.ag .srene-letter{ color:var(--ag-faint); }
+body.ag .srene-card h4{ color:var(--ag-text); }
+body.ag .final-cta{ background:var(--ag-surface) url(images/alpenglow/topo.svg) center/1500px auto no-repeat; border:1px solid var(--ag-line); }
+body.ag .final-cta h2{ color:var(--ag-text); text-transform:uppercase; font-size:clamp(38px, 4.6vw, 60px); }
+body.ag .final-cta p{ color:var(--ag-muted); }
+body.ag .summit-icon path{ stroke:var(--ag-text); }
+
+/* Pricing cards */
+body.ag .price-card-v2{ background:var(--ag-surface); border-color:var(--ag-line); box-shadow:none; }
+body.ag .price-card-v2.team{ background:var(--ag-surface-2); border-color:var(--ag-line-strong); color:var(--ag-text); }
+body.ag .price-card-v2.team h3, body.ag .price-card-v2.team .price-amt b{ color:var(--ag-text); }
+body.ag .price-card-v2.team .desc{ color:var(--ag-muted); }
+body.ag .price-card-v2.team .price-list li{ color:var(--ag-text-2); }
+body.ag .price-card-v2.team .price-list{ border-top-color:var(--ag-line); }
+body.ag .team-tag{ background:none; padding:0; color:var(--ag-signal); }
+body.ag .tier-label, body.ag .price-card-v2.team .tier-label{ color:var(--ag-faint); }
+body.ag .price-list .check, body.ag .price-card-v2.team .check{ background:var(--ag-surface-2); border:1px solid var(--ag-line-strong); }
+body.ag .price-amt span{ color:var(--ag-faint) !important; }
+
+/* Company and Resources */
+body.ag .res-hero{ background:linear-gradient(180deg, var(--ag-night) 0%, #1A1D21 100%); border-bottom:0; position:relative; overflow:hidden; padding:150px 0 0; }
+body.ag .res-hero::before{ content:""; position:absolute; inset:0; background:url(images/alpenglow/topo.svg) 80% 10%/1600px auto no-repeat; opacity:0.9; pointer-events:none; }
+body.ag .res-hero .wrap{ position:relative; z-index:1; }
+body.ag .res-hero h1{ text-transform:uppercase; font-size:clamp(46px, 6vw, 84px); line-height:0.94; }
+body.ag .res-hero p.lede{ color:var(--ag-text-2); }
+body.ag .res-hero .ag-ridge-band{ height:clamp(130px, 16vw, 220px); margin-top:24px; }
+body.ag .playbook-card{ background:var(--ag-surface); border-color:var(--ag-line); }
+body.ag .playbook-card:hover{ box-shadow:0 30px 60px -30px rgba(0,0,0,0.8); }
+body.ag .playbook-cover{ background:var(--ag-surface-2) url(images/alpenglow/topo.svg) center/900px auto no-repeat !important; border-bottom:1px solid var(--ag-line); }
+body.ag .playbook-cover .cat{ color:var(--ag-text-2); }
+body.ag .playbook-cover .fmark{ background:rgba(244,242,237,0.08); }
+body.ag .playbook-meta .pages{ color:var(--ag-faint); }
+body.ag .dl-btn{ color:var(--ag-signal); }
+body.ag .dl-btn:hover{ color:#fff; }
+body.ag .forms-app-card{ background:var(--ag-night); border-color:var(--ag-line-strong); }
+body.ag .forms-note{ color:var(--ag-faint); }
+body.ag .res-cta{ background:var(--ag-surface); border-color:var(--ag-line); }
+body.ag .nl-card{ background:var(--ag-surface); border-color:var(--ag-line); }
+body.ag .nl-card-top.rope, body.ag .nl-card-top.alpine{ background:var(--ag-surface-2) url(images/alpenglow/topo.svg) center/900px auto no-repeat; border-bottom:1px solid var(--ag-line); }
+body.ag .nl-card-kicker{ color:var(--ag-signal); }
+body.ag .nl-intro{ background:var(--ag-surface); border-color:var(--ag-line); }
+body.ag .nl-list li::before{ background:var(--ag-faint); }
+body.ag .profile{ background:var(--ag-surface); border-color:var(--ag-line); box-shadow:none; }
+body.ag .profile .role{ color:var(--ag-signal); }
+body.ag .exp span{ background:none; border:1px solid var(--ag-line-strong); color:var(--ag-text-2); }
+body.ag .chip-link{ background:transparent; border-color:var(--ag-line-strong); color:var(--ag-text-2); }
+body.ag .team-label{ color:var(--ag-text-2); }
+
+/* Modals and footer */
+body.ag .modal-box{ background:var(--ag-surface); border:1px solid var(--ag-line); color:var(--ag-text-2); }
+body.ag .modal-box h3{ color:var(--ag-text); }
+body.ag .modal-input{ background:var(--ag-ink); border-color:var(--ag-line-strong); color:var(--ag-text); }
+body.ag footer{ background:var(--ag-night); }
+body.ag .footer-brand .brand-mark{ background:#22262B; }
+/* Trades hero: follow the left-aligned text */
+body.ag .trade-tags{ justify-content:flex-start; margin-left:0; }
+body.ag .hero-top .trades-phone{ justify-content:flex-start; margin:8px 0 32px; }
