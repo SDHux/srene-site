@@ -372,12 +372,20 @@ body.ag .hero-top .trades-phone{ justify-content:flex-start; margin:8px 0 32px; 
   .ag-shot.solo-phone{ background-size:2200px auto; }
 }
 
-/* Trades: translation section -- copy beside a phone-shaped demo video */
-.translate-split{ display:grid; grid-template-columns:minmax(0,1fr) 340px; gap:64px; align-items:center; }
-.translate-copy .section-head{ margin-bottom:28px; }
+/* Trades: translation section -- the copy, then the demo video (landscape on
+   desktop, the vertical phone cut on phones; each only loads its own) */
+.translate-split{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:24px 64px; align-items:end; }
+.translate-copy{ display:contents; }
+.translate-copy .section-head{ margin-bottom:0; }
+.translate-copy .nl-list{ padding-bottom:8px; }
+.translate-video{ grid-column:1 / -1; margin-top:24px; }
+.tv-desktop{ display:block; width:100%; aspect-ratio:16 / 9; border-radius:18px; background:#14171B; border:1px solid var(--ag-line, rgba(201,188,172,0.16)); box-shadow:0 40px 80px -36px rgba(0,0,0,0.6); }
+.tv-mobile{ display:none; }
 .phone-video{ border-radius:34px; overflow:hidden; background:var(--ag-ink, #16191C); border:8px solid #2C3035; box-shadow:0 40px 80px -36px rgba(0,0,0,0.6); aspect-ratio:9 / 16; }
 .phone-video video{ display:block; width:100%; height:100%; object-fit:cover; background:#14171B; }
 @media (max-width:860px){
-  .translate-split{ grid-template-columns:1fr; gap:36px; }
-  .phone-video{ max-width:320px; width:100%; margin:0 auto; }
+  .translate-split{ grid-template-columns:1fr; gap:20px; }
+  .translate-video{ margin-top:16px; }
+  .tv-desktop{ display:none; }
+  .tv-mobile{ display:block; max-width:320px; width:100%; margin:0 auto; }
 }
