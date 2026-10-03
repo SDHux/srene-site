@@ -22,6 +22,25 @@ myBivy comes in three editions:
 - [Punch List](https://srene.io/free-forms/punch-list-template.html): Construction punch list template and how to run a punch walk.
 - [Bid Form](https://srene.io/free-forms/bid-form-template.html): Construction bid form template: base bid, alternates, unit prices, scope, schedule and terms.
 - [Bid Leveling Sheet](https://srene.io/free-forms/bid-leveling-sheet-template.html): Bid leveling sheet template and how to level subcontractor bids step by step.
+- [Free trade inspection checklists](https://srene.io/free-checklists/): printable inspection checklists for electrical, plumbing, HVAC, framing, drywall, concrete, roofing, flooring and painting, plus an all-trades rough-in checklist and a daily safety walk. Each is also built into myBivy for Trades.
+  - [Electrical rough-in inspection checklist](https://srene.io/free-checklists/electrical-rough-in-inspection-checklist.html)
+  - [Electrical service and panel inspection checklist](https://srene.io/free-checklists/electrical-service-panel-inspection-checklist.html)
+  - [Electrical final inspection checklist](https://srene.io/free-checklists/electrical-final-inspection-checklist.html)
+  - [Plumbing rough-in and top-out inspection checklist](https://srene.io/free-checklists/plumbing-rough-in-inspection-checklist.html)
+  - [Plumbing final inspection checklist](https://srene.io/free-checklists/plumbing-final-inspection-checklist.html)
+  - [HVAC rough-in inspection checklist](https://srene.io/free-checklists/hvac-rough-in-inspection-checklist.html)
+  - [HVAC startup checklist](https://srene.io/free-checklists/hvac-startup-checklist.html)
+  - [Framing inspection checklist (pre-drywall)](https://srene.io/free-checklists/framing-inspection-checklist.html)
+  - [Drywall inspection checklist: hang and finish](https://srene.io/free-checklists/drywall-inspection-checklist.html)
+  - [Concrete pre-pour checklist](https://srene.io/free-checklists/concrete-pre-pour-checklist.html)
+  - [Concrete pour log template](https://srene.io/free-checklists/concrete-pour-log.html)
+  - [Roofing underlayment and flashing checklist](https://srene.io/free-checklists/roofing-underlayment-flashing-checklist.html)
+  - [Roofing final inspection checklist](https://srene.io/free-checklists/roofing-final-inspection-checklist.html)
+  - [Flooring moisture and substrate checklist](https://srene.io/free-checklists/flooring-moisture-substrate-checklist.html)
+  - [Flooring final inspection checklist](https://srene.io/free-checklists/flooring-final-inspection-checklist.html)
+  - [Painting inspection checklist](https://srene.io/free-checklists/painting-inspection-checklist.html)
+  - [Rough-in inspection checklist (all trades)](https://srene.io/free-checklists/rough-in-inspection-checklist.html)
+  - [Daily jobsite safety walk checklist](https://srene.io/free-checklists/daily-jobsite-safety-walk-checklist.html)
 - [Playbooks and sales resources](https://srene.io/resources.html): free playbooks for sales reps and aspiring sales leaders.
 
 ## Company

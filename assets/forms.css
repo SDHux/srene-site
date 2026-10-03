@@ -50,3 +50,53 @@ ol.fp-list li::before{ content:counter(fp); position:absolute; left:0; top:13px;
   .fp-cta{ padding:24px 20px; }
   .fp-related-grid{ grid-template-columns:minmax(0,1fr); }
 }
+
+/* Free checklist pages (free-checklists/*.html): the checklist itself, on
+   screen and on paper. Print shows only the sheet, black on white. */
+.ck-sheet{ margin:0 auto 56px; max-width:760px; border:1px solid var(--ag-line); border-radius:16px; background:var(--ag-surface); padding:28px 28px 24px; }
+.ck-brand{ font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ag-signal); }
+.ck-sheet h2{ font-size:32px; line-height:1.1; margin-top:8px; }
+.ck-about{ font-size:16px; color:var(--ag-muted); margin-top:6px; }
+.ck-fields{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:14px 22px; margin:22px 0 6px; }
+.ck-fields span{ display:block; font-size:12.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--ag-faint); border-bottom:1px solid var(--ag-line-strong); padding-bottom:18px; }
+.ck-table{ width:100%; border-collapse:collapse; margin-top:22px; }
+.ck-table th{ text-align:left; font-family:'Barlow Condensed', sans-serif; font-size:19px; font-weight:600; color:var(--ag-text); padding:6px 0 8px; border-bottom:1px solid var(--ag-line-strong); }
+.ck-table th.ck-col{ width:52px; text-align:center; font-family:'JetBrains Mono', monospace; font-size:11px; font-weight:500; letter-spacing:0.05em; color:var(--ag-faint); }
+.ck-table td{ padding:10px 0; border-bottom:1px solid var(--ag-line); font-size:16px; line-height:1.45; color:var(--ag-text-2); vertical-align:top; }
+.ck-table td.ck-col{ text-align:center; }
+.ck-box{ display:inline-block; width:16px; height:16px; border:1.5px solid var(--ag-line-strong); border-radius:3px; margin-top:2px; }
+.ck-reading{ display:inline-block; margin-left:8px; color:var(--ag-faint); white-space:nowrap; }
+.ck-reading i{ display:inline-block; width:70px; border-bottom:1px solid var(--ag-line-strong); margin-right:4px; font-style:normal; }
+.ck-notes{ margin-top:22px; font-size:12.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--ag-faint); border:1px solid var(--ag-line); border-radius:8px; height:84px; padding:10px 12px; }
+.ck-sign{ margin-top:22px; }
+.ck-sign-row{ display:grid; grid-template-columns:1.2fr 1fr 1fr 0.6fr; gap:14px; align-items:end; padding:14px 0 0; }
+.ck-sign-row b{ font-size:15px; color:var(--ag-text); font-weight:600; }
+.ck-sign-row span{ font-size:11.5px; text-transform:uppercase; letter-spacing:0.05em; color:var(--ag-faint); border-top:1px solid var(--ag-line-strong); padding-top:4px; margin-top:20px; display:block; }
+.ck-foot{ margin-top:22px; font-size:13px; color:var(--ag-faint); }
+
+.ck-hub-group + .ck-hub-group{ margin-top:40px; }
+.ck-hub-group h2{ font-size:28px; margin-bottom:14px; }
+
+@media (max-width:640px){
+  .ck-sheet{ padding:22px 16px; border-radius:12px; }
+  .ck-fields{ grid-template-columns:minmax(0,1fr); }
+  .ck-table th.ck-col{ width:40px; }
+  .ck-sign-row{ grid-template-columns:1fr 1fr; }
+}
+
+@media print{
+  /* ink, white, muted and line from style.css :root */
+  @page{ margin:12mm; }
+  body.ag{ background:#FFFFFF !important; color:#1B1F23 !important; }
+  .nav, header, footer, .modal-overlay, .fp-sec, .fp-cta, .fp-related, .forms-note, .fp-crumbs{ display:none !important; }
+  section{ padding:0 !important; }
+  .wrap{ max-width:none !important; padding:0 !important; }
+  .ck-sheet{ border:none; background:#FFFFFF; padding:0; margin:0; max-width:none; }
+  .ck-sheet *{ color:#1B1F23 !important; }
+  .ck-brand{ color:#6B7178 !important; }
+  .ck-table th, .ck-fields span, .ck-sign-row span{ border-color:#1B1F23 !important; }
+  .ck-table td{ border-color:#E2E0DA !important; font-size:12.5px; padding:6px 0; }
+  .ck-box, .ck-reading i{ border-color:#1B1F23 !important; }
+  .ck-notes{ border-color:#1B1F23 !important; }
+  .ck-table, .ck-sign{ break-inside:avoid; }
+}
