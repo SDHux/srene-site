@@ -43,6 +43,10 @@ myBivy comes in three editions:
   - [Daily jobsite safety walk checklist](https://srene.io/free-checklists/daily-jobsite-safety-walk-checklist.html)
 - [Playbooks and sales resources](https://srene.io/resources.html): free playbooks for sales reps and aspiring sales leaders.
 
+## En español
+
+- [Formularios y listas de verificación gratis](https://srene.io/es/): Spanish versions of the free field forms (explained in Spanish; the PDF and Excel files are in English for now) and all 18 trade inspection checklists, which print in Spanish. Each Spanish page links to its English twin.
+
 ## Company
 
 - [About SRENE](https://srene.io/company.html): team, mission and contact.
