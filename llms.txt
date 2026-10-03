@@ -1,0 +1,25 @@
+# SRENE
+
+> SRENE (srene.io, LiVD LLC dba SRENE.io) builds myBivy: software tools for sales reps, builders and trade crews, sized for the people doing the work instead of the enterprise buying it. Each vertical is designed with veterans of the industry it serves.
+
+myBivy comes in three editions:
+
+- **myBivy for Trades** is the free app for trade contractors (electricians, plumbers, HVAC, framers, drywall, concrete, roofing and other subcontractors working for GCs and homeowners). Free for up to 10 people, unlimited jobs, no card and no trial clock. It covers trade inspection checklists with pass / fail / N/A, photos, notes and signatures; extra work (time and materials, T&M) tickets signed on site by the GC's superintendent; daily logs; punch lists; quotes; and a public profile. Everything exports as clean PDFs. Nothing is shared with a GC unless the trade sends it. Crews can write in Spanish and the GC reads it in English: daily logs, punch items and tickets are translated automatically for each reader.
+- **myBivy for Builders** is construction project management for small private builders and general contractors: daily reports in minutes, projects and milestones, documents, plans and photo markup, crew announcements in each person's language, and every trade on every job one tap away. Saved jobs work offline on the phone. Opening to a small group of builders first: early access at $89 per month, locked in for the first year.
+- **myBivy for Sales** is a buyer-facing deal workspace for B2B sales reps: a structured, shared mutual close plan for every deal, stakeholder mapping, shared next steps and risk alerts. Solo plan $48 per month with a 14-day free trial; Team plan by conversation.
+
+## Products
+
+- [myBivy for Trades](https://srene.io/mybivy-for-trades.html): the free app for trade contractors. Sign up free at https://builders.mybivy.com/#/login?signup=trade
+- [myBivy for Builders](https://srene.io/mybivy-for-builders.html): daily reports, crews, trades, documents and photos in one place for small builders and GCs. App: https://builders.mybivy.com
+- [myBivy for Sales](https://srene.io/mybivy-for-sales.html): buyer-facing deal workspaces and mutual close plans. App: https://mybivy.com
+
+## Free resources
+
+- [Free field forms for builders](https://srene.io/resources-builders.html): construction daily report, extra work (T&M) ticket, punch list, bid form and bid leveling sheet. Fillable PDF and Excel, free, no sign-up.
+- [Playbooks and sales resources](https://srene.io/resources.html): free playbooks for sales reps and aspiring sales leaders.
+
+## Company
+
+- [About SRENE](https://srene.io/company.html): team, mission and contact.
+- Contact: info@srene.io, 619-333-8423
