@@ -1,0 +1,52 @@
+/* Free form pages (free-forms/*.html): one page per form, written to answer
+   the question a builder or trade actually asks. Colors come from the
+   Alpenglow tokens in alpenglow.css; nothing new. */
+
+.fp-crumbs{ font-size:14px; color:var(--ag-faint); margin-bottom:6px; }
+.fp-crumbs a{ color:var(--ag-muted); text-decoration:none; }
+.fp-crumbs a:hover{ color:var(--ag-text); }
+.fp-crumbs span{ margin:0 6px; }
+
+.fp-dl{ display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:26px; }
+.fp-dl .dl-btn{ font-size:15px; padding:10px 16px; }
+.fp-dl-meta{ font-family:'JetBrains Mono', monospace; font-size:12.5px; letter-spacing:0.04em; color:var(--ag-faint); text-transform:uppercase; }
+
+.fp-body{ max-width:760px; margin:0 auto; }
+.fp-body section, .fp-sec{ padding:0; }
+.fp-sec + .fp-sec{ margin-top:56px; }
+.fp-sec h2{ font-size:34px; line-height:1.12; margin-bottom:16px; }
+.fp-sec p{ font-size:18px; line-height:1.65; color:var(--ag-text-2); margin-top:12px; }
+.fp-sec p.fp-note{ font-size:15px; color:var(--ag-muted); }
+
+.fp-list{ list-style:none; margin:18px 0 0; padding:0; border-top:1px solid var(--ag-line); }
+.fp-list li{ padding:14px 0; border-bottom:1px solid var(--ag-line); font-size:17px; line-height:1.6; color:var(--ag-text-2); }
+.fp-list li b{ color:var(--ag-text); font-weight:600; }
+ol.fp-list{ counter-reset:fp; }
+ol.fp-list li{ counter-increment:fp; padding-left:42px; position:relative; }
+ol.fp-list li::before{ content:counter(fp); position:absolute; left:0; top:13px; width:26px; height:26px; border-radius:50%; border:1px solid var(--ag-line-strong); color:var(--ag-signal); font-family:'JetBrains Mono', monospace; font-size:13px; display:flex; align-items:center; justify-content:center; }
+
+.fp-faq{ margin-top:8px; }
+.fp-q{ padding:20px 0; border-bottom:1px solid var(--ag-line); }
+.fp-q:first-child{ border-top:1px solid var(--ag-line); }
+.fp-q h3{ font-family:'Hanken Grotesk', sans-serif; font-size:19px; font-weight:600; line-height:1.4; }
+.fp-q p{ font-size:17px; margin-top:8px; }
+
+.fp-cta{ margin-top:64px; padding:32px; border-radius:16px; background:var(--ag-surface); border:1px solid var(--ag-line); }
+.fp-cta .eyebrow{ color:var(--ag-signal); display:block; margin-bottom:10px; }
+.fp-cta h2{ font-size:30px; line-height:1.15; }
+.fp-cta p{ font-size:17px; line-height:1.6; color:var(--ag-muted); margin-top:10px; }
+.fp-cta-actions{ display:flex; flex-wrap:wrap; gap:12px; margin-top:22px; }
+
+.fp-related{ margin-top:56px; }
+.fp-related h2{ font-size:26px; margin-bottom:14px; }
+.fp-related-grid{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px; }
+.fp-related-grid a{ display:block; padding:16px 18px; border-radius:12px; border:1px solid var(--ag-line); text-decoration:none; }
+.fp-related-grid a:hover{ border-color:var(--ag-line-strong); }
+.fp-related-grid b{ display:block; color:var(--ag-text); font-size:17px; font-weight:600; }
+.fp-related-grid span{ display:block; color:var(--ag-muted); font-size:14.5px; margin-top:4px; line-height:1.5; }
+
+@media (max-width:640px){
+  .fp-sec h2{ font-size:28px; }
+  .fp-cta{ padding:24px 20px; }
+  .fp-related-grid{ grid-template-columns:minmax(0,1fr); }
+}

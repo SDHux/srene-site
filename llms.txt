@@ -17,6 +17,11 @@ myBivy comes in three editions:
 ## Free resources
 
 - [Free field forms for builders](https://srene.io/resources-builders.html): construction daily report, extra work (T&M) ticket, punch list, bid form and bid leveling sheet. Fillable PDF and Excel, free, no sign-up.
+- [Daily Report](https://srene.io/free-forms/construction-daily-report-template.html): Construction daily report template: what goes on a daily report, who files it, and when.
+- [Extra Work Ticket](https://srene.io/free-forms/tm-ticket-template.html): T&M (time and materials) ticket template for extra work, and how T&M tickets differ from change orders.
+- [Punch List](https://srene.io/free-forms/punch-list-template.html): Construction punch list template and how to run a punch walk.
+- [Bid Form](https://srene.io/free-forms/bid-form-template.html): Construction bid form template: base bid, alternates, unit prices, scope, schedule and terms.
+- [Bid Leveling Sheet](https://srene.io/free-forms/bid-leveling-sheet-template.html): Bid leveling sheet template and how to level subcontractor bids step by step.
 - [Playbooks and sales resources](https://srene.io/resources.html): free playbooks for sales reps and aspiring sales leaders.
 
 ## Company
