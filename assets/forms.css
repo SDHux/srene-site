@@ -100,3 +100,22 @@ ol.fp-list li::before{ content:counter(fp); position:absolute; left:0; top:13px;
   .ck-notes{ border-color:#1B1F23 !important; }
   .ck-table, .ck-sign{ break-inside:avoid; }
 }
+
+/* Feature and comparison pages (construction-app/*.html). */
+.ft-split{ display:grid; grid-template-columns:minmax(0,1fr) 260px; gap:44px; align-items:start; max-width:960px; margin:0 auto 8px; }
+.ft-shot{ margin:0; }
+.ft-shot img{ display:block; width:100%; height:auto; border-radius:22px; border:1px solid var(--ag-line-strong); box-shadow:0 24px 50px -24px rgba(0,0,0,0.7); }
+.ft-shot figcaption{ font-size:13px; color:var(--ag-faint); margin-top:10px; line-height:1.5; }
+.ft-table{ width:100%; border-collapse:collapse; margin-top:18px; font-size:15.5px; }
+.ft-table th{ text-align:left; font-family:'Barlow Condensed', sans-serif; font-size:18px; font-weight:600; color:var(--ag-text); padding:10px 12px; border-bottom:1px solid var(--ag-line-strong); }
+.ft-table td{ padding:12px; border-bottom:1px solid var(--ag-line); color:var(--ag-text-2); vertical-align:top; line-height:1.5; }
+.ft-table td:first-child{ color:var(--ag-text); font-weight:600; width:24%; }
+.ft-table td.ft-us{ color:var(--ag-text); }
+.ft-cards{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px; margin-top:6px; }
+@media (max-width:760px){
+  .ft-split{ grid-template-columns:minmax(0,1fr); gap:28px; }
+  .ft-shot{ max-width:260px; margin:0 auto; }
+  .ft-cards{ grid-template-columns:minmax(0,1fr); }
+  .ft-table{ font-size:14px; }
+  .ft-table th, .ft-table td{ padding:9px 6px; }
+}

@@ -16,6 +16,8 @@ myBivy comes in three editions:
 
 ## Free resources
 
+- [myBivy construction app](https://srene.io/construction-app/): what myBivy for Builders & Trades does, one page per job: daily reports, punch lists, T&M tickets, inspection checklists, plan markups, crew timesheets, English/Spanish crews, and quotes for trades. Plus honest comparisons with Procore, Buildertrend and Fieldwire.
+
 - [Free field forms for builders](https://srene.io/resources-builders.html): construction daily report, extra work (T&M) ticket, punch list, bid form and bid leveling sheet. Fillable PDF and Excel, free, no sign-up.
 - [Daily Report](https://srene.io/free-forms/construction-daily-report-template.html): Construction daily report template: what goes on a daily report, who files it, and when.
 - [Extra Work Ticket](https://srene.io/free-forms/tm-ticket-template.html): T&M (time and materials) ticket template for extra work, and how T&M tickets differ from change orders.
