@@ -389,3 +389,15 @@ body.ag .hero-top .trades-phone{ justify-content:flex-start; margin:8px 0 32px; 
   .tv-desktop{ display:none; }
   .tv-mobile{ display:block; max-width:320px; width:100%; margin:0 auto; }
 }
+
+/* "Fixed with myBivy" rubber stamp beside The Problem headline (home). */
+.ag-stamp-row{ display:flex; align-items:center; gap:18px 48px; flex-wrap:wrap; }
+.ag-stamp-row .ag-h2{ flex:1 1 440px; min-width:0; }
+.ag-stamp{ flex:0 0 auto; display:inline-block; transform:rotate(-8deg); font-family:'Rubik Dirt', 'Barlow Condensed', sans-serif; font-size:36px; line-height:0.98; text-transform:uppercase; letter-spacing:1.5px; text-align:center; color:var(--ag-signal); text-decoration:none; padding:14px 22px 12px; border:4px double var(--ag-signal); border-radius:10px; opacity:0.9; margin:6px 14px 30px 8px; transition:transform .2s ease, opacity .2s ease; }
+body.ag a.ag-stamp{ color:var(--ag-signal); }
+.ag-stamp:hover{ transform:rotate(-5deg) scale(1.03); opacity:1; }
+@media (max-width:760px){
+  .ag-stamp-row{ flex-direction:column-reverse; align-items:flex-start; gap:4px; }
+  .ag-stamp-row .ag-h2{ flex:none; }
+  .ag-stamp{ font-size:26px; padding:9px 16px 8px; border-width:3px; margin:14px 0 14px 6px; }
+}
