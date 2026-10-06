@@ -407,3 +407,8 @@ body.ag a.ag-stamp{ color:var(--ag-signal); }
 @media (max-width:760px){ .ag-issues-label{ font-size:21px; margin-top:40px; } }
 .ag-problem .n.ag-x{ color:var(--rope); padding-top:4px; }
 .ag-problem .n.ag-check{ color:var(--ag-alpine); padding-top:4px; }
+
+/* Home: a quiet detour for sales leaders, under the hero buttons */
+.ag-detour{ margin:18px 0 0; font-size:14.5px; color:var(--ag-muted); }
+.ag-detour a{ color:var(--ag-text); font-weight:600; text-decoration:underline; text-underline-offset:3px; text-decoration-color:var(--ag-line-strong); }
+.ag-detour a:hover{ text-decoration-color:var(--ag-text); }
