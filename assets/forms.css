@@ -124,6 +124,7 @@ ol.fp-list li::before{ content:counter(fp); position:absolute; left:0; top:13px;
 .connect-doc h2{ margin:34px 0 10px; }
 .connect-doc h2:first-child{ margin-top:0; }
 .connect-doc p, .connect-doc li{ line-height:1.65; }
+.connect-doc p + p{ margin-top:12px; }
 .connect-doc ul{ padding-left:20px; display:flex; flex-direction:column; gap:8px; }
 .connect-doc code{ font-family:'JetBrains Mono', monospace; font-size:.9em; }
 .connect-legal-links{ margin-top:34px; }
