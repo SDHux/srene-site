@@ -127,3 +127,31 @@ ol.fp-list li::before{ content:counter(fp); position:absolute; left:0; top:13px;
 .connect-doc ul{ padding-left:20px; display:flex; flex-direction:column; gap:8px; }
 .connect-doc code{ font-family:'JetBrains Mono', monospace; font-size:.9em; }
 .connect-legal-links{ margin-top:34px; }
+
+/* SRENE Connect section */
+.connect-sides{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px; }
+.connect-card{ display:block; padding:20px 22px; border-radius:12px; border:1px solid var(--ag-line); background:var(--ag-surface); }
+.connect-card b{ display:block; color:var(--ag-text); font-size:20px; font-weight:600; margin-top:6px; }
+.connect-card span:not(.connect-kicker){ display:block; color:var(--ag-muted); font-size:15px; margin-top:6px; line-height:1.55; }
+.connect-kicker{ font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ag-faint); }
+.connect-steps{ padding-left:22px; display:flex; flex-direction:column; gap:10px; }
+.connect-steps li{ line-height:1.65; }
+.connect-steps b{ color:var(--ag-text); }
+.connect-coverage{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px; }
+.connect-region{ padding:14px 16px; border-radius:10px; border:1px solid var(--ag-line); }
+.connect-region b{ display:block; color:var(--ag-text); font-size:15px; }
+.connect-region span{ display:block; color:var(--ag-muted); font-size:14px; margin-top:4px; line-height:1.5; }
+.connect-note{ color:var(--ag-muted); font-size:15px; margin-top:12px; }
+.connect-form{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px 14px; margin-top:20px; }
+.connect-form label{ display:flex; flex-direction:column; gap:6px; font-size:13.5px; font-weight:600; color:var(--ag-muted); }
+.connect-form input, .connect-form select{ font:inherit; font-weight:400; font-size:15px; color:var(--ag-text); background:var(--ag-ink); border:1px solid var(--ag-line-strong); border-radius:8px; padding:11px 12px; }
+.connect-form input:focus, .connect-form select:focus{ outline:none; border-color:var(--ag-text); }
+.connect-form[hidden], .connect-form label[hidden]{ display:none; }
+.connect-form button{ grid-column:1 / -1; justify-self:start; margin-top:4px; }
+.connect-form .hp-field{ display:none; }
+.connect-thanks{ margin-top:16px; }
+.connect-thanks h3{ color:var(--ag-text); font-size:22px; }
+.connect-thanks p{ color:var(--ag-muted); margin-top:6px; }
+@media (max-width: 720px){
+  .connect-sides, .connect-coverage, .connect-form{ grid-template-columns:minmax(0,1fr); }
+}
