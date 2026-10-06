@@ -13,7 +13,7 @@ myBivy comes in three editions:
 - [myBivy for Trades](https://srene.io/mybivy-for-trades.html): the free app for trade contractors. Sign up free at https://builders.mybivy.com/#/login?signup=trade
 - [myBivy for Builders](https://srene.io/mybivy-for-builders.html): daily reports, crews, trades, documents and photos in one place for small builders and GCs. App: https://builders.mybivy.com
 - [myBivy for Sales](https://srene.io/mybivy-for-sales.html): buyer-facing deal workspaces and mutual close plans. App: https://mybivy.com
-- [SRENE Connect](https://srene.io/connect/): a free, invite-only portal for trade contractors and builders: a directory of general contractors and trade contractors in 21 states and DC (from public license records and building permits), a private pipeline, a four-email intro campaign sent from your own email, and bid tracking with due-date reminders.
+- [SRENE Connect](https://srene.io/connect/): a free, invite-only portal for trade contractors and builders: a directory of over 500,000 general contractors and trade contractors in 21 states and DC (from public license records and building permits), a private pipeline, a four-email intro campaign sent from your own email, and bid tracking with due-date reminders.
 
 ## Free resources
 

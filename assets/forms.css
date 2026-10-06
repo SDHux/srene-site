@@ -156,3 +156,6 @@ ol.fp-list li::before{ content:counter(fp); position:absolute; left:0; top:13px;
 @media (max-width: 720px){
   .connect-sides, .connect-coverage, .connect-form{ grid-template-columns:minmax(0,1fr); }
 }
+
+.connect-stat{ margin-top:22px; font-family:'JetBrains Mono', monospace; font-size:13px; letter-spacing:0.04em; text-transform:uppercase; color:var(--ag-muted); }
+.connect-stat b{ color:var(--ag-text); font-weight:600; }
