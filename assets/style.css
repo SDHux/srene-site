@@ -291,6 +291,10 @@ section{ padding:104px 0; }
   display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:920px; margin:0 auto;
 }
 @media (max-width:760px){ .pricing-grid-2{ grid-template-columns:1fr; } }
+/* Three plans side by side (Builders page) */
+.pricing-grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:1180px; margin:0 auto; }
+.pricing-grid-3 .price-card-v2{ padding:28px; }
+@media (max-width:1000px){ .pricing-grid-3{ grid-template-columns:1fr; max-width:520px; } }
 .price-card-v2{
   border:1px solid var(--line); border-radius:18px; padding:36px;
   background:var(--white); box-shadow:var(--shadow-card);
