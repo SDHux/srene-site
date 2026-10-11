@@ -55,4 +55,4 @@ myBivy comes in three editions:
 - [About SRENE](https://srene.io/company.html): team, mission and contact.
 - Contact: info@srene.io, 619-333-8423
 - LinkedIn: https://www.linkedin.com/company/srene-io
-- Crunchbase: SRENE (founded 2026, San Diego; legal name LiVD LLC)
+- Crunchbase: https://www.crunchbase.com/organization/srene (founded 2026, San Diego)
