@@ -1,1 +1,4 @@
 /resources/aspiring-leaders/reading-the-room.html  /resources/enterprise-motions/reading-the-room.html  301
+
+# QR sticker and short link -> myBivy install page (tagged so sticker signups can be counted)
+/app  https://builders.mybivy.com/?ref=sticker#/get-app  302
