@@ -54,5 +54,6 @@ myBivy comes in three editions:
 
 - [About SRENE](https://srene.io/company.html): team, mission and contact.
 - Contact: info@srene.io, 619-333-8423
+- Mailing address: 2108 N St, Sacramento, CA 95816
 - LinkedIn: https://www.linkedin.com/company/srene-io
 - Crunchbase: https://www.crunchbase.com/organization/srene (founded 2026, San Diego)
