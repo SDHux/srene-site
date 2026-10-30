@@ -1,0 +1,3 @@
+# Sales playbook PDFs stay online for existing links but out of search (2026-10-30)
+/playbooks/*
+  X-Robots-Tag: noindex

@@ -412,3 +412,9 @@ body.ag a.ag-stamp{ color:var(--ag-signal); }
 .ag-detour{ margin:18px 0 0; font-size:14.5px; color:var(--ag-muted); }
 .ag-detour a{ color:var(--ag-text); font-weight:600; text-decoration:underline; text-underline-offset:3px; text-decoration-color:var(--ag-line-strong); }
 .ag-detour a:hover{ text-decoration-color:var(--ag-text); }
+
+/* SRENE Connect on Home: a stat card in place of a screenshot */
+.ag-shot.stat-card .ag-stat-card{ display:flex; flex-direction:column; justify-content:center; gap:28px; min-height:420px; border-radius:16px; border:1px solid var(--ag-line); background:var(--ag-surface) url(images/alpenglow/topo.svg) center/max(1300px, 100%) auto no-repeat; padding:40px 36px; }
+.ag-stat-card div{ display:flex; flex-direction:column; gap:4px; }
+.ag-stat-card b{ font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:clamp(44px, 6vw, 64px); line-height:1; color:var(--ag-text); }
+.ag-stat-card span{ font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ag-faint); }

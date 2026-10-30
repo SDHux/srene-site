@@ -2,3 +2,9 @@
 
 # QR sticker and short link -> myBivy install page (tagged so sticker signups can be counted)
 /app  https://builders.mybivy.com/?ref=sticker#/get-app  302
+
+# Construction focus (2026-10-30): Sales lives on its own site; the sales playbooks hub goes to the field forms
+/mybivy-for-sales.html  https://mybivy.com  301
+/mybivy-for-sales       https://mybivy.com  301
+/resources.html         /resources-builders.html  301
+/resources              /resources-builders.html  301
