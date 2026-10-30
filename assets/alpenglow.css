@@ -413,8 +413,57 @@ body.ag a.ag-stamp{ color:var(--ag-signal); }
 .ag-detour a{ color:var(--ag-text); font-weight:600; text-decoration:underline; text-underline-offset:3px; text-decoration-color:var(--ag-line-strong); }
 .ag-detour a:hover{ text-decoration-color:var(--ag-text); }
 
-/* SRENE Connect on Home: a stat card in place of a screenshot */
-.ag-shot.stat-card .ag-stat-card{ display:flex; flex-direction:column; justify-content:center; gap:28px; min-height:420px; border-radius:16px; border:1px solid var(--ag-line); background:var(--ag-surface) url(images/alpenglow/topo.svg) center/max(1300px, 100%) auto no-repeat; padding:40px 36px; }
-.ag-stat-card div{ display:flex; flex-direction:column; gap:4px; }
-.ag-stat-card b{ font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:clamp(44px, 6vw, 64px); line-height:1; color:var(--ag-text); }
-.ag-stat-card span{ font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ag-faint); }
+
+/* SRENE Connect route: Find -> Shortlist -> Introduce -> Bid list, drawn as a climb (Connect page + Home) */
+.cx-route{ position:relative; display:grid; grid-template-columns:repeat(4, 1fr); }
+.cx-line{ position:absolute; left:0; top:0; width:100%; height:120px; overflow:visible; pointer-events:none; }
+.cx-step{ padding:0 14px; display:flex; flex-direction:column; gap:14px; }
+.cx-band{ position:relative; height:120px; }
+.cx-dot{ position:absolute; left:50%; top:var(--y); transform:translate(-50%, -50%); width:24px; height:24px; border-radius:50%; border:2px solid var(--ag-text-2); background:var(--ag-text-2); box-sizing:border-box; display:flex; align-items:center; justify-content:center; font:700 11px 'JetBrains Mono', monospace; color:var(--ag-ink); }
+.cx-step.summit .cx-dot{ background:var(--ag-surface); border:3px solid var(--rope); color:var(--rope); }
+.cx-flag{ position:absolute; left:50%; top:calc(var(--y) - 40px); }
+.cx-kicker{ font-family:'JetBrains Mono', monospace; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ag-signal); }
+.cx-step h3{ font-family:'Barlow Condensed', sans-serif; font-weight:700; font-size:26px; line-height:1; text-transform:uppercase; color:var(--ag-text); margin:0; }
+.cx-step p{ margin:0; font-size:14.5px; line-height:1.55; color:var(--ag-muted); }
+.cx-card{ border:1px solid var(--ag-line); background:var(--ag-surface); border-radius:12px; padding:12px; display:flex; flex-direction:column; gap:7px; height:200px; box-sizing:border-box; font-size:12px; color:var(--ag-text-2); box-shadow:0 24px 48px -30px rgba(0,0,0,0.9); }
+.cx-search{ display:flex; align-items:center; gap:7px; border:1px solid var(--ag-line-strong); border-radius:7px; padding:6px 8px; color:var(--ag-text); font-size:11.5px; }
+.cx-row{ display:flex; align-items:center; justify-content:space-between; gap:8px; padding:5px 2px; border-bottom:1px solid var(--ag-line); }
+.cx-row:last-child{ border-bottom:0; }
+.cx-row small{ color:var(--ag-faint); font-size:10.5px; }
+.cx-add{ flex:none; width:20px; height:20px; border-radius:6px; border:1px solid var(--ag-line-strong); display:flex; align-items:center; justify-content:center; color:var(--ag-text); }
+.cx-add.on{ background:var(--rope); border-color:var(--rope); color:#fff; }
+.cx-cols{ display:grid; grid-template-columns:repeat(3, 1fr); gap:6px; flex:1; }
+.cx-col{ display:flex; flex-direction:column; gap:5px; }
+.cx-col > b{ font:600 9.5px 'JetBrains Mono', monospace; letter-spacing:0.08em; text-transform:uppercase; color:var(--ag-faint); }
+.cx-chip{ border:1px solid var(--ag-line); background:var(--ag-surface-2); border-radius:6px; padding:5px 6px; font-size:10.5px; color:var(--ag-text-2); }
+.cx-chip.hot{ border-color:var(--rope); color:var(--ag-text); }
+.cx-mail div{ color:var(--ag-faint); font-size:11px; }
+.cx-mail div b{ color:var(--ag-text-2); font-weight:500; }
+.cx-mail p{ margin:2px 0 0; color:var(--ag-text); font-size:11.5px; line-height:1.45; }
+.cx-pill{ align-self:flex-start; margin-top:auto; font:600 9.5px 'JetBrains Mono', monospace; letter-spacing:0.08em; text-transform:uppercase; color:var(--ag-alpine); border:1px solid color-mix(in srgb, var(--ag-alpine) 50%, transparent); border-radius:999px; padding:3px 8px; }
+.cx-pill.rope{ color:var(--ag-signal); border-color:color-mix(in srgb, var(--rope) 55%, transparent); }
+.cx-other{ margin-top:34px; padding-top:22px; border-top:1px solid var(--ag-line); display:flex; flex-wrap:wrap; gap:8px 18px; align-items:baseline; color:var(--ag-muted); font-size:15px; }
+.cx-other b{ font-family:'Barlow Condensed', sans-serif; font-size:20px; text-transform:uppercase; color:var(--ag-text); }
+.cx-note{ margin-top:10px; font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.12em; text-transform:uppercase; color:var(--ag-faint); }
+/* Phones, and the narrow column on Home: a vertical climb */
+@media (max-width:900px){
+  .cx-route{ grid-template-columns:1fr; gap:26px; padding-left:42px; }
+  .cx-route::before{ content:""; position:absolute; left:11px; top:12px; bottom:12px; width:2px; background:var(--ag-text-2); opacity:.5; }
+  .cx-line, .cx-flag{ display:none; }
+  .cx-step{ padding:0; position:relative; }
+  .cx-card{ height:auto; }
+  .cx-band{ position:absolute; left:-42px; top:0; height:24px; width:24px; }
+  .cx-band{ --y:12px !important; }
+  .cx-dot{ left:12px; }
+}
+.cx-route.compact{ grid-template-columns:1fr; gap:22px; padding-left:42px; }
+.cx-route.compact::before{ content:""; position:absolute; left:11px; top:12px; bottom:12px; width:2px; background:var(--ag-text-2); opacity:.5; }
+.cx-route.compact .cx-line, .cx-route.compact .cx-flag, .cx-route.compact .cx-card{ display:none; }
+.cx-route.compact .cx-step{ padding:0; position:relative; gap:6px; }
+.cx-route.compact .cx-band{ position:absolute; left:-42px; top:0; height:24px; width:24px; }
+.cx-route.compact .cx-band{ --y:12px !important; }
+.cx-route.compact .cx-dot{ left:12px; }
+.cx-route.compact h3{ font-size:22px; }
+.ag-shot.cx-home{ border-radius:16px; border:1px solid var(--ag-line); background:var(--ag-surface) url(images/alpenglow/topo.svg) center/max(1300px, 100%) auto no-repeat; padding:32px 30px; gap:24px; }
+.cx-home-stat{ margin:0; font-size:14px; color:var(--ag-muted); }
+.cx-home-stat b{ font-family:'Barlow Condensed', sans-serif; font-size:22px; color:var(--ag-text); }
