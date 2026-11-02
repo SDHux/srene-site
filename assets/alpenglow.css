@@ -467,3 +467,12 @@ body.ag a.ag-stamp{ color:var(--ag-signal); }
 .ag-shot.cx-home{ border-radius:16px; border:1px solid var(--ag-line); background:var(--ag-surface) url(images/alpenglow/topo.svg) center/max(1300px, 100%) auto no-repeat; padding:32px 30px; gap:24px; }
 .cx-home-stat{ margin:0; font-size:14px; color:var(--ag-muted); }
 .cx-home-stat b{ font-family:'Barlow Condensed', sans-serif; font-size:22px; color:var(--ag-text); }
+
+/* Phones only: a shorter home page. Desktop keeps the proof strip, the "why" block,
+   the stamp and the anchors section; on a phone they repeat "Five things" or run long. */
+@media (max-width:760px){
+  .ag-hero-inner{ padding-top:28px; }
+  .ag-hero .ag-proof, #problem #why, #problem .ag-stamp, #company.ag-anchors{ display:none; }
+  .amt-empty{ display:none; }
+  br.br-wide{ display:none; }
+}
