@@ -476,3 +476,14 @@ body.ag a.ag-stamp{ color:var(--ag-signal); }
   .amt-empty{ display:none; }
   br.br-wide{ display:none; }
 }
+
+/* "En español" highlight in the home Trades row (phones only for now). */
+.ag-es{ display:none; }
+@media (max-width:760px){
+  .ag-es{ display:grid; grid-template-columns:auto 1fr; gap:4px 14px; align-items:center; margin:4px 0 6px; padding:14px 16px; border:1px solid var(--ag-line-strong); border-left:3px solid var(--ag-signal); border-radius:12px; background:var(--ag-surface); color:var(--ag-text); text-decoration:none; }
+  body.ag a.ag-es{ color:var(--ag-text); }
+  .ag-es-pill{ grid-row:span 2; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:1px; color:var(--ag-signal); border:1px solid var(--ag-signal); border-radius:999px; padding:6px 10px; white-space:nowrap; }
+  .ag-es-pill i{ font-style:normal; opacity:0.7; }
+  .ag-es b{ font-family:'Barlow Condensed', sans-serif; font-size:20px; letter-spacing:0.5px; text-transform:uppercase; line-height:1.1; }
+  .ag-es span[lang="en"]{ font-size:14px; line-height:1.45; color:var(--ag-text-2); }
+}
