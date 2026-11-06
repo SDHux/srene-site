@@ -485,3 +485,14 @@ body.ag a.ag-es{ color:var(--ag-text); }
 .ag-es-pill i{ font-style:normal; opacity:0.7; }
 .ag-es b{ font-family:'Barlow Condensed', sans-serif; font-size:20px; letter-spacing:0.5px; text-transform:uppercase; line-height:1.1; }
 .ag-es span[lang="en"]{ font-size:14px; line-height:1.45; color:var(--ag-text-2); }
+
+/* App Store / Google Play badges (official artwork in assets/badges). The
+   Google PNG carries its own padding, so it's drawn larger and pulled in to
+   line up with Apple's 40px badge. */
+.store-badges{ display:flex; flex-wrap:wrap; align-items:center; justify-content:inherit; gap:10px 14px; margin-top:18px; }
+.store-badges-note{ flex-basis:100%; font-size:13px; line-height:1.4; opacity:.75; }
+.store-badges a{ display:block; line-height:0; }
+.store-badges img{ display:block; height:40px; width:auto; }
+.store-badges img.gp{ height:59px; margin:-9.5px -9.5px; }
+.ag-final .store-badges, .final-cta .store-badges{ justify-content:center; }
+.hero .store-badges{ margin-bottom:22px; }
