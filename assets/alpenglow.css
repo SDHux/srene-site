@@ -496,3 +496,4 @@ body.ag a.ag-es{ color:var(--ag-text); }
 .store-badges img.gp{ height:59px; margin:-9.5px -9.5px; }
 .ag-final .store-badges, .final-cta .store-badges{ justify-content:center; }
 .hero .store-badges{ margin-bottom:22px; }
+.store-badges img.gp.gp-es{ height:52px; margin:-6px 0; } /* the Spanish PNG has less built-in padding */
