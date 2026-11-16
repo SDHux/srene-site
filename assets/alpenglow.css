@@ -64,6 +64,8 @@ body.ag .btn-primary{ background:var(--rope-deep); box-shadow:none; }
   background:linear-gradient(180deg, var(--ag-night) 0%, #1A1D21 55%, #24282D 100%); }
 .ag-hero-topo{ position:absolute; inset:0; background:url(images/alpenglow/topo.svg) 78% 20%/max(1600px, 100%) auto no-repeat; opacity:0.9; pointer-events:none; }
 .ag-ridges{ position:absolute; left:0; right:0; bottom:0; width:100%; height:auto; min-height:220px; pointer-events:none; }
+/* Home hero only: keep the builder skyline clear of the three-points strip on mid-size screens */
+.ag-hero > .ag-ridges{ min-height:300px; }
 .ag-hero-inner{ position:relative; z-index:2; padding-top:clamp(56px, 9vh, 110px); padding-bottom:clamp(250px, 25vw, 380px); display:flex; flex-direction:column; gap:26px; }
 .ag-hero h1{ font-size:clamp(54px, 7.4vw, 112px); line-height:0.9; font-weight:700; text-transform:uppercase; max-width:1080px; margin:0; }
 .ag-hero h1 em{ font-style:normal;
