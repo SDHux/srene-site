@@ -553,3 +553,11 @@ body.ag a.ag-es{ color:var(--ag-text); }
 .yt-frame iframe{ display:block; width:100%; height:100%; border:0; }
 .yt-close{ position:absolute; top:14px; right:14px; width:44px; height:44px; border-radius:50%; border:1px solid rgba(244,242,237,0.3); background:rgba(22,25,28,0.85); color:#F4F2ED; font-size:28px; line-height:1; cursor:pointer; }
 .yt-close:hover{ background:var(--rope-deep); border-color:var(--rope-deep); }
+
+/* Video tag on hub tiles (2026-11-17): the tile still opens its page; the tag plays the video. */
+.yt-tile{ position:relative; display:flex; }
+.yt-tile > a{ flex:1; padding-bottom:58px !important; }
+.yt-tag{ position:absolute; left:18px; bottom:16px; display:inline-flex; align-items:center; gap:8px; font:600 13px/1 'JetBrains Mono', monospace; letter-spacing:0.04em; color:var(--ag-text); background:var(--ag-surface); border:1px solid var(--ag-line-strong); padding:8px 12px 8px 10px; border-radius:999px; cursor:pointer; transition:background .2s ease, border-color .2s ease, color .2s ease; }
+.yt-tag::before{ content:""; width:0; height:0; border-left:9px solid var(--rope); border-top:5.5px solid transparent; border-bottom:5.5px solid transparent; transition:border-color .2s ease; }
+.yt-tag:hover, .yt-tag:focus-visible{ background:var(--rope-deep); border-color:var(--rope-deep); color:#fff; }
+.yt-tag:hover::before, .yt-tag:focus-visible::before{ border-left-color:#fff; }
