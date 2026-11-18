@@ -238,12 +238,26 @@ body.ag .hero-top{ text-align:left; max-width:1280px; padding:clamp(48px, 8vh, 9
 body.ag .hero h1{ font-size:clamp(52px, 7vw, 104px); line-height:0.92; text-transform:uppercase; max-width:1080px; }
 body.ag .hero p.lede{ margin:18px 0 30px; color:var(--ag-text-2); }
 body.ag .hero-actions{ justify-content:flex-start; }
+.hero-watch{ display:inline-flex; align-items:center; gap:12px; margin:-14px 0 30px; padding:6px 0; background:none; border:0; color:var(--ag-text); font:inherit; font-size:16px; font-weight:600; cursor:pointer; text-align:left; }
+.hero-watch-play{ position:relative; flex:none; width:38px; height:38px; border-radius:50%; background:var(--rope-deep); }
+.hero-watch-play::before{ content:""; position:absolute; left:15px; top:12px; border-left:12px solid #fff; border-top:7px solid transparent; border-bottom:7px solid transparent; }
+.hero-watch-len{ font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:600; color:var(--ag-muted); }
+.hero-watch:hover{ color:#fff; }
+.hero-watch:hover .hero-watch-play{ background:var(--rope); }
+.hero-watch:focus-visible{ outline:3px solid var(--rope); outline-offset:4px; border-radius:999px; }
 body.ag .hero-badge{ background:none; padding:0; font-family:'JetBrains Mono', monospace; font-size:12px; letter-spacing:0.16em; text-transform:uppercase; color:var(--ag-signal); }
 body.ag .hero-badge .dot{ display:none; }
 body.ag .hero-proof{ justify-content:flex-start; }
 body.ag .hero-proof-item{ color:var(--ag-muted); }
 body.ag .hero-proof-item b{ color:var(--ag-text); }
 body.ag .hero-proof-accent{ background:var(--ag-faint); }
+/* Phone only: a 4th proof item that jumps down to the how-to videos */
+.hero-proof-watch{ display:none; text-decoration:none; }
+body.ag .hero-proof-watch .hero-proof-accent{ background:var(--rope); }
+body.ag .hero-proof-watch b{ color:var(--rope); }
+body.ag .hero-proof-watch b::after{ content:" \2193"; }
+@media (max-width:760px){ .hero-proof-watch{ display:block; } .hero-proof:has(.hero-proof-watch) .hero-proof-item:nth-child(3)::before{ display:none; } }
+#watch{ scroll-margin-top:80px; }
 .ag-ridge-band{ position:relative; height:clamp(170px, 22vw, 300px); margin-top:8px; pointer-events:none; }
 .ag-ridge-band .ag-ridges{ min-height:0; height:100%; }
 .ag-ridge-band + .wrap, .ag-ridge-band + .wrap.trades-phone{ position:relative; z-index:2; margin-top:calc(-1 * clamp(110px, 14vw, 200px)); }
@@ -519,7 +533,7 @@ body.ag a.ag-es{ color:var(--ag-text); }
 /* ---------- YouTube how-to videos (2026-11-17) ----------
    Cards show our own cover image; YouTube (privacy mode) loads only
    when someone taps play, so pages stay fast and cookie-free. */
-.yt-row{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:22px; }
+.yt-row{ display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:16px; }
 .yt-item{ margin:0; min-width:0; }
 .yt-card{ position:relative; display:block; width:100%; aspect-ratio:9 / 16; padding:0; border:1px solid var(--ag-line); border-radius:18px; overflow:hidden; background:#14171B; cursor:pointer; box-shadow:0 30px 60px -30px rgba(0,0,0,0.7); transition:transform .25s ease, border-color .25s ease; }
 .yt-card img{ display:block; width:100%; height:100%; object-fit:cover; }
