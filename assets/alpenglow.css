@@ -561,3 +561,18 @@ body.ag a.ag-es{ color:var(--ag-text); }
 .yt-tag::before{ content:""; width:0; height:0; border-left:9px solid var(--rope); border-top:5.5px solid transparent; border-bottom:5.5px solid transparent; transition:border-color .2s ease; }
 .yt-tag:hover, .yt-tag:focus-visible{ background:var(--rope-deep); border-color:var(--rope-deep); color:#fff; }
 .yt-tag:hover::before, .yt-tag:focus-visible::before{ border-left-color:#fff; }
+
+/* Features menu (2026-11-17): two columns on desktop, a plain list in the phone menu */
+.nav-dd-all{ display:block; padding:12px 14px 6px; font-size:13.5px; font-weight:600; color:var(--rope) !important; }
+.nav-dd-all:hover{ color:#fff !important; }
+@media (min-width:901px){
+  .nav-dd-features .nav-dd-panel{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); column-gap:4px; width:600px; }
+  .nav-dd-features .nav-dd-all{ grid-column:1 / -1; border-top:1px solid var(--ag-line); margin-top:6px; padding-top:12px; }
+}
+/* Five menu items now: tighten the bar on small laptops so nothing touches */
+@media (min-width:901px) and (max-width:1180px){
+  .nav-links{ gap:24px; }
+}
+@media (min-width:901px) and (max-width:1060px){
+  .brand-tag{ display:none; }
+}
