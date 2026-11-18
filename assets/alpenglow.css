@@ -515,3 +515,41 @@ body.ag a.ag-es{ color:var(--ag-text); }
 .ag-final .store-badges, .final-cta .store-badges{ justify-content:center; }
 .hero .store-badges{ margin-bottom:22px; }
 .store-badges img.gp.gp-es{ height:52px; margin:-6px 0; } /* the Spanish PNG has less built-in padding */
+
+/* ---------- YouTube how-to videos (2026-11-17) ----------
+   Cards show our own cover image; YouTube (privacy mode) loads only
+   when someone taps play, so pages stay fast and cookie-free. */
+.yt-row{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:22px; }
+.yt-item{ margin:0; min-width:0; }
+.yt-card{ position:relative; display:block; width:100%; aspect-ratio:9 / 16; padding:0; border:1px solid var(--ag-line); border-radius:18px; overflow:hidden; background:#14171B; cursor:pointer; box-shadow:0 30px 60px -30px rgba(0,0,0,0.7); transition:transform .25s ease, border-color .25s ease; }
+.yt-card img{ display:block; width:100%; height:100%; object-fit:cover; }
+.yt-card:hover{ transform:translateY(-4px); border-color:var(--ag-line-strong); }
+.yt-card:focus-visible, .yt-shot:focus-visible{ outline:3px solid var(--rope); outline-offset:4px; }
+.yt-play{ position:absolute; left:50%; top:62%; width:64px; height:64px; margin:-32px 0 0 -32px; border-radius:50%; background:rgba(22,25,28,0.72); border:1.5px solid rgba(244,242,237,0.55); -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px); display:flex; align-items:center; justify-content:center; transition:background .2s ease, border-color .2s ease; }
+.yt-play::before{ content:""; margin-left:5px; border-left:18px solid #F4F2ED; border-top:11px solid transparent; border-bottom:11px solid transparent; }
+.yt-card:hover .yt-play, .yt-shot:hover .yt-play{ background:var(--rope-deep); border-color:var(--rope-deep); }
+.yt-len{ position:absolute; right:10px; bottom:10px; font-family:'JetBrains Mono', monospace; font-size:12px; font-weight:600; letter-spacing:0.04em; color:#F4F2ED; background:rgba(22,25,28,0.82); padding:3px 7px; border-radius:6px; }
+.yt-cap{ margin-top:14px; font-size:16px; line-height:1.4; font-weight:600; color:var(--ag-text); }
+.yt-cap span{ display:block; margin-top:2px; font-size:14.5px; font-weight:400; color:var(--ag-muted); }
+.yt-more{ margin-top:30px; font-size:16px; color:var(--ag-muted); }
+.yt-more a{ color:var(--ag-signal); font-weight:600; text-decoration:none; }
+.yt-more a:hover{ text-decoration:underline; }
+@media (max-width:900px){
+  .yt-row{ grid-template-columns:none; grid-auto-flow:column; grid-auto-columns:minmax(190px, 58%); overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; padding-bottom:6px; }
+  .yt-row::-webkit-scrollbar{ display:none; }
+  .yt-item{ scroll-snap-align:start; }
+}
+
+/* Feature-page screenshot that plays the matching video */
+.yt-shot{ position:relative; display:block; width:100%; padding:0; border:0; background:none; cursor:pointer; border-radius:22px; text-align:left; }
+.yt-shot .yt-play{ top:46%; }
+.yt-badge{ position:absolute; left:50%; bottom:18px; transform:translateX(-50%); white-space:nowrap; background:var(--rope-deep); color:#fff; font-size:14px; font-weight:600; padding:8px 14px; border-radius:999px; box-shadow:0 12px 26px -10px rgba(0,0,0,0.7); }
+
+/* The player */
+.yt-modal{ position:fixed; inset:0; z-index:1000; display:none; align-items:center; justify-content:center; padding:64px 16px 24px; background:rgba(8,10,12,0.88); }
+.yt-modal.open{ display:flex; }
+.yt-frame{ width:min(calc(84vh * 9 / 16), 100%); aspect-ratio:9 / 16; border-radius:18px; overflow:hidden; background:#000; box-shadow:0 40px 90px -30px rgba(0,0,0,0.9); }
+.yt-modal.wide .yt-frame{ width:min(92vw, calc(80vh * 16 / 9), 1100px); aspect-ratio:16 / 9; }
+.yt-frame iframe{ display:block; width:100%; height:100%; border:0; }
+.yt-close{ position:absolute; top:14px; right:14px; width:44px; height:44px; border-radius:50%; border:1px solid rgba(244,242,237,0.3); background:rgba(22,25,28,0.85); color:#F4F2ED; font-size:28px; line-height:1; cursor:pointer; }
+.yt-close:hover{ background:var(--rope-deep); border-color:var(--rope-deep); }

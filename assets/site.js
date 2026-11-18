@@ -218,3 +218,45 @@ const nav = document.getElementById('nav');
       peaks: [ { x: 0.5, y: 0.5, seed: 7.1, stretchX: 1.8, stretchY: 1.0 } ]
     });
   })();
+
+  // YouTube how-to videos (2026-11-17). Anything with data-yt="<video id>"
+  // opens a player. The page shows our own image; YouTube (privacy mode)
+  // loads only after a tap, and the player is emptied again on close.
+  (function(){
+    const triggers = document.querySelectorAll('[data-yt]');
+    if(!triggers.length) return;
+    const modal = document.createElement('div');
+    modal.className = 'yt-modal';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Video player');
+    modal.innerHTML = '<button type="button" class="yt-close" aria-label="Close video">&times;</button><div class="yt-frame"></div>';
+    document.body.appendChild(modal);
+    const frame = modal.querySelector('.yt-frame');
+    const closeBtn = modal.querySelector('.yt-close');
+    let lastFocus = null;
+    const esc = (t) => String(t).replace(/[&"<>]/g, (c) => ({'&':'&amp;','"':'&quot;','<':'&lt;','>':'&gt;'}[c]));
+    function openVideo(id, title, wide){
+      lastFocus = document.activeElement;
+      modal.classList.toggle('wide', wide);
+      frame.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(id) +
+        '?autoplay=1&rel=0&playsinline=1" title="' + esc(title) +
+        '" allow="autoplay; encrypted-media; picture-in-picture; fullscreen"></iframe>';
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+    function closeVideo(){
+      modal.classList.remove('open');
+      frame.innerHTML = '';
+      document.body.style.overflow = '';
+      if(lastFocus) lastFocus.focus();
+    }
+    triggers.forEach((t) => t.addEventListener('click', (e) => {
+      e.preventDefault();
+      openVideo(t.dataset.yt, t.dataset.ytTitle || 'Video', t.hasAttribute('data-yt-wide'));
+    }));
+    closeBtn.addEventListener('click', closeVideo);
+    modal.addEventListener('click', (e) => { if(e.target === modal) closeVideo(); });
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && modal.classList.contains('open')) closeVideo(); });
+  })();
